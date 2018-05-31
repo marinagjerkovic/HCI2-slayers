@@ -1,0 +1,38 @@
+﻿<Window x:Class="HCI2___Back_To_Slay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCI2___Back_To_Slay"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Classroom">
+                    <MenuItem Header="Add new classroom" Click="add_new_classroom"/>
+                    <MenuItem Header="Update clasroom info" />
+                    <MenuItem Header="Remove classroom" />
+                </MenuItem>
+                <MenuItem Header="Course">
+                    <MenuItem Header="Add new course"/>
+                    <MenuItem Header="Update course info"/>
+                    <MenuItem Header="Remove course"/>
+                </MenuItem>
+                <MenuItem Header="Subject">
+                    <MenuItem Header="Add new subject"/>
+                    <MenuItem Header="Update subject info"/>
+                    <MenuItem Header="Remove subject"/>
+                </MenuItem>
+                <MenuItem Header="Software">
+                    <MenuItem Header="Add new software"/>
+                    <MenuItem Header="Update software info"/>
+                    <MenuItem Header="Remove software"/>
+                </MenuItem>
+
+            </Menu>
+        </DockPanel>
+
+
+    </Grid>
+</Window>
