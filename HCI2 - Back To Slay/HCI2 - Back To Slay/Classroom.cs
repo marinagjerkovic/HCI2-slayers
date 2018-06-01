@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HCI2___Back_To_Slay
 {
-    class Classroom
+    public class Classroom
     {
         public enum OpSystem
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HCI2___Back_To_Slay
 {
-    class Subject
+    public class Subject
     {
         private string id;
         private string name;

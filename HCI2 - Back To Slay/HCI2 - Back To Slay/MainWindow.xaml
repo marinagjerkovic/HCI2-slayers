@@ -15,17 +15,17 @@
                     <MenuItem Header="Remove classroom" />
                 </MenuItem>
                 <MenuItem Header="Course">
-                    <MenuItem Header="Add new course"/>
+                    <MenuItem Header="Add new course" Click="add_new_course"/>
                     <MenuItem Header="Update course info"/>
                     <MenuItem Header="Remove course"/>
                 </MenuItem>
                 <MenuItem Header="Subject">
-                    <MenuItem Header="Add new subject"/>
+                    <MenuItem Header="Add new subject" Click="add_new_subject"/>
                     <MenuItem Header="Update subject info"/>
                     <MenuItem Header="Remove subject"/>
                 </MenuItem>
                 <MenuItem Header="Software">
-                    <MenuItem Header="Add new software"/>
+                    <MenuItem Header="Add new software" Click="add_new_software"/>
                     <MenuItem Header="Update software info"/>
                     <MenuItem Header="Remove software"/>
                 </MenuItem>

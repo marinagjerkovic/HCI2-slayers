@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HCI2___Back_To_Slay
 {
-    class Course
+    public class Course
     {
         private string id;
         private string name;

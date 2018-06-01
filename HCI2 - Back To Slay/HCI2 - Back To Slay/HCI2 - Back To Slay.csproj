@@ -61,6 +61,15 @@
     <Compile Include="windows\Add_Classroom.xaml.cs">
       <DependentUpon>Add_Classroom.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\Add_Course.xaml.cs">
+      <DependentUpon>Add_Course.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\Add_Software.xaml.cs">
+      <DependentUpon>Add_Software.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\Add_Subject.xaml.cs">
+      <DependentUpon>Add_Subject.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,6 +84,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="windows\Add_Classroom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\Add_Course.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\Add_Software.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\Add_Subject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,6 +126,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="files\classrooms.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
         mc:Ignorable="d"
-        Title="Add Classroom" Height="450" Width="450">
-    <Grid Margin="0,0,2,-21">
+        Title="Add Classroom" Height="500" Width="450">
+    <Grid Margin="0,0,2,1">
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="12,22,0,0" TextWrapping="Wrap" Text="Classroom id: " VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="12,55,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Number of seats: " VerticalAlignment="Top" Margin="12,93,0,0"/>
@@ -14,24 +14,27 @@
         <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Height="16" Margin="230,93,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="0"/>
         <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="12,200,0,0" TextWrapping="Wrap" Text="Has a board?" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="12,250,0,0" TextWrapping="Wrap" Text="Has a smart board?" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="12,306,0,0" TextWrapping="Wrap" Text="Add software: " VerticalAlignment="Top"/>
-
+        <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="10,360,0,0" TextWrapping="Wrap" Text="Add software: " VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Margin="15,299,0,0" TextWrapping="Wrap" Text="Operating system: " VerticalAlignment="Top"/>
+        
         <TextBox x:Name="id" HorizontalAlignment="Left" Height="16" Margin="176,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
         <TextBox x:Name="description" HorizontalAlignment="Left" Height="16" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" Margin="176,55,0,0"/>
         <TextBox x:Name="num_of_seats" HorizontalAlignment="Left" Height="16" Margin="176,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
-        <RadioButton x:Name="radioButton" Content="Yes" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="176,148,0,0" GroupName="projector" IsChecked="true"/>
-        <RadioButton x:Name="radioButton1" Content="No" HorizontalAlignment="Left" Margin="322,148,0,0" VerticalAlignment="Top" GroupName="projector"/>
-        <RadioButton x:Name="radioButton2" Content="Yes" HorizontalAlignment="Left" Margin="176,200,0,0" VerticalAlignment="Top" GroupName="board" IsChecked="true"/>
-        <RadioButton x:Name="radioButton3" Content="No" HorizontalAlignment="Left" Margin="322,200,0,0" VerticalAlignment="Top" GroupName="board"/>
-        <RadioButton x:Name="radioButton4" Content="Yes" HorizontalAlignment="Left" Margin="176,251,0,0" VerticalAlignment="Top" GroupName="smart_board" IsChecked="true"/>
-        <RadioButton x:Name="radioButton5" Content="No" HorizontalAlignment="Left" Margin="322,250,0,0" VerticalAlignment="Top" GroupName="smart_board"/>
-        
-        
-        <Button x:Name="Add_Classroom_Btn" Content="Add classroom" HorizontalAlignment="Left" Margin="75,361,0,0" VerticalAlignment="Top" Width="85"/>
-        <Button x:Name="button1" Content="Cancel" HorizontalAlignment="Left" Margin="205,361,0,0" VerticalAlignment="Top" Width="75"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="176,306,0,0" VerticalAlignment="Top" Width="54" Height="22" />
-        <Button x:Name="button" Content="Add this software" HorizontalAlignment="Left" Margin="261,306,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="projYes" Content="Yes" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="176,148,0,0" GroupName="projector" IsChecked="true"/>
+        <RadioButton x:Name="projNo" Content="No" HorizontalAlignment="Left" Margin="322,148,0,0" VerticalAlignment="Top" GroupName="projector"/>
+        <RadioButton x:Name="boardYes" Content="Yes" HorizontalAlignment="Left" Margin="176,200,0,0" VerticalAlignment="Top" GroupName="board" IsChecked="true"/>
+        <RadioButton x:Name="boardNo" Content="No" HorizontalAlignment="Left" Margin="322,200,0,0" VerticalAlignment="Top" GroupName="board"/>
+        <RadioButton x:Name="smartYes" Content="Yes" HorizontalAlignment="Left" Margin="176,251,0,0" VerticalAlignment="Top" GroupName="smart_board" IsChecked="true"/>
+        <RadioButton x:Name="smartNo" Content="No" HorizontalAlignment="Left" Margin="322,250,0,0" VerticalAlignment="Top" GroupName="smart_board"/>
+        <RadioButton x:Name="win" Content="Windows" HorizontalAlignment="Left" Margin="176,299,0,0" VerticalAlignment="Top" GroupName="op_system" IsChecked="true" />
+        <RadioButton x:Name="lin" Content="Linux" HorizontalAlignment="Left" Margin="261,299,0,0" VerticalAlignment="Top" GroupName="op_system"/>
+        <RadioButton x:Name="both" Content="Both" HorizontalAlignment="Left" Margin="322,299,0,0" VerticalAlignment="Top" GroupName="op_system"/>
 
+
+        <Button x:Name="add_classroom_btn" Content="Add classroom" HorizontalAlignment="Left" Margin="80,412,0,0" VerticalAlignment="Top" Width="85" Click="add_classroom"/>
+        <Button x:Name="cancel_btn" Content="Cancel" HorizontalAlignment="Left" Margin="207,412,0,0" VerticalAlignment="Top" Width="75" Click="cancel"/>
+        <ComboBox x:Name="software_combobox" HorizontalAlignment="Left" Margin="176,354,0,0" VerticalAlignment="Top" Width="54" Height="22" />
+        <Button x:Name="add_sel_software_btn" Content="Add this software" HorizontalAlignment="Left" Margin="261,354,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
