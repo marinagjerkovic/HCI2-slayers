@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HCI2___Back_To_Slay.windows;
+using Syncfusion.UI.Xaml.Schedule;
 
 namespace HCI2___Back_To_Slay
 {
@@ -30,6 +31,14 @@ namespace HCI2___Back_To_Slay
         public MainWindow()
         {
             InitializeComponent();
+            SfSchedule schedule = new SfSchedule();
+            schedule.TimeMode = TimeModes.TwentyFourHours;
+            schedule.TimeInterval = TimeInterval.FifteenMin;
+            schedule.ScheduleType = ScheduleType.Week;
+            schedule.WorkStartHour = 6;
+            schedule.WorkEndHour = 23;
+
+            this.LayoutRoot.Children.Add(schedule);
         }
 
         private void add_new_classroom(object sender, RoutedEventArgs e)

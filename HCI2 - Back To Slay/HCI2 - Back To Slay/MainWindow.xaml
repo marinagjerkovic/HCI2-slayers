@@ -3,9 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:schedule="http://schemas.syncfusion.com/wpf"
+
         xmlns:local="clr-namespace:HCI2___Back_To_Slay"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow"     Height="{Binding SystemParameters.PrimaryScreenHeight}" 
+        Width="{Binding SystemParameters.PrimaryScreenWidth}">
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
@@ -31,6 +34,11 @@
                 </MenuItem>
 
             </Menu>
+            <Grid x:Name="LayoutRoot">
+
+                
+
+            </Grid>
         </DockPanel>
 
 
