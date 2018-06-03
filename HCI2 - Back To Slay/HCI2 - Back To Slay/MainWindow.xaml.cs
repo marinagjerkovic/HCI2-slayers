@@ -204,7 +204,7 @@ namespace HCI2___Back_To_Slay
                 MessageBox.Show("You can't add anything on schedule before you create classroom!");
                 return;
             }
-            if (cr is null)
+            if (cr == null)
             {
                 MessageBox.Show("You must select classroom first!");
                 return;
