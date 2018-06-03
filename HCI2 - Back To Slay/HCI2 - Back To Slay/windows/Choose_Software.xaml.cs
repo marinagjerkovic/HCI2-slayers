@@ -21,15 +21,16 @@ namespace HCI2___Back_To_Slay.windows
     /// </summary>
     public partial class Choose_Software : Window
     {
-    
+
         private ObservableCollection<Software> all = new ObservableCollection<Software>();
         private ObservableCollection<Software> added = new ObservableCollection<Software>();
+        private DataGrid currentDG;
 
         public Choose_Software(Classroom.OpSystem a)
         {
             InitializeComponent();
-            MessageBox.Show(a+"");
-            foreach(Software sw in MainWindow.allSoftware)
+            MessageBox.Show(a + "");
+            foreach (Software sw in MainWindow.allSoftware)
             {
                 if (sw.Os.Equals(a) || sw.Os.Equals(Classroom.OpSystem.Both))
                 {
@@ -40,14 +41,13 @@ namespace HCI2___Back_To_Slay.windows
             allSoftwareDG.ItemsSource = all;
         }
 
-        private void mouse_moved(object sender, MouseEventArgs e)
+        private int detect_selected_row(DependencyObject dep)
         {
-            DependencyObject dep = (DependencyObject)e.OriginalSource;
 
             // iteratively traverse the visual tree
             while ((dep != null) &&
             !(dep is DataGridCell))
-    {
+            {
                 dep = VisualTreeHelper.GetParent(dep);
             }
 
@@ -56,65 +56,77 @@ namespace HCI2___Back_To_Slay.windows
 
                 DataGridCell cell = dep as DataGridCell;
                 while ((dep != null) && !(dep is DataGridRow))
-    {
+                {
                     dep = VisualTreeHelper.GetParent(dep);
                 }
-
-                DataGridRow row = dep as DataGridRow;
-                DataGrid dataGrid =
-    ItemsControl.ItemsControlFromItemContainer(row)
-    as DataGrid;
-
-                int index = dataGrid.ItemContainerGenerator.
-                    IndexFromContainer(row);
-
-                DataGrid dg = (DataGrid)sender;
-
-                if (dg != null && e.LeftButton == MouseButtonState.Pressed)
-                {
-                    DragDrop.DoDragDrop(dg, index+"", DragDropEffects.Copy);
-                }
             }
-
-
-        }
-
-        private void software_removed(object sender, DragEventArgs e)
-        {
-            DataGrid dg = (DataGrid)sender;
-            if (dg != null)
+            DataGridRow row = dep as DataGridRow;
+            if (row == null)
             {
-                if (e.Data.GetDataPresent(DataFormats.StringFormat))
-                {
-                    string toe = (string)e.Data.GetData(DataFormats.StringFormat);
-                    int index = Int32.Parse(toe);
-                    Software sw = added.ElementAt(index);
-                    added.Remove(sw);
-                    all.Add(sw);
-                }
+                return -1;
             }
-
+            currentDG = ItemsControl.ItemsControlFromItemContainer(row) as DataGrid;
+            return currentDG.ItemContainerGenerator.IndexFromContainer(row);
         }
 
-        private void software_added(object sender, DragEventArgs e)
+        private void software_added_click(object sender, MouseButtonEventArgs e)
         {
-            DataGrid dg = (DataGrid)sender;
-            if (dg != null)
+            currentDG = (DataGrid)sender;
+            int index = detect_selected_row((DependencyObject)e.OriginalSource);
+            if (index == -1)
             {
-                if (e.Data.GetDataPresent(DataFormats.StringFormat))
-                {
-                    string toe = (string)e.Data.GetData(DataFormats.StringFormat);
-                    int index = Int32.Parse(toe);
-                    Software sw = all.ElementAt(index);
-                    all.Remove(sw);
-                    added.Add(sw);
-                }
+                return;
+            }
+            if (currentDG != null)
+            {
+                Software sw = all.ElementAt(index);
+                all.Remove(sw);
+                added.Add(sw);
             }
         }
 
+        private void software_removed_click(object sender, MouseButtonEventArgs e)
+        {
+            currentDG = (DataGrid)sender;
+            int index = detect_selected_row((DependencyObject)e.OriginalSource);
+            if (index == -1)
+            {
+                return;
+            }
+            if (currentDG != null)
+            {
+                Software sw = added.ElementAt(index);
+                added.Remove(sw);
+                all.Add(sw);
+            }
+        }
 
+        private void show_software(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            currentDG = (DataGrid)btn.Parent;
+            int index = detect_selected_row((DependencyObject)e.OriginalSource);
+            if (index == -1)
+            {
+                return;
+            }
+            if (currentDG.Name.Equals("allSoftwareDG"))
+            {
+                Software_Info si = new Software_Info(all.ElementAt(index));
+                si.Show();
+                si.Closed += new EventHandler((sender2, e2)=>refresh(sender2, e2));
+            }
+            else
+            {
+                Software_Info si = new Software_Info(added.ElementAt(index));
+                si.Show();
+            }
+        }
 
+        private void refresh(object sender, EventArgs e)
+        {
 
+        }
 
     }
 }
