@@ -22,9 +22,11 @@ namespace HCI2___Back_To_Slay.windows
     public partial class Choose_Software : Window
     {
 
-        private ObservableCollection<Software> all = new ObservableCollection<Software>();
-        private ObservableCollection<Software> added = new ObservableCollection<Software>();
+        public static ObservableCollection<Software> all = new ObservableCollection<Software>();
+        public static ObservableCollection<Software> added = new ObservableCollection<Software>();
         private DataGrid currentDG;
+
+        public static List<string> deleted = new List<string>();
 
         public Choose_Software(Classroom.OpSystem a)
         {
@@ -113,13 +115,13 @@ namespace HCI2___Back_To_Slay.windows
             if (currentDG.Name.Equals("allSoftwareDG"))
             {
                 Software_Info si = new Software_Info(all.ElementAt(index));
-                si.Show();
+                si.ShowDialog();
                 si.Closed += new EventHandler((sender2, e2)=>refresh(sender2, e2));
             }
             else
             {
                 Software_Info si = new Software_Info(added.ElementAt(index));
-                si.Show();
+                si.ShowDialog();
             }
         }
 

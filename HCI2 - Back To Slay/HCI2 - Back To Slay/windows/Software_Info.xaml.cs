@@ -37,12 +37,15 @@ namespace HCI2___Back_To_Slay.windows
             if (current_sw.Os.Equals(Classroom.OpSystem.Windows))
             {
                 win_btn.IsChecked = true;
+                os_tb.Text = Classroom.OpSystem.Windows.ToString();
             }else if (current_sw.Os.Equals(Classroom.OpSystem.Linux))
             {
                 lin_btn.IsChecked = true;
+                os_tb.Text = Classroom.OpSystem.Linux.ToString();
             }else
             {
                 both_btn.IsChecked = true;
+                os_tb.Text = Classroom.OpSystem.WindowsAndLinux.ToString();
             }
 
         }
@@ -50,18 +53,33 @@ namespace HCI2___Back_To_Slay.windows
         private void change_software(object sender, RoutedEventArgs e)
         {
             change_visibility();
+            description.BorderBrush = new SolidColorBrush(Colors.Red);
+            name.BorderBrush = new SolidColorBrush(Colors.Red);
+            price.BorderBrush = new SolidColorBrush(Colors.Red);
+            year.BorderBrush = new SolidColorBrush(Colors.Red);
+            maker.BorderBrush = new SolidColorBrush(Colors.Red);
+            site.BorderBrush = new SolidColorBrush(Colors.Red);
         }
 
         private void update_software(object sender, RoutedEventArgs e)
         {
+            int index;
+            bool allB = true;
+            if (Choose_Software.all.Contains(current_sw))
+            {
+                index = Choose_Software.all.IndexOf(current_sw);
+            }else
+            {
+                allB = false;
+                index = Choose_Software.added.IndexOf(current_sw);
+            }
 
-            if(name.Text.Equals("") || description.Text.Equals("") || maker.Text.Equals("") || site.Text.Equals(""))
+
+            if (name.Text.Equals("") || description.Text.Equals("") || maker.Text.Equals("") || site.Text.Equals(""))
             {
                 MessageBox.Show("Field's can't be empty!", "Error!");
                 return;
             }
-            MainWindow.allSoftware.Remove(current_sw);
-            MainWindow.allSoftwareIds.Remove(current_sw.Id);
             current_sw.Name = name.Text;
             current_sw.Description = description.Text;
             current_sw.Maker = maker.Text;
@@ -75,7 +93,7 @@ namespace HCI2___Back_To_Slay.windows
             else
             {
                 MessageBox.Show("Wrong year! Must be in 1900-2018 interval!", "Error!");
-                return;
+                return; 
             }
 
             double pr = 0;
@@ -97,11 +115,33 @@ namespace HCI2___Back_To_Slay.windows
                 current_sw.Os = Classroom.OpSystem.Linux;
             }else
             {
-                current_sw.Os = Classroom.OpSystem.Both;
+                current_sw.Os = Classroom.OpSystem.WindowsAndLinux;
             }
+
+            MainWindow.allSoftware.Remove(current_sw);
+            MainWindow.allSoftwareIds.Remove(current_sw.Id);
             MainWindow.allSoftware.Add(current_sw);
             MainWindow.allSoftwareIds.Add(current_sw.Id);
+
+            if (allB)
+            {
+                Choose_Software.all.RemoveAt(index);
+                Choose_Software.all.Add(current_sw);
+            }
+            else
+            {
+                Choose_Software.added.RemoveAt(index);
+                Choose_Software.added.Add(current_sw);
+            }
+            
+
             change_visibility();
+            description.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            name.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            price.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            year.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            maker.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            site.BorderBrush = new SolidColorBrush(Colors.Transparent);
             MessageBox.Show("Info updated!", "Info!");
         }
 
@@ -113,6 +153,14 @@ namespace HCI2___Back_To_Slay.windows
                 case (MessageBoxResult.Yes):
                     MainWindow.allSoftware.Remove(current_sw);
                     MainWindow.allSoftwareIds.Remove(current_sw.Id);
+
+                    if (Choose_Software.all.Contains(current_sw))
+                    {
+                        Choose_Software.all.Remove(current_sw);
+                    }else
+                    {
+                        Choose_Software.added.Remove(current_sw);
+                    }
                     this.Close();
                     break;
                 case (MessageBoxResult.No):
@@ -122,6 +170,12 @@ namespace HCI2___Back_To_Slay.windows
         
         private void back(object sender, RoutedEventArgs e)
         {
+            description.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            name.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            price.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            year.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            maker.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            site.BorderBrush = new SolidColorBrush(Colors.Transparent);
             change_visibility();
         }
 
@@ -140,6 +194,10 @@ namespace HCI2___Back_To_Slay.windows
                 delete.Visibility = System.Windows.Visibility.Hidden;
                 back_btn.Visibility = System.Windows.Visibility.Visible;
                 update.Visibility = System.Windows.Visibility.Visible;
+                win_btn.Visibility = System.Windows.Visibility.Visible;
+                lin_btn.Visibility = System.Windows.Visibility.Visible;
+                both_btn.Visibility = System.Windows.Visibility.Visible;
+                os_tb.Visibility = System.Windows.Visibility.Hidden;
             }
             else
             {
@@ -147,6 +205,10 @@ namespace HCI2___Back_To_Slay.windows
                 delete.Visibility = System.Windows.Visibility.Visible;
                 back_btn.Visibility = System.Windows.Visibility.Hidden;
                 update.Visibility = System.Windows.Visibility.Hidden;
+                win_btn.Visibility = System.Windows.Visibility.Hidden;
+                lin_btn.Visibility = System.Windows.Visibility.Hidden;
+                both_btn.Visibility = System.Windows.Visibility.Hidden;
+                os_tb.Visibility = System.Windows.Visibility.Visible;
             }
         }
     }

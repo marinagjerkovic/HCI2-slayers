@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
         mc:Ignorable="d"
-        Title="Add Classroom" Height="450" Width="400">
+        Title="Add Classroom" Height="460" Width="400">
     <Grid Margin="0,0,2,1">
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="12,22,0,0" TextWrapping="Wrap" Text="Classroom id: " VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="12,55,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top"/>
