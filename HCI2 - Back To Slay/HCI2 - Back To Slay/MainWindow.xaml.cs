@@ -92,18 +92,6 @@ namespace HCI2___Back_To_Slay
             leftSubjects.Add(subject);
             leftSubjects.Add(subject2);
             leftSubjects.Add(subject3);
-
-            for (int i = 1; i < 6; i++)
-            {
-                Software s = new Software();
-                s.Id = i + "";
-                s.Name = "name" + i;
-                s.Os = Classroom.OpSystem.Windows;
-                allSoftware.Add(s);
-                allSoftwareIds.Add(s.Id);
-                Classroom cr = new Classroom("id1" + i, "desc" + i, 30, true, false, true, Classroom.OpSystem.WindowsAndLinux, ss);
-                allClassrooms.Add(cr);
-            }
             Console.WriteLine(allClassrooms.Count());
             classroomsDG.ItemsSource = allClassrooms;
             subjectsDG.ItemsSource = leftSubjects;

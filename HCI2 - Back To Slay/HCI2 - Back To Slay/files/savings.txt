@@ -1,64 +1,4 @@
 software
-1,Windows,name1,,,0,0,
-2,Windows,name2,,,0,0,
-3,Windows,name3,,,0,0,
-4,Windows,name4,,,0,0,
-5,Windows,name5,,,0,0,
-1,Windows,name1,,,0,0,
-2,Windows,name2,,,0,0,
-3,Windows,name3,,,0,0,
-4,Windows,name4,,,0,0,
-5,Windows,name5,,,0,0,
-1,Windows,name1,,,0,0,
-2,Windows,name2,,,0,0,
-3,Windows,name3,,,0,0,
-4,Windows,name4,,,0,0,
-5,Windows,name5,,,0,0,
-1,Windows,name1,,,0,0,
-2,Windows,name2,,,0,0,
-3,Windows,name3,,,0,0,
-4,Windows,name4,,,0,0,
-5,Windows,name5,,,0,0,
-1,Windows,name1,,,0,0,
-2,Windows,name2,,,0,0,
-3,Windows,name3,,,0,0,
-4,Windows,name4,,,0,0,
-5,Windows,name5,,,0,0,
-1,Windows,name1,,,0,0,
-2,Windows,name2,,,0,0,
-3,Windows,name3,,,0,0,
-4,Windows,name4,,,0,0,
-5,Windows,name5,,,0,0,
-1,Windows,name1,,,0,0,
-2,Windows,name2,,,0,0,
-3,Windows,name3,,,0,0,
-4,Windows,name4,,,0,0,
-5,Windows,name5,,,0,0,
-1,Windows,name1,,,0,0,
-2,Windows,name2,,,0,0,
-3,Windows,name3,,,0,0,
-4,Windows,name4,,,0,0,
-5,Windows,name5,,,0,0,
-1,Windows,name1,,,0,0,
-2,Windows,name2,,,0,0,
-3,Windows,name3,,,0,0,
-4,Windows,name4,,,0,0,
-5,Windows,name5,,,0,0,
-1,Windows,name1,,,0,0,
-2,Windows,name2,,,0,0,
-3,Windows,name3,,,0,0,
-4,Windows,name4,,,0,0,
-5,Windows,name5,,,0,0,
-1,Windows,name1,,,0,0,
-2,Windows,name2,,,0,0,
-3,Windows,name3,,,0,0,
-4,Windows,name4,,,0,0,
-5,Windows,name5,,,0,0,
-1,Windows,name1,,,0,0,
-2,Windows,name2,,,0,0,
-3,Windows,name3,,,0,0,
-4,Windows,name4,,,0,0,
-5,Windows,name5,,,0,0,
 ECL,Windows,Eclipse,OxygenFactory,www.eclipse.com,2006,50,java master
 VS,Windows,Visual Studio 15,Microsoft,www.vs.com,2008,10,c master
 CHRM,WindowsAndLinux,Google Chrome,Google,www.googlechrome.com,2005,0,browser
@@ -67,10 +7,10 @@ CB,WindowsAndLinux,CodeBlocks,CBFactory,www.cb.com,1998,10,c master
 SP,Linux,Flex&Bison,ScanParseFactory,www.scanparse.com,1996,5,asembler
 MLAB,Windows,Matlab,MatlabFactory,www.matlab.com,2003,24,functions
 courses
-SW15,Softversko inzenjerstvo,informacione tehnologije,6.5.2013. 0:00:00
-SW16,Softversko inzenjerstvo,informacione tehnologije,12.4.2013. 0:00:00
-RA15,Racunarstvo i automatika,elektrotehnika,26.3.2005. 0:00:00
-AR16,Arhitektura,arhitektura eksterijera,1.1.2011. 0:00:00
+SW15,Softversko inzenjerstvo,informacione tehnologije,5/6/2013 12:00:00 AM
+SW16,Softversko inzenjerstvo,informacione tehnologije,4/12/2013 12:00:00 AM
+RA15,Racunarstvo i automatika,elektrotehnika,3/26/2005 12:00:00 AM
+AR16,Arhitektura,arhitektura eksterijera,1/1/2011 12:00:00 AM
 subjects
 ISA15,Internet softverske arhitekture,web,True,False,True,3,1,15,SW15,Windows,ECL|VS|CHRM
 NELIN15,Nelinearno programiranje,evolutivni algoritmi,False,False,False,2,2,15,SW15,Windows,MLAB
