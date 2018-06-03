@@ -54,6 +54,16 @@ software
 3,Windows,name3,,,0,0,
 4,Windows,name4,,,0,0,
 5,Windows,name5,,,0,0,
+1,Windows,name1,,,0,0,
+2,Windows,name2,,,0,0,
+3,Windows,name3,,,0,0,
+4,Windows,name4,,,0,0,
+5,Windows,name5,,,0,0,
+1,Windows,name1,,,0,0,
+2,Windows,name2,,,0,0,
+3,Windows,name3,,,0,0,
+4,Windows,name4,,,0,0,
+5,Windows,name5,,,0,0,
 ECL,Windows,Eclipse,OxygenFactory,www.eclipse.com,2006,50,java master
 VS,Windows,Visual Studio 15,Microsoft,www.vs.com,2008,10,c master
 CHRM,WindowsAndLinux,Google Chrome,Google,www.googlechrome.com,2005,0,browser
@@ -76,6 +86,16 @@ id12,desc2,30,False,True,True,WindowsAndLinux,soft_id|soft_id2
 id13,desc3,30,False,True,True,WindowsAndLinux,soft_id|soft_id2
 id14,desc4,30,False,True,True,WindowsAndLinux,soft_id|soft_id2
 id15,desc5,30,False,True,True,WindowsAndLinux,soft_id|soft_id2
+id11,desc1,30,False,True,True,WindowsAndLinux,
+id12,desc2,30,False,True,True,WindowsAndLinux,
+id13,desc3,30,False,True,True,WindowsAndLinux,
+id14,desc4,30,False,True,True,WindowsAndLinux,
+id15,desc5,30,False,True,True,WindowsAndLinux,
+id11,desc1,30,False,True,True,WindowsAndLinux,
+id12,desc2,30,False,True,True,WindowsAndLinux,
+id13,desc3,30,False,True,True,WindowsAndLinux,
+id14,desc4,30,False,True,True,WindowsAndLinux,
+id15,desc5,30,False,True,True,WindowsAndLinux,
 id1,desc1,30,False,True,True,WindowsAndLinux,
 id2,desc2,30,False,True,True,WindowsAndLinux,
 id3,desc3,30,False,True,True,WindowsAndLinux,

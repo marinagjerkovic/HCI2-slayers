@@ -118,10 +118,10 @@ namespace HCI2___Back_To_Slay
             {
                 resourceType.ResourceCollection.Add(create_resource(allClassrooms.First()));
             }
+            //schedule.appo
             loadData();
         }
 
-        private void dataGridClassroom_MouseDoubleClick(object sender, MouseButtonEventArgs e) { }
 
         private void add_new_classroom(object sender, RoutedEventArgs e)
         {
@@ -204,7 +204,7 @@ namespace HCI2___Back_To_Slay
                 MessageBox.Show("You can't add anything on schedule before you create classroom!");
                 return;
             }
-            if (cr is null)
+            if (cr == null)
             {
                 MessageBox.Show("You must select classroom first!");
                 return;
@@ -246,7 +246,7 @@ namespace HCI2___Back_To_Slay
     
 
 
-
+        
 
         private void loadData()
         {

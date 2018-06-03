@@ -92,9 +92,9 @@
                     </Grid.ColumnDefinitions>
                     <DataGrid  AutoGenerateColumns="False"  x:Name="classroomsDG" ItemsSource="{Binding Path=allClassrooms}"
                            IsReadOnly="True" Grid.Column="0" Margin="0 0 10 0" ScrollViewer.CanContentScroll="True"
-                            ScrollViewer.VerticalScrollBarVisibility="Auto" Height="Auto" RowHeight="30" FontSize="16"
+                           ScrollViewer.VerticalScrollBarVisibility="Auto" Height="Auto" RowHeight="30" FontSize="16"
                            GridLinesVisibility="None"
-                           MouseDoubleClick="dataGridClassroom_MouseDoubleClick" SelectedItem="Binding Classroom">
+                           SelectedItem="Binding Classroom">
                         <DataGrid.Columns >
                             <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="1*"/>
                             <DataGridTextColumn Header="Seats" Binding="{Binding Num_of_seats}"  Width="1*"  />
@@ -118,7 +118,7 @@
                     </DataGrid>
                     <DataGrid  AutoGenerateColumns="False"  x:Name="subjectsDG" ItemsSource="{Binding Path=leftSubjects}"
                            IsReadOnly="True" Grid.Column="1" Margin="0 0 10 0" ScrollViewer.CanContentScroll="True"
-                            ScrollViewer.VerticalScrollBarVisibility="Auto" Height="Auto" RowHeight="30" FontSize="16"
+                           ScrollViewer.VerticalScrollBarVisibility="Auto" Height="Auto" RowHeight="30" FontSize="16"
                            GridLinesVisibility="None"
                            SelectedItem="Binding Subject">
                             <DataGrid.Columns >
