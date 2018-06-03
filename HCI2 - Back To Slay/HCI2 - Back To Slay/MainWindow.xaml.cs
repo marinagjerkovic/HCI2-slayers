@@ -101,8 +101,7 @@ namespace HCI2___Back_To_Slay
                 s.Os = Classroom.OpSystem.Windows;
                 allSoftware.Add(s);
                 allSoftwareIds.Add(s.Id);
-                Classroom cr = new Classroom("id1" + i, "desc" + i, 30, true, false, true, Classroom.OpSystem.Both, ss);
-                //Console.Write(cr.Description);
+                Classroom cr = new Classroom("id1" + i, "desc" + i, 30, true, false, true, Classroom.OpSystem.WindowsAndLinux, ss);
                 allClassrooms.Add(cr);
             }
             Console.WriteLine(allClassrooms.Count());
@@ -119,9 +118,7 @@ namespace HCI2___Back_To_Slay
             {
                 resourceType.ResourceCollection.Add(create_resource(allClassrooms.First()));
             }
-            //this.LayoutRoot.Children.Add(schedule);
             loadData();
-            this.LayoutRoot.Children.Add(schedule);
         }
 
         private void dataGridClassroom_MouseDoubleClick(object sender, MouseButtonEventArgs e) { }
@@ -246,7 +243,7 @@ namespace HCI2___Back_To_Slay
         private void remove_subject_from_schedule(Object sender, RoutedEventArgs e) { }
         private void return_subject_to_placeholder(Object sender, RoutedEventArgs e) { }
 
-    }
+    
 
 
 
