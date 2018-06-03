@@ -13,6 +13,7 @@ namespace HCI2___Back_To_Slay
         private string description;
         private DateTime date_of_conception;
 
+
         public string Id
         {
             get
@@ -67,6 +68,12 @@ namespace HCI2___Back_To_Slay
 
         public Course() { }
 
-
+        public Course(string v1, string v2, string v3, DateTime now)
+        {
+            this.id = v1;
+            this.name = v2;
+            this.description = v3;
+            this.date_of_conception = now;
+        }
     }
 }

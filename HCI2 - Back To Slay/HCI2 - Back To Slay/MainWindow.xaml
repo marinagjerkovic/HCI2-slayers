@@ -9,7 +9,52 @@
         mc:Ignorable="d"
         Title="MainWindow"     Height="{Binding SystemParameters.PrimaryScreenHeight}" 
         Width="{Binding SystemParameters.PrimaryScreenWidth}">
+    <Window.Resources>
+        <Style TargetType="schedule:HeaderTitleBarView">
+            <Setter Property="Foreground" Value="#373837" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="schedule:HeaderTitleBarView" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="schedule:ScheduleDaysHeaderViewControl">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="schedule:ScheduleDaysHeaderViewControl">
+                        <Grid>
+                            <Border x:Name="border" BorderThickness="2,0,0,0"                                  
+                                    Background="{TemplateBinding HeaderBrush}"
+                                    BorderBrush="{TemplateBinding DayViewVerticalLineStroke}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.5*" MaxHeight="30" />
+                                    </Grid.RowDefinitions>
+                                    <Rectangle x:Name="PART_CurrentRectangle"                          
+                                                Grid.Row="0"                                               
+                                                VerticalAlignment="Top"                                              
+                                                Visibility="Collapsed" />
+                                    <Border VerticalAlignment="Center">
+                                        <schedule:CustomTextBlock HorizontalAlignment="Center" Margin="15,5,0,5"
+                                                                   Foreground="{Binding TextForeground, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                   x:Name="DaysTextBlock"
+                                                                   VerticalAlignment="Center"
+                                                                   DateTimeValue="{Binding DayText, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                   DateTimeFormat="dddd"
+                                                                   FontSize="{TemplateBinding FontSize}"
+                                                                   FontStyle="Normal" />
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
+        
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Classroom">
@@ -35,9 +80,12 @@
 
             </Menu>
             <Grid x:Name="LayoutRoot">
-
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="9*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <schedule:SfSchedule Name="schedule" Grid.Column="0"></schedule:SfSchedule>
                 
-
             </Grid>
         </DockPanel>
 

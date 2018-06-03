@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HCI2___Back_To_Slay.windows;
 using Syncfusion.UI.Xaml.Schedule;
+using System.Collections.ObjectModel;
+
 
 namespace HCI2___Back_To_Slay
 {
@@ -23,22 +25,36 @@ namespace HCI2___Back_To_Slay
     ///
     public partial class MainWindow : Window
     {
-        public static Dictionary<string, Classroom> allClassrooms = new Dictionary<string, Classroom>();
-        public static Dictionary<string, Course> allCourses = new Dictionary<string, Course>();
-        public static Dictionary<string, Software> allSoftware = new Dictionary<string, Software>();
-        public static Dictionary<string, Subject> allSubjects = new Dictionary<string, Subject>();
+       
+        public ObservableCollection<Appointment> app2add { get; set; }
+
 
         public MainWindow()
         {
             InitializeComponent();
-            SfSchedule schedule = new SfSchedule();
             schedule.TimeMode = TimeModes.TwentyFourHours;
             schedule.TimeInterval = TimeInterval.FifteenMin;
             schedule.ScheduleType = ScheduleType.Week;
+            schedule.FirstDayOfWeek = DayOfWeek.Monday;
             schedule.WorkStartHour = 6;
             schedule.WorkEndHour = 23;
+            schedule.ShowNonWorkingHours = false;
+            ResourceType resourceType = new ResourceType { TypeName = "Classroom" };
+            resourceType.ResourceCollection.Add(new Resource { DisplayName = "Ucionica 1", ResourceName = "Ucionica1", });
+            resourceType.ResourceCollection.Add(new Resource { DisplayName = "Ucionica 2", ResourceName = "UCionica2" });
+            schedule.ScheduleResourceTypeCollection = new ObservableCollection<ResourceType> { resourceType };
+            schedule.Resource = "Classroom";
 
-            this.LayoutRoot.Children.Add(schedule);
+            List<Software> s = new List<Software>()
+            {
+                new Software("soft_id","soft_name",Classroom.OpSystem.Linux,"soft_maker", "soft_site",1999,200.09,"soft_desc"),
+                new Software("soft_id2","soft_name2",Classroom.OpSystem.Linux,"soft_maker2","soft_site2",1999,220.09,"soft_2desc")
+            };
+            Course course = new Course("1","ime","opis",DateTime.Now);
+            Subject subject = new Subject("1", "name", "description", course, 30, 2, 2, true, true, true, Classroom.OpSystem.Linux, s);
+            Subject subject2 = new Subject("2", "name2", "description2", course, 30, 2, 2, true, true, true, Classroom.OpSystem.Linux, s);
+            Appointment app1 = new Appointment();
+            app1.Subject = subject;
         }
 
         private void add_new_classroom(object sender, RoutedEventArgs e)

@@ -122,5 +122,17 @@ namespace HCI2___Back_To_Slay
         }
 
         public Software() { }
+
+        public Software(string v1, string v2, Classroom.OpSystem linux, string v3, string v4, int v5, double v6, string v7)
+        {
+            id = v1;
+            name = v2;
+            os = linux;
+            maker = v3;
+            site = v4;
+            year = v5;
+            price = v6;
+            description = v7;
+        }
     }
 }
