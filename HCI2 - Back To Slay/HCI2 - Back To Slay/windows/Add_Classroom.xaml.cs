@@ -20,20 +20,21 @@ namespace HCI2___Back_To_Slay.windows
     /// </summary>
     public partial class Add_Classroom : Window
     {
+        private Classroom cr;
+
         public Add_Classroom()
         {
+            cr = new Classroom();
             InitializeComponent();
         }
 
         private void add_classroom(object sender, RoutedEventArgs e)
         {
-            if (MainWindow.allClassrooms.ContainsKey(id.Text))
+            if (MainWindow.allClassroomsIds.Contains(id.Text))
             {
                 MessageBox.Show("Change id - classroom with same id already exists!");
                 return;
             }
-
-            Classroom cr = new Classroom();
 
             cr.Id = id.Text;
             cr.Description = description.Text;
@@ -92,7 +93,8 @@ namespace HCI2___Back_To_Slay.windows
             //dodaj softver
 
 
-            MainWindow.allClassrooms.Add(cr.Id, cr);
+            MainWindow.allClassroomsIds.Add(id.Text);
+            MainWindow.allClassrooms.Add(cr);
             MessageBox.Show("Successfully added a new classroom!");
             this.Close();
         }
@@ -100,6 +102,28 @@ namespace HCI2___Back_To_Slay.windows
         private void cancel(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void choose_software(object sender, RoutedEventArgs e)
+        {
+            Classroom.OpSystem a;
+            if (win.IsChecked == true)
+            {
+                a = Classroom.OpSystem.Windows;
+            }else if(lin.IsChecked==true){
+                a = Classroom.OpSystem.Linux;
+            }else
+            {
+                a = Classroom.OpSystem.Both;
+            }
+            Choose_Software cs = new Choose_Software(a);
+            cs.Show();
+            cs.Closed += new EventHandler((sender2, e2) => close(sender2, e2, ""));
+        }
+
+        void close(object sender, EventArgs e, string title)
+        {
+            //get added software
         }
 
     }

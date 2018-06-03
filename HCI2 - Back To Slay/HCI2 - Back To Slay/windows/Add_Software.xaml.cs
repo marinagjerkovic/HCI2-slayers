@@ -26,7 +26,7 @@ namespace HCI2___Back_To_Slay.windows
 
         private void add_new_software(object sender, RoutedEventArgs e)
         {
-            if (MainWindow.allSoftware.ContainsKey(id.Text))
+            if (MainWindow.allSoftwareIds.Contains(id.Text))
             {
                 MessageBox.Show("Change id - software with the same id already exists!");
                 return;
@@ -74,6 +74,8 @@ namespace HCI2___Back_To_Slay.windows
                 sw.Os = Classroom.OpSystem.Both;
             }
 
+            MainWindow.allSoftware.Add(sw);
+            MainWindow.allSoftwareIds.Add(id.Text);
             MessageBox.Show("Successfully added a new software!");
             this.Close();
         }

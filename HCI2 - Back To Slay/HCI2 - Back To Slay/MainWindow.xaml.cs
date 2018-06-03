@@ -25,6 +25,16 @@ namespace HCI2___Back_To_Slay
     ///
     public partial class MainWindow : Window
     {
+        public static List<string> allClassroomsIds = new List<string>();
+        public static List<string> allCoursesIds = new List<string>();
+        public static List<string> allSoftwareIds = new List<string>();
+        public static List<string> allSubjectsIds = new List<string>();
+
+        public static ObservableCollection<Subject> allSubjects { get; set; }
+        public static ObservableCollection<Course> allCourses { get; set; }
+        public static ObservableCollection<Software> allSoftware { get; set; }
+        public static ObservableCollection<Classroom> allClassrooms { get; set; }
+
        
         public ObservableCollection<Appointment> app2add { get; set; }
 
@@ -45,14 +55,33 @@ namespace HCI2___Back_To_Slay
             schedule.ScheduleResourceTypeCollection = new ObservableCollection<ResourceType> { resourceType };
             schedule.Resource = "Classroom";
 
-            List<Software> s = new List<Software>()
+            //initialize collections
+
+            allSubjects = new ObservableCollection<Subject>();
+            allSoftware = new ObservableCollection<Software>();
+            allClassrooms = new ObservableCollection<Classroom>();
+            allCourses = new ObservableCollection<Course>();
+
+            for (int i = 1; i < 6; i++)
+            {
+                Software s = new Software();
+                s.Id = i + "";
+                s.Name = "name" + i;
+                s.Os = Classroom.OpSystem.Windows;
+                allSoftware.Add(s);
+                allSoftwareIds.Add(s.Id);
+            }
+
+
+            this.LayoutRoot.Children.Add(schedule);
+            List<Software> ss = new List<Software>()
             {
                 new Software("soft_id","soft_name",Classroom.OpSystem.Linux,"soft_maker", "soft_site",1999,200.09,"soft_desc"),
                 new Software("soft_id2","soft_name2",Classroom.OpSystem.Linux,"soft_maker2","soft_site2",1999,220.09,"soft_2desc")
             };
             Course course = new Course("1","ime","opis",DateTime.Now);
-            Subject subject = new Subject("1", "name", "description", course, 30, 2, 2, true, true, true, Classroom.OpSystem.Linux, s);
-            Subject subject2 = new Subject("2", "name2", "description2", course, 30, 2, 2, true, true, true, Classroom.OpSystem.Linux, s);
+            Subject subject = new Subject("1", "name", "description", course, 30, 2, 2, true, true, true, Classroom.OpSystem.Linux, ss);
+            Subject subject2 = new Subject("2", "name2", "description2", course, 30, 2, 2, true, true, true, Classroom.OpSystem.Linux, ss);
             Appointment app1 = new Appointment();
             app1.Subject = subject;
         }

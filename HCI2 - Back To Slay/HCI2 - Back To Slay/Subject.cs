@@ -138,7 +138,7 @@ namespace HCI2___Back_To_Slay
             }
         }
 
-        internal Classroom.OpSystem Os
+        public Classroom.OpSystem Os
         {
             get
             {
@@ -151,7 +151,7 @@ namespace HCI2___Back_To_Slay
             }
         }
 
-        internal Course Course
+        public Course Course
         {
             get
             {
@@ -164,7 +164,7 @@ namespace HCI2___Back_To_Slay
             }
         }
 
-        internal List<Software> Software
+        public List<Software> Software
         {
             get
             {
