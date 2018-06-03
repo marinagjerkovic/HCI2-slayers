@@ -32,7 +32,7 @@ namespace HCI2___Back_To_Slay.windows
             MessageBox.Show(a + "");
             foreach (Software sw in MainWindow.allSoftware)
             {
-                if (sw.Os.Equals(a) || sw.Os.Equals(Classroom.OpSystem.Both))
+                if (sw.Os.Equals(a) || sw.Os.Equals(Classroom.OpSystem.WindowsAndLinux))
                 {
                     all.Add(sw);
                 }

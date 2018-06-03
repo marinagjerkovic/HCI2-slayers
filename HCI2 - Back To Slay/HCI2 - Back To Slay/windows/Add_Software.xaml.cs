@@ -71,7 +71,7 @@ namespace HCI2___Back_To_Slay.windows
             }
             else
             {
-                sw.Os = Classroom.OpSystem.Both;
+                sw.Os = Classroom.OpSystem.WindowsAndLinux;
             }
 
             MainWindow.allSoftware.Add(sw);
