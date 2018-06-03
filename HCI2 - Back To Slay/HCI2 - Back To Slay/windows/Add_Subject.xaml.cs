@@ -106,7 +106,7 @@ namespace HCI2___Back_To_Slay.windows
             }
             else
             {
-                sub.Os = Classroom.OpSystem.Both;
+                sub.Os = Classroom.OpSystem.WindowsAndLinux;
             }
 
             //dodaj softver i kurs

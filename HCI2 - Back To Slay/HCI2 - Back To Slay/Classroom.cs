@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace HCI2___Back_To_Slay
 {
+    
     public class Classroom
     {
         public enum OpSystem
         {
             Windows,
             Linux,
-            Both
+            WindowsAndLinux
         };
         private string id;
         private string description;

@@ -10,22 +10,36 @@
     <Grid>
         <DataGrid x:Name="allSoftwareDG" HorizontalAlignment="Left" Margin="20,36,0,0" VerticalAlignment="Top" Height="201" Width="200"
                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
-                  AllowDrop="true" MouseMove="mouse_moved" Drop="software_removed" SelectedItem="Binding Software">
+                  SelectedItem="Binding Software" MouseLeftButtonUp="software_added_click" MouseRightButtonUp="show_software" ItemsSource ="{Binding Source={StaticResource MainWindow}, Path=allSoftware}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Description" Binding="{Binding Description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="OS" Binding="{Binding Os}"></DataGridTextColumn>
+                <DataGridTemplateColumn Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Click here for more details" Click="show_software"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="addedSoftwareDG" HorizontalAlignment="Left" Margin="252,36,0,0" VerticalAlignment="Top" Height="201" Width="200"
                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
-                  AllowDrop="true" MouseMove="mouse_moved" Drop="software_added" SelectedItem="Binding Software">
+                   SelectedItem="Binding Software" MouseLeftButtonUp="software_removed_click" AutoGenerateColumns="false">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Description" Binding="{Binding Description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="OS" Binding="{Binding Os}"></DataGridTextColumn>
+                <DataGridTemplateColumn Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Click here for more details" Click="show_software"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="20,10,0,0" TextWrapping="Wrap" Text="All software:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="254,10,0,0" TextWrapping="Wrap" Text="Added software:" VerticalAlignment="Top" RenderTransformOrigin="-0.037,0.176"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="20,10,0,0" TextWrapping="Wrap" Text="Available software(click to add):" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="254,10,0,0" TextWrapping="Wrap" Text="Added software(click to remove):" VerticalAlignment="Top" RenderTransformOrigin="-0.037,0.176"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="20,242,0,0" TextWrapping="Wrap" Text="Search(name):" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="254,242,0,0" TextWrapping="Wrap" Text="Search(name):" VerticalAlignment="Top" RenderTransformOrigin="-0.103,0.007"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="17" Margin="20,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88"/>
