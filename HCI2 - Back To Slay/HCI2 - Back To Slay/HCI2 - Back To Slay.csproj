@@ -78,6 +78,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Appointment.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="Software.cs" />
     <Compile Include="Subject.cs" />

@@ -139,7 +139,7 @@ namespace HCI2___Back_To_Slay
             }
         }
 
-        internal Classroom.OpSystem Os
+        public Classroom.OpSystem Os
         {
             get
             {
@@ -152,7 +152,7 @@ namespace HCI2___Back_To_Slay
             }
         }
 
-        internal Course Course
+        public Course Course
         {
             get
             {
@@ -165,7 +165,7 @@ namespace HCI2___Back_To_Slay
             }
         }
 
-        internal List<Software> Software
+        public List<Software> Software
         {
             get
             {
@@ -179,5 +179,21 @@ namespace HCI2___Back_To_Slay
         }
 
         public Subject() { }
+
+        public Subject(string v1, string v2, string v3, Course course, int v4, int v5, int v6, bool v7, bool v8, bool v9, Classroom.OpSystem linux, List<Software> s)
+        {
+            id = v1;
+            name = v2;
+            description = v3;
+            size_of_group = v4;
+            duration_of_period = v5;
+            num_of_periods= v6;
+            board = v7;
+            smart_board = v8;
+            projector = v9;
+            this.course = course;
+            os = linux;
+            software = s;
+        }
     }
 }
