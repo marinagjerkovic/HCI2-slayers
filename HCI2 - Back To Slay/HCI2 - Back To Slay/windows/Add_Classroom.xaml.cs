@@ -87,7 +87,7 @@ namespace HCI2___Back_To_Slay.windows
             }
             else
             {
-                cr.Os = Classroom.OpSystem.Both;
+                cr.Os = Classroom.OpSystem.WindowsAndLinux;
             }
 
             //dodaj softver
@@ -114,7 +114,7 @@ namespace HCI2___Back_To_Slay.windows
                 a = Classroom.OpSystem.Linux;
             }else
             {
-                a = Classroom.OpSystem.Both;
+                a = Classroom.OpSystem.WindowsAndLinux;
             }
             Choose_Software cs = new Choose_Software(a);
             cs.Show();
