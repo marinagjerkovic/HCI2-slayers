@@ -26,7 +26,7 @@ namespace HCI2___Back_To_Slay.windows
 
         private void add_new_course(object sender, RoutedEventArgs e)
         {
-            if (MainWindow.allCourses.ContainsKey(id.Text))
+            if (MainWindow.allCoursesIds.Contains(id.Text))
             {
                 MessageBox.Show("Change id - course with same id already exists!");
                 return;
@@ -39,7 +39,8 @@ namespace HCI2___Back_To_Slay.windows
             course.Description = description.Text;
             course.Date_of_conception = DateTime.Parse(datepicker.Text);
 
-            MainWindow.allCourses.Add(course.Id, course);
+            MainWindow.allCourses.Add(course);
+            MainWindow.allCoursesIds.Add(id.Text);
             MessageBox.Show("Successfully added a new course!");
             this.Close();
         }

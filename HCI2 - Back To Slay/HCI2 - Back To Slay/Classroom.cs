@@ -127,7 +127,10 @@ namespace HCI2___Back_To_Slay
             }
         }
 
-        public Classroom() { }
+        public Classroom()
+        {
+            Software = new List<HCI2___Back_To_Slay.Software>();
+        }
 
 
 

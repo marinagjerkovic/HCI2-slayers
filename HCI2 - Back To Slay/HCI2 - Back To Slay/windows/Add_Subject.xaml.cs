@@ -26,7 +26,7 @@ namespace HCI2___Back_To_Slay.windows
 
         private void add_new_subject(object sender, RoutedEventArgs e)
         {
-            if (MainWindow.allSubjects.ContainsKey(id.Text))
+            if (MainWindow.allSubjectsIds.Contains(id.Text))
             {
                 MessageBox.Show("Change id - subject with the same id already exists!");
                 return;
@@ -111,6 +111,8 @@ namespace HCI2___Back_To_Slay.windows
 
             //dodaj softver i kurs
 
+            MainWindow.allSubjects.Add(sub);
+            MainWindow.allSubjectsIds.Add(id.Text);
             MessageBox.Show("Successfully added a new subject!");
             this.Close();
         }
@@ -119,5 +121,6 @@ namespace HCI2___Back_To_Slay.windows
         {
             this.Close();
         }
+        
     }
 }

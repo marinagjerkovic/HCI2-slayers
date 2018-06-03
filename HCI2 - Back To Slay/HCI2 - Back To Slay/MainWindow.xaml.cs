@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HCI2___Back_To_Slay.windows;
 using Syncfusion.UI.Xaml.Schedule;
+using System.Collections.ObjectModel;
 
 namespace HCI2___Back_To_Slay
 {
@@ -23,10 +24,15 @@ namespace HCI2___Back_To_Slay
     ///
     public partial class MainWindow : Window
     {
-        public static Dictionary<string, Classroom> allClassrooms = new Dictionary<string, Classroom>();
-        public static Dictionary<string, Course> allCourses = new Dictionary<string, Course>();
-        public static Dictionary<string, Software> allSoftware = new Dictionary<string, Software>();
-        public static Dictionary<string, Subject> allSubjects = new Dictionary<string, Subject>();
+        public static List<string> allClassroomsIds = new List<string>();
+        public static List<string> allCoursesIds = new List<string>();
+        public static List<string> allSoftwareIds = new List<string>();
+        public static List<string> allSubjectsIds = new List<string>();
+
+        public static ObservableCollection<Subject> allSubjects { get; set; }
+        public static ObservableCollection<Course> allCourses { get; set; }
+        public static ObservableCollection<Software> allSoftware { get; set; }
+        public static ObservableCollection<Classroom> allClassrooms { get; set; }
 
         public MainWindow()
         {
@@ -37,6 +43,24 @@ namespace HCI2___Back_To_Slay
             schedule.ScheduleType = ScheduleType.Week;
             schedule.WorkStartHour = 6;
             schedule.WorkEndHour = 23;
+
+            //initialize collections
+
+            allSubjects = new ObservableCollection<Subject>();
+            allSoftware = new ObservableCollection<Software>();
+            allClassrooms = new ObservableCollection<Classroom>();
+            allCourses = new ObservableCollection<Course>();
+
+            for (int i = 1; i < 6; i++)
+            {
+                Software s = new Software();
+                s.Id = i + "";
+                s.Name = "name" + i;
+                s.Os = Classroom.OpSystem.Windows;
+                allSoftware.Add(s);
+                allSoftwareIds.Add(s.Id);
+            }
+
 
             this.LayoutRoot.Children.Add(schedule);
         }

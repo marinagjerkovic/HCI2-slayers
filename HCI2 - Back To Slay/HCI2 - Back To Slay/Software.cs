@@ -43,7 +43,7 @@ namespace HCI2___Back_To_Slay
             }
         }
 
-        internal Classroom.OpSystem Os
+        public Classroom.OpSystem Os
         {
             get
             {
