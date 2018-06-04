@@ -84,7 +84,9 @@
                     <RowDefinition Height="8*"></RowDefinition>
                     <RowDefinition Height="2*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <schedule:SfSchedule Name="schedule" Grid.Row="0"></schedule:SfSchedule>
+                <Grid Grid.Row="0" x:Name="scheduleGrid">
+                    
+                </Grid>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*"></ColumnDefinition>

@@ -92,9 +92,10 @@ namespace HCI2___Back_To_Slay.windows
 
             //dodaj softver
 
-
             MainWindow.allClassroomsIds.Add(id.Text);
             MainWindow.allClassrooms.Add(cr);
+            MainWindow.enableSchedule();
+
             MessageBox.Show("Successfully added a new classroom!");
             this.Close();
         }
