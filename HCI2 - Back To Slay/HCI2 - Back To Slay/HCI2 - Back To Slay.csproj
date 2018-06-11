@@ -97,8 +97,14 @@
     <Compile Include="windows\Choose_Software.xaml.cs">
       <DependentUpon>Choose_Software.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\Classroom_Info.xaml.cs">
+      <DependentUpon>Classroom_Info.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\Software_Info.xaml.cs">
       <DependentUpon>Software_Info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\Software_Multiple.xaml.cs">
+      <DependentUpon>Software_Multiple.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -133,7 +139,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="windows\Classroom_Info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="windows\Software_Info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\Software_Multiple.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -21,6 +21,8 @@ namespace HCI2___Back_To_Slay.windows
     {
 
         private Software current_sw;
+        public static string deleted = null;
+        public static string updated = null;
 
         public Software_Info(Software sw)
         {
@@ -63,16 +65,6 @@ namespace HCI2___Back_To_Slay.windows
 
         private void update_software(object sender, RoutedEventArgs e)
         {
-            int index;
-            bool allB = true;
-            if (Choose_Software.all.Contains(current_sw))
-            {
-                index = Choose_Software.all.IndexOf(current_sw);
-            }else
-            {
-                allB = false;
-                index = Choose_Software.added.IndexOf(current_sw);
-            }
 
 
             if (name.Text.Equals("") || description.Text.Equals("") || maker.Text.Equals("") || site.Text.Equals(""))
@@ -122,17 +114,7 @@ namespace HCI2___Back_To_Slay.windows
             MainWindow.allSoftwareIds.Remove(current_sw.Id);
             MainWindow.allSoftware.Add(current_sw);
             MainWindow.allSoftwareIds.Add(current_sw.Id);
-
-            if (allB)
-            {
-                Choose_Software.all.RemoveAt(index);
-                Choose_Software.all.Add(current_sw);
-            }
-            else
-            {
-                Choose_Software.added.RemoveAt(index);
-                Choose_Software.added.Add(current_sw);
-            }
+            updated = current_sw.Id;
             
 
             change_visibility();
@@ -153,14 +135,7 @@ namespace HCI2___Back_To_Slay.windows
                 case (MessageBoxResult.Yes):
                     MainWindow.allSoftware.Remove(current_sw);
                     MainWindow.allSoftwareIds.Remove(current_sw.Id);
-
-                    if (Choose_Software.all.Contains(current_sw))
-                    {
-                        Choose_Software.all.Remove(current_sw);
-                    }else
-                    {
-                        Choose_Software.added.Remove(current_sw);
-                    }
+                    deleted = current_sw.Id;
                     this.Close();
                     break;
                 case (MessageBoxResult.No):

@@ -1,11 +1,11 @@
 software
-ECL,Windows,Eclipse,OxygenFactory,www.eclipse.com,2006,50,java master
 VS,Windows,Visual Studio 15,Microsoft,www.vs.com,2008,10,c master
-CHRM,WindowsAndLinux,Google Chrome,Google,www.googlechrome.com,2005,0,browser
-BS,WindowsAndLinux,BS player,BSFactory,www.bs.com,2001,5,movies
-CB,WindowsAndLinux,CodeBlocks,CBFactory,www.cb.com,1998,10,c master
 SP,Linux,Flex&Bison,ScanParseFactory,www.scanparse.com,1996,5,asembler
+ECL,Windows,Eclipse,OxygenFactory,www.eclipse.com,2006,50,java master
+CB,WindowsAndLinux,CodeBlocks,CBFactory,www.cb.com,1998,10,c master
+BS,WindowsAndLinux,BS player,BSFactory,www.bs.com,2001,5,movies
 MLAB,Windows,Matlab,MatlabFactory,www.matlab.com,2003,24,functions
+CHRM,WindowsAndLinux,Google Chrome,Google,www.googlechrome.com,2005,0,browser
 courses
 SW15,Softversko inzenjerstvo,informacione tehnologije,5/6/2013 12:00:00 AM
 SW16,Softversko inzenjerstvo,informacione tehnologije,4/12/2013 12:00:00 AM
@@ -16,11 +16,11 @@ ISA15,Internet softverske arhitekture,web,True,False,True,3,1,15,SW15,Windows,EC
 NELIN15,Nelinearno programiranje,evolutivni algoritmi,False,False,False,2,2,15,SW15,Windows,MLAB
 SCN16,Fasadni principi,fasade,True,False,True,3,3,20,AR16,Windows,CHRM|BS
 classrooms
-id11,desc1,30,False,True,True,WindowsAndLinux,soft_id|soft_id2
-id12,desc2,30,False,True,True,WindowsAndLinux,soft_id|soft_id2
-id13,desc3,30,False,True,True,WindowsAndLinux,soft_id|soft_id2
-id14,desc4,30,False,True,True,WindowsAndLinux,soft_id|soft_id2
-id15,desc5,30,False,True,True,WindowsAndLinux,soft_id|soft_id2
+id11,desc1,30,False,True,True,WindowsAndLinux,
+id12,desc2,30,False,True,True,WindowsAndLinux,
+id13,desc3,30,False,True,True,WindowsAndLinux,
+id14,desc4,30,False,True,True,WindowsAndLinux,
+id15,desc5,30,False,True,True,WindowsAndLinux,
 id11,desc1,30,False,True,True,WindowsAndLinux,
 id12,desc2,30,False,True,True,WindowsAndLinux,
 id13,desc3,30,False,True,True,WindowsAndLinux,

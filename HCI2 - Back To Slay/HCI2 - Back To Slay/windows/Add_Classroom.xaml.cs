@@ -20,7 +20,7 @@ namespace HCI2___Back_To_Slay.windows
     /// </summary>
     public partial class Add_Classroom : Window
     {
-        private Classroom cr;
+        public static Classroom cr;
 
         public Add_Classroom()
         {
@@ -33,6 +33,12 @@ namespace HCI2___Back_To_Slay.windows
             if (MainWindow.allClassroomsIds.Contains(id.Text))
             {
                 MessageBox.Show("Change id - classroom with same id already exists!");
+                return;
+            }
+
+            if(id.Text.Equals("") || description.Text.Equals("") || cr.Software.Count() == 0)
+            {
+                MessageBox.Show("You didn't input all fields - check again!");
                 return;
             }
 
@@ -117,14 +123,10 @@ namespace HCI2___Back_To_Slay.windows
                 a = Classroom.OpSystem.WindowsAndLinux;
             }
             Choose_Software cs = new Choose_Software(a);
-            cs.Show();
-            cs.Closed += new EventHandler((sender2, e2) => close(sender2, e2, ""));
+            cs.ShowDialog();
+
         }
 
-        void close(object sender, EventArgs e, string title)
-        {
-            //get added software
-        }
 
     }
 }
