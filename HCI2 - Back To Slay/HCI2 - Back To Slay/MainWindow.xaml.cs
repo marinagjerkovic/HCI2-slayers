@@ -26,6 +26,7 @@ namespace HCI2___Back_To_Slay
     ///
     public partial class MainWindow : Window
     {
+        public static SfSchedule schedule;
         public DateTime mainDate;
         public static List<string> allClassroomsIds = new List<string>();
         public static List<string> allCoursesIds = new List<string>();
@@ -47,7 +48,10 @@ namespace HCI2___Back_To_Slay
         public MainWindow()
         {
             InitializeComponent();
+            //loadData();
+
             mainDate = new DateTime(2018, 6, 10, 6, 0, 0);
+            schedule = new SfSchedule();
             schedule.TimeMode = TimeModes.TwentyFourHours;
             schedule.TimeInterval = TimeInterval.FifteenMin;
             schedule.ScheduleType = ScheduleType.Week;
@@ -67,7 +71,9 @@ namespace HCI2___Back_To_Slay
             schedule.ScheduleResourceTypeCollection = new ObservableCollection<ResourceType> { resourceType };
             schedule.Resource = "Classroom";
             schedule.MoveToDate(mainDate);
+            this.scheduleGrid.Children.Add(schedule);
 
+            /*
             List<Software> ss = new List<Software>()
             {
                 new Software("soft_id","soft_name",Classroom.OpSystem.Linux,"soft_maker", "soft_site",1999,200.09,"soft_desc"),
@@ -80,7 +86,7 @@ namespace HCI2___Back_To_Slay
 
             Appointment app1 = new Appointment();
             app1.Subject = subject;
-
+            */
             allSubjects = new ObservableCollection<Subject>();
             allSoftware = new ObservableCollection<Software>();
             allClassrooms = new ObservableCollection<Classroom>();
@@ -89,12 +95,14 @@ namespace HCI2___Back_To_Slay
             leftSubjects = new ObservableCollection<Subject>();
             shownSubjects = new ObservableCollection<Subject>();
 
-            leftSubjects.Add(subject);
-            leftSubjects.Add(subject2);
-            leftSubjects.Add(subject3);
+            loadData();
+
+            //leftSubjects.Add(subject);
+            //leftSubjects.Add(subject2);
+            //leftSubjects.Add(subject3);
             Console.WriteLine(allClassrooms.Count());
             classroomsDG.ItemsSource = allClassrooms;
-            subjectsDG.ItemsSource = leftSubjects;
+            subjectsDG.ItemsSource = allSubjects;
 
             if (allClassrooms.Count() == 0)
             {
@@ -106,10 +114,24 @@ namespace HCI2___Back_To_Slay
             {
                 resourceType.ResourceCollection.Add(create_resource(allClassrooms.First()));
             }
-            loadData();
+            //schedule.appo
         }
 
-        private void dataGridClassroom_MouseDoubleClick(object sender, MouseButtonEventArgs e) { }
+        public static void enableSchedule()
+        {
+            if (allClassrooms.Count > 0)
+            {
+                schedule.IsEnabled = true;
+            }
+        }
+
+        public static void disableSchedule()
+        {
+            if (allClassrooms.Count == 0)
+            {
+                schedule.IsEnabled = false;
+            }
+        }
 
         private void add_new_classroom(object sender, RoutedEventArgs e)
         {
@@ -234,7 +256,7 @@ namespace HCI2___Back_To_Slay
     
 
 
-
+        
 
         private void loadData()
         {
