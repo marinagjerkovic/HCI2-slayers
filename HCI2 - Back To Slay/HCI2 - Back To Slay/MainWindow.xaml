@@ -4,11 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:schedule="http://schemas.syncfusion.com/wpf"
-
+        xmlns:l="clr-namespace:HCI2___Back_To_Slay"
+        
         xmlns:local="clr-namespace:HCI2___Back_To_Slay"
         mc:Ignorable="d"
         Title="MainWindow"     Height="{Binding SystemParameters.PrimaryScreenHeight}" 
         Width="{Binding SystemParameters.PrimaryScreenWidth}">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Window.Resources>
         <Style TargetType="schedule:HeaderTitleBarView">
             <Setter Property="Foreground" Value="#373837" />
