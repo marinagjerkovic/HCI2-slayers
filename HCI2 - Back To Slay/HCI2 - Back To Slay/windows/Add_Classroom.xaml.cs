@@ -20,11 +20,10 @@ namespace HCI2___Back_To_Slay.windows
     /// </summary>
     public partial class Add_Classroom : Window
     {
-        public static Classroom cr;
 
         public Add_Classroom()
         {
-            cr = new Classroom();
+            MainWindow.current_cr = new Classroom();
             InitializeComponent();
         }
 
@@ -36,19 +35,19 @@ namespace HCI2___Back_To_Slay.windows
                 return;
             }
 
-            if(id.Text.Equals("") || description.Text.Equals("") || cr.Software.Count() == 0)
+            if(id.Text.Equals("") || description.Text.Equals("") || MainWindow.current_cr.Software.Count() == 0)
             {
                 MessageBox.Show("You didn't input all fields - check again!");
                 return;
             }
 
-            cr.Id = id.Text;
-            cr.Description = description.Text;
+            MainWindow.current_cr.Id = id.Text;
+            MainWindow.current_cr.Description = description.Text;
 
             int num = 0;
             if (Int32.TryParse(num_of_seats.Text, out num))
             {
-                cr.Num_of_seats = num;
+                MainWindow.current_cr.Num_of_seats = num;
             }
             else
             {
@@ -58,48 +57,48 @@ namespace HCI2___Back_To_Slay.windows
 
             if (projYes.IsChecked==true)
             {
-                cr.Projector = true;
+                MainWindow.current_cr.Projector = true;
             }
             else
             {
-                cr.Projector = false;
+                MainWindow.current_cr.Projector = false;
             }
 
             if (boardYes.IsChecked == true)
             {
-                cr.Board = true;
+                MainWindow.current_cr.Board = true;
             }
             else
             {
-                cr.Board = false;
+                MainWindow.current_cr.Board = false;
             }
 
             if (smartYes.IsChecked == true)
             {
-                cr.Smart_board = true;
+                MainWindow.current_cr.Smart_board = true;
             }
             else
             {
-                cr.Smart_board = false;
+                MainWindow.current_cr.Smart_board = false;
             }
 
             if (win.IsChecked == true)
             {
-                cr.Os = Classroom.OpSystem.Windows;
+                MainWindow.current_cr.Os = Classroom.OpSystem.Windows;
             }
             else if (lin.IsChecked == true)
             {
-                cr.Os = Classroom.OpSystem.Linux;
+                MainWindow.current_cr.Os = Classroom.OpSystem.Linux;
             }
             else
             {
-                cr.Os = Classroom.OpSystem.WindowsAndLinux;
+                MainWindow.current_cr.Os = Classroom.OpSystem.WindowsAndLinux;
             }
 
             //dodaj softver
 
             MainWindow.allClassroomsIds.Add(id.Text);
-            MainWindow.allClassrooms.Add(cr);
+            MainWindow.allClassrooms.Add(MainWindow.current_cr);
             MainWindow.enableSchedule();
 
             MessageBox.Show("Successfully added a new classroom!");

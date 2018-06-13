@@ -59,8 +59,7 @@
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Classroom">
                     <MenuItem Header="Add new classroom" Click="add_new_classroom"/>
-                    <MenuItem Header="Update clasroom info" />
-                    <MenuItem Header="Remove classroom" />
+                    <MenuItem Header="Show all classrooms" Click="show_all_classrooms"/>
                 </MenuItem>
                 <MenuItem Header="Course">
                     <MenuItem Header="Add new course" Click="add_new_course"/>
@@ -74,8 +73,7 @@
                 </MenuItem>
                 <MenuItem Header="Software">
                     <MenuItem Header="Add new software" Click="add_new_software"/>
-                    <MenuItem Header="Update software info"/>
-                    <MenuItem Header="Remove software"/>
+                    <MenuItem Header="Show all software" Click="show_all_software"/>
                 </MenuItem>
 
             </Menu>
