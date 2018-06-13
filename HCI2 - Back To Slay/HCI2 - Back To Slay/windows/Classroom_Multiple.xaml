@@ -1,0 +1,33 @@
+﻿<Window x:Class="HCI2___Back_To_Slay.windows.Classroom_Multiple"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
+        mc:Ignorable="d"
+        Title="Classroom_Multiple" Height="300" Width="800">
+    <Grid>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="64,70,0,0" VerticalAlignment="Top"
+                  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
+                  SelectedItem="Binding Classroom" MouseDoubleClick="show_classroom" AutoGenerateColumns="false">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Description" Width="150" Binding="{Binding Description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Number of seats" Binding="{Binding Num_of_seats}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Has a board?" Binding="{Binding Board}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Has a smart board?" Binding="{Binding Smart_board}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Has a projector?" Binding="{Binding Projector}"></DataGridTextColumn>
+                <DataGridTextColumn Header="OS" Binding="{Binding Os}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Installed software">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="View" Click="show_software"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            
+        </DataGrid>
+
+    </Grid>
+</Window>

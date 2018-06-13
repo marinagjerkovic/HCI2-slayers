@@ -22,23 +22,28 @@ namespace HCI2___Back_To_Slay.windows
     public partial class Choose_Software : Window
     {
 
-        public static ObservableCollection<Software> all = new ObservableCollection<Software>();
-        public static ObservableCollection<Software> added = new ObservableCollection<Software>();
+        public ObservableCollection<Software> all = new ObservableCollection<Software>();
+        public ObservableCollection<Software> added = new ObservableCollection<Software>();
         private DataGrid currentDG=null;
-        private Classroom.OpSystem currentOs;
+        private static Classroom.OpSystem currentOs;
         
 
         public Choose_Software(Classroom.OpSystem a)
         {
             InitializeComponent();
-            if (all.Count() == 0 || a!=currentOs) 
+            MessageBox.Show(a + "");
+            MessageBox.Show(currentOs + "");
+            if (MainWindow.current_cr.Software.Count() == 0 || a!=currentOs) 
             {
                 //os changed -> remove if something is already added
                 if (a != currentOs)
                 {
-                    Add_Classroom.cr.Software = new List<Software>();
+                    MainWindow.current_cr.Software = new List<Software>();
                 }
                 currentOs = a;
+                MessageBox.Show("BREAK");
+                MessageBox.Show(a + "");
+                MessageBox.Show(currentOs + "");
                 all = new ObservableCollection<Software>();
                 added = new ObservableCollection<Software>();
                 foreach (Software sw in MainWindow.allSoftware)
@@ -49,7 +54,47 @@ namespace HCI2___Back_To_Slay.windows
                     }
                    
                 }
+            }else
+            {
+                foreach (Software sw in MainWindow.allSoftware)
+                {
+                    if(sw.Os.Equals(a) || sw.Os.Equals(Classroom.OpSystem.WindowsAndLinux))
+                    {
+                        if (MainWindow.current_cr.Software.Contains(sw))
+                        {
+                            added.Add(sw);
+                        }
+                        else
+                        {
+                            all.Add(sw);
+                        }
+                    }
+
+                }
             }
+            addedSoftwareDG.ItemsSource = added;
+            allSoftwareDG.ItemsSource = all;
+        }
+
+        public Choose_Software()
+        {
+            InitializeComponent();
+
+            foreach(Software sw in MainWindow.allSoftware)
+            {
+                if(sw.Os.Equals(MainWindow.current_cr.Os) || sw.Os.Equals(Classroom.OpSystem.WindowsAndLinux))
+                {
+                    if (MainWindow.current_cr.Software.Contains(sw))
+                    {
+                        added.Add(sw);
+                    }
+                    else
+                    {
+                        all.Add(sw);
+                    }
+                }
+            }
+
             addedSoftwareDG.ItemsSource = added;
             allSoftwareDG.ItemsSource = all;
         }
@@ -135,18 +180,14 @@ namespace HCI2___Back_To_Slay.windows
             else
             {
                 Software_Info si = new Software_Info(added.ElementAt(index));
+                si.Closed += new EventHandler((sender2, e2) => refresh_data(sender2, e2));
                 si.ShowDialog();
             }
         }
 
         private void add_close(object sender, RoutedEventArgs e)
         {
-            if (added.Count() == 0)
-            {
-                MessageBox.Show("Nothing chosen!");
-                return;
-            }
-            Add_Classroom.cr.Software = added.ToList();
+            MainWindow.current_cr.Software = added.ToList();
             this.Close();
         }
 
@@ -185,10 +226,8 @@ namespace HCI2___Back_To_Slay.windows
                 }
                 return;
             }
-            MessageBox.Show(Software_Info.updated);
             if (Software_Info.updated != null)
             {
-                MessageBox.Show(Software_Info.updated);
                 foreach (Software sw in all)
                 {
                     if (sw.Id.Equals(Software_Info.updated))
@@ -208,7 +247,6 @@ namespace HCI2___Back_To_Slay.windows
                 }
                 if (!found)
                 {
-                    MessageBox.Show("u ifu");
                     foreach (Software sw in added)
                     {
                         if (sw.Id.Equals(Software_Info.updated))

@@ -13,7 +13,7 @@
         <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="27,210,0,0" TextWrapping="Wrap" Text="Has projector?" VerticalAlignment="Top" />
         <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="27,150,0,0" TextWrapping="Wrap" Text="Has board?" VerticalAlignment="Top" />
         <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="27,240,0,0" TextWrapping="Wrap" Text="Os: " VerticalAlignment="Top" />
-        <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="27,270,0,0" TextWrapping="Wrap" Text="Software: " VerticalAlignment="Top" />
+        <TextBlock x:Name="sw_tb" HorizontalAlignment="Left" Margin="27,270,0,0" TextWrapping="Wrap" Text="Software: " VerticalAlignment="Top" />
         <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="27,120,0,0" TextWrapping="Wrap" Text="Number of seats:" VerticalAlignment="Top"/>
 
         <TextBox x:Name="id" HorizontalAlignment="Left" Margin="150,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
@@ -23,10 +23,10 @@
         <TextBox x:Name="smart_board_tb" HorizontalAlignment="Left" Margin="150,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
         <TextBox x:Name="projector_tb" HorizontalAlignment="Left" Margin="150,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
         <TextBox x:Name="os_tb" HorizontalAlignment="Left" Margin="150,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
-        <Button x:Name="view_sw_btn" Content="Click to view software" HorizontalAlignment="Left" Margin="150,270,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="view_sw_btn" Content="Click to view software" HorizontalAlignment="Left" Margin="150,270,0,0" VerticalAlignment="Top" Click="show_software"/>
         <Button x:Name="change" Content="Change data" HorizontalAlignment="Left" Margin="93,309,0,0" VerticalAlignment="Top" Width="75" Click="change_classroom" />
         <Button x:Name="delete" Content="Delete " HorizontalAlignment="Left" Margin="191,309,0,0" VerticalAlignment="Top" Width="75" Click ="delete_classroom" />
-        <Button x:Name="update" Content="Update data" HorizontalAlignment="Left" Margin="93,309,0,0" VerticalAlignment="Top" Width="75" Click="update_classroom" Visibility="Hidden"/>
+        <Button x:Name="update" Content="Save changes" HorizontalAlignment="Left" Margin="93,309,0,0" VerticalAlignment="Top" Width="75" Click="update_classroom" Visibility="Hidden"/>
         <Button x:Name="back_btn" Content="Back" HorizontalAlignment="Left" Margin="191,309,0,0" VerticalAlignment="Top" Width="75" Click="back" Visibility="Hidden"/>
 
         <RadioButton x:Name="win_btn" Content="Windows" HorizontalAlignment="Left" Margin="150,240,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden"/>
@@ -36,8 +36,8 @@
         <RadioButton x:Name="board_no" Content="No" HorizontalAlignment="Left" Margin="230,150,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_board" Visibility="Hidden"/>
         <RadioButton x:Name="smartb_yes" Content="Yes" HorizontalAlignment="Left" Margin="150,180,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_smartb" Visibility="Hidden"/>
         <RadioButton x:Name="smartb_no" Content="No" HorizontalAlignment="Left" Margin="230,180,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_smartb" Visibility="Hidden"/>
-        <RadioButton x:Name="projector_yes" Content="Yes" HorizontalAlignment="Left" Margin="150,150,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_projector" Visibility="Hidden"/>
-        <RadioButton x:Name="projector_no" Content="No" HorizontalAlignment="Left" Margin="230,150,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_projector" Visibility="Hidden"/>
+        <RadioButton x:Name="projector_yes" Content="Yes" HorizontalAlignment="Left" Margin="150,210,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_projector" Visibility="Hidden"/>
+        <RadioButton x:Name="projector_no" Content="No" HorizontalAlignment="Left" Margin="230,210,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_projector" Visibility="Hidden"/>
 
 
 

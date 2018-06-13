@@ -18,28 +18,39 @@ namespace HCI2___Back_To_Slay.windows
     /// <summary>
     /// Interaction logic for Software_Multiple.xaml
     /// </summary>
+    /// shows given software data; if argument is null, shows all software
     public partial class Software_Multiple : Window
     {
-        private ObservableCollection<Software> Show_Data;
-        public Software_Multiple(List<Software> show)
+        private ObservableCollection<Software> Show_Data = new ObservableCollection<Software>();
+
+        //constructor
+        public Software_Multiple()
         {
-            if (show == null)
-            {
-                Show_Data = MainWindow.allSoftware;
-            }else
-            {
-                foreach(Software sw in show)
-                {
-                    Show_Data.Add(sw);
-                }
-            }
+            Show_Data = MainWindow.allSoftware;
             InitializeComponent();
             dataGrid.ItemsSource = Show_Data;
         }
 
+        public Software_Multiple(List<Software> show)
+        {
+            foreach(Software sw in show)
+            {
+                Show_Data.Add(sw);
+            }
+            InitializeComponent();
+            dataGrid.ItemsSource = Show_Data;
+            ar_sw.Visibility = Visibility.Visible;
+        }
+
+        private void choose_software(object sender, RoutedEventArgs e)
+        {
+            Choose_Software sw = new Choose_Software();
+            sw.Closed += new EventHandler((sender2, e2) => load_data(sender2, e2));
+            sw.ShowDialog();
+        }
+
         private void show_software(object sender, RoutedEventArgs e)
         {
-            Button btn = (Button)sender;
             DataGridRow row = Choose_Software.detect_selected_row((DependencyObject)e.OriginalSource);
             dataGrid = ItemsControl.ItemsControlFromItemContainer(row) as DataGrid;
             int index = dataGrid.ItemContainerGenerator.IndexFromContainer(row);
@@ -52,6 +63,16 @@ namespace HCI2___Back_To_Slay.windows
 
             si.Closed += new EventHandler((sender2, e2) => refresh_data(sender2, e2));
             si.ShowDialog();
+        }
+
+        private void load_data(object sender, EventArgs e)
+        {
+            Show_Data = new ObservableCollection<Software>();
+            foreach(Software sw in MainWindow.current_cr.Software)
+            {
+                Show_Data.Add(sw);
+            }
+            dataGrid.ItemsSource = Show_Data;
         }
 
         private void refresh_data(object sender, EventArgs e)
