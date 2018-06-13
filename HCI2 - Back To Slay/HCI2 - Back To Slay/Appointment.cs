@@ -63,5 +63,18 @@ namespace HCI2___Back_To_Slay
         }
 
         public Appointment() { }
+
+        public Appointment(Classroom classroom, Subject subject, DateTime start, DateTime end)
+        {
+            this.classroom = classroom;
+            this.subject = subject;
+            this.start = start;
+            this.end = end;
+        }
+
+        public void printApp()
+        {
+            Console.WriteLine("(" + classroom.Id + "," + subject.Name + "," + start.ToShortTimeString() + ","+end.ToShortTimeString()+")");
+        }
     }
 }

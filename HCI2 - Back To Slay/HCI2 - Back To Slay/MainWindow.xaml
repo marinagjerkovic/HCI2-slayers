@@ -43,7 +43,9 @@
                                                                    DateTimeValue="{Binding DayText, RelativeSource={RelativeSource TemplatedParent}}"
                                                                    DateTimeFormat="dddd"
                                                                    FontSize="{TemplateBinding FontSize}"
-                                                                   FontStyle="Normal" />
+                                                                   FontStyle="Normal"
+                                                                 
+                                                                   />
                                     </Border>
                                 </Grid>
                             </Border>
@@ -54,7 +56,6 @@
         </Style>
     </Window.Resources>
     <Grid>
-        
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Classroom">
@@ -89,8 +90,8 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"></ColumnDefinition>
-                        <ColumnDefinition Width="5*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="7*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <DataGrid  AutoGenerateColumns="False"  x:Name="classroomsDG" ItemsSource="{Binding Path=allClassrooms}"
                            IsReadOnly="True" Grid.Column="0" Margin="0 0 10 0" ScrollViewer.CanContentScroll="True"
@@ -100,7 +101,7 @@
                         <DataGrid.Columns >
                             <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="1*"/>
                             <DataGridTextColumn Header="Seats" Binding="{Binding Num_of_seats}"  Width="1*"  />
-                            <DataGridTextColumn Header="OS" Binding="{Binding Os}"  Width="1*"  />
+                            <DataGridTextColumn Header="OS" Binding="{Binding Os}"  Width="3*"  />
                             <DataGridTemplateColumn Width="1*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -108,7 +109,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Width="1*">
+                            <DataGridTemplateColumn Width="2*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button Content="Remove" Tag="{Binding}"  Click="remove_classroom_from_schedule"  Background="OrangeRed" />
@@ -124,12 +125,12 @@
                            GridLinesVisibility="None"
                            SelectedItem="Binding Subject">
                             <DataGrid.Columns >
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="1*"/>
-                            <DataGridTextColumn Header="Course" Binding="{Binding Path=Course.Name}"   Width="1*"  />
-                            <DataGridTextColumn Header="OS" Binding="{Binding Os}"  Width="1*"  />
-                            <DataGridTextColumn Header="Group size" Binding="{Binding Size_of_group}"  Width="1*"  />
-                            <DataGridTextColumn Header="Class duration" Binding="{Binding Duration_of_period}"  Width="1*"  />
-                            <DataGridTextColumn Header="Class number" Binding="{Binding Num_of_periods}"  Width="1*"  />
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="3*"/>
+                            <DataGridTextColumn Header="Course" Binding="{Binding Path=Course.Name}"   Width="3*"  />
+                            <DataGridTextColumn Header="OS" Binding="{Binding Os}"  Width="3*"  />
+                            <DataGridTextColumn Header="Group&#x0a;size" Binding="{Binding Size_of_group}"  Width="1*"  />
+                            <DataGridTextColumn Header="Class&#x0a;duration" Binding="{Binding Duration_of_period}"  Width="1*"  />
+                            <DataGridTextColumn Header="Class&#x0a;number" Binding="{Binding Num_of_periods}"  Width="1*"  />
                             <DataGridTemplateColumn Width="1*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -144,13 +145,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Width="1*">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Content="Placeholder" Tag="{Binding}"  Click="return_subject_to_placeholder"  Background="SeaGreen" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+  
 
                         </DataGrid.Columns>
                     </DataGrid>
