@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
+        xmlns:l="clr-namespace:HCI2___Back_To_Slay"
         mc:Ignorable="d"
         Title="Classroom_Info" Height="370" Width="400">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="27,10,0,0" TextWrapping="Wrap" Text="Id: " VerticalAlignment="Top" RenderTransformOrigin="1.571,1.414" Height="26" Width="27" />
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="27,40,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top"  />
@@ -16,18 +20,58 @@
         <TextBlock x:Name="sw_tb" HorizontalAlignment="Left" Margin="27,270,0,0" TextWrapping="Wrap" Text="Software: " VerticalAlignment="Top" />
         <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="27,120,0,0" TextWrapping="Wrap" Text="Number of seats:" VerticalAlignment="Top"/>
 
-        <TextBox x:Name="id" HorizontalAlignment="Left" Margin="150,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
-        <TextBox x:Name="description" HorizontalAlignment="Left" Margin="150,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
-        <TextBox x:Name="num_of_seats" HorizontalAlignment="Left" Margin="150,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
-        <TextBox x:Name="board_tb" HorizontalAlignment="Left" Margin="150,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
-        <TextBox x:Name="smart_board_tb" HorizontalAlignment="Left" Margin="150,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
-        <TextBox x:Name="projector_tb" HorizontalAlignment="Left" Margin="150,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
-        <TextBox x:Name="os_tb" HorizontalAlignment="Left" Margin="150,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
-        <Button x:Name="view_sw_btn" Content="Click to view software" HorizontalAlignment="Left" Margin="150,270,0,0" VerticalAlignment="Top" Click="show_software"/>
-        <Button x:Name="change" Content="Change data" HorizontalAlignment="Left" Margin="93,309,0,0" VerticalAlignment="Top" Width="75" Click="change_classroom" />
-        <Button x:Name="delete" Content="Delete " HorizontalAlignment="Left" Margin="191,309,0,0" VerticalAlignment="Top" Width="75" Click ="delete_classroom" />
-        <Button x:Name="update" Content="Save changes" HorizontalAlignment="Left" Margin="93,309,0,0" VerticalAlignment="Top" Width="75" Click="update_classroom" Visibility="Hidden"/>
-        <Button x:Name="back_btn" Content="Back" HorizontalAlignment="Left" Margin="191,309,0,0" VerticalAlignment="Top" Width="75" Click="back" Visibility="Hidden"/>
+        <TextBox x:Name="id" HorizontalAlignment="Left" Margin="150,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <TextBox x:Name="description" HorizontalAlignment="Left" Margin="150,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <TextBox x:Name="num_of_seats" HorizontalAlignment="Left" Margin="150,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <TextBox x:Name="board_tb" HorizontalAlignment="Left" Margin="150,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <TextBox x:Name="smart_board_tb" HorizontalAlignment="Left" Margin="150,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <TextBox x:Name="projector_tb" HorizontalAlignment="Left" Margin="150,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <TextBox x:Name="os_tb" HorizontalAlignment="Left" Margin="150,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <Button x:Name="view_sw_btn" Content="Click to view software" HorizontalAlignment="Left" Margin="150,270,0,0" VerticalAlignment="Top" Click="show_software">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme otvara se prozor sa spiskom softvera koji postoje u učionici.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="change" Content="Change data" HorizontalAlignment="Left" Margin="93,309,0,0" VerticalAlignment="Top" Width="75" Click="change_classroom" >
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme omogućuju se izmene podataka učionice.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="delete" Content="Delete " HorizontalAlignment="Left" Margin="191,309,0,0" VerticalAlignment="Top" Width="75" Click ="delete_classroom" >
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme otvara se dijalog za potvrđivanje brisanja učionice.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="update" Content="Save changes" HorizontalAlignment="Left" Margin="93,309,0,0" VerticalAlignment="Top" Width="75" Click="update_classroom" Visibility="Hidden">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme čuvaju se načinjene izmene.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="back_btn" Content="Back" HorizontalAlignment="Left" Margin="191,309,0,0" VerticalAlignment="Top" Width="75" Click="back" Visibility="Hidden">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme nesačuvane izmene se zanemaruju.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
 
         <RadioButton x:Name="win_btn" Content="Windows" HorizontalAlignment="Left" Margin="150,240,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden"/>
         <RadioButton x:Name="lin_btn" Content="Linux" HorizontalAlignment="Left" Margin="230,240,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden"/>

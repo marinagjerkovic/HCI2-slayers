@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
+        xmlns:l="clr-namespace:HCI2___Back_To_Slay"
         mc:Ignorable="d"
         Title="Add Software" Height="400" Width="350">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Software id: " VerticalAlignment="Top" Height="16"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,78,0,0" TextWrapping="Wrap" Text="Description: " VerticalAlignment="Top" RenderTransformOrigin="0.061,-0.354" Height="16"/>
@@ -15,20 +19,35 @@
         <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="10,42,0,0" TextWrapping="Wrap" Text="Name: " VerticalAlignment="Top" Height="16"/>
         <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="10,178,0,0" TextWrapping="Wrap" Text="Site: " VerticalAlignment="Top" Height="16"/>
         <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="10,209,0,0" TextWrapping="Wrap" Text="Year of publication: " VerticalAlignment="Top"/>
-        
-        <TextBox x:Name="id" HorizontalAlignment="Left" Height="16" Margin="126,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="16" Margin="126,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
-        <TextBox x:Name="description" HorizontalAlignment="Left" Height="52" Margin="126,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
-        <TextBox x:Name="maker" HorizontalAlignment="Left" Height="16" Margin="126,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
-        <TextBox x:Name="site" HorizontalAlignment="Left" Height="16" Margin="126,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
-        <TextBox x:Name="year" HorizontalAlignment="Left" Height="16" Margin="126,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
-        <TextBox x:Name="price" HorizontalAlignment="Left" Height="16" Margin="126,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
-        <RadioButton x:Name="win" Content="Windows" HorizontalAlignment="Left" Margin="126,277,0,0" VerticalAlignment="Top" GroupName="op_system" IsChecked="true"/>
-        <RadioButton x:Name="lin" Content="Linux" HorizontalAlignment="Left" Margin="213,276,0,0" VerticalAlignment="Top" GroupName="op_system"/>
-        <RadioButton x:Name="both" Content="Both" HorizontalAlignment="Left" Margin="279,277,0,0" VerticalAlignment="Top" GroupName="op_system"/>
-        <Button x:Name="button" Content="Add software" HorizontalAlignment="Left" Margin="63,320,0,0" VerticalAlignment="Top" Width="75" Click="add_new_software"/>
-        <Button x:Name="button1" Content="Cancel" HorizontalAlignment="Left" Margin="213,320,0,0" VerticalAlignment="Top" Width="75" Click="cancel"/>
 
+        <TextBox x:Name="id" HorizontalAlignment="Left" Height="16" Margin="126,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" l:HelpProvider.HelpKey="dodavanje_softvera"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="16" Margin="126,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" l:HelpProvider.HelpKey="dodavanje_softvera"/>
+        <TextBox x:Name="description" HorizontalAlignment="Left" Height="52" Margin="126,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" l:HelpProvider.HelpKey="dodavanje_softvera"/>
+        <TextBox x:Name="maker" HorizontalAlignment="Left" Height="16" Margin="126,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" l:HelpProvider.HelpKey="dodavanje_softvera"/>
+        <TextBox x:Name="site" HorizontalAlignment="Left" Height="16" Margin="126,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" l:HelpProvider.HelpKey="dodavanje_softvera"/>
+        <TextBox x:Name="year" HorizontalAlignment="Left" Height="16" Margin="126,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" l:HelpProvider.HelpKey="dodavanje_softvera"/>
+        <TextBox x:Name="price" HorizontalAlignment="Left" Height="16" Margin="126,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" l:HelpProvider.HelpKey="dodavanje_softvera"/>
+        <RadioButton x:Name="win" Content="Windows" HorizontalAlignment="Left" Margin="126,277,0,0" VerticalAlignment="Top" GroupName="op_system" IsChecked="true" l:HelpProvider.HelpKey="dodavanje_softvera"/>
+        <RadioButton x:Name="lin" Content="Linux" HorizontalAlignment="Left" Margin="213,276,0,0" VerticalAlignment="Top" GroupName="op_system" l:HelpProvider.HelpKey="dodavanje_softvera"/>
+        <RadioButton x:Name="both" Content="Both" HorizontalAlignment="Left" Margin="279,277,0,0" VerticalAlignment="Top" GroupName="op_system" l:HelpProvider.HelpKey="dodavanje_softvera"/>
+        <Button x:Name="button" Content="Add software" HorizontalAlignment="Left" Margin="63,320,0,0" VerticalAlignment="Top" Width="75" Click="add_new_software">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme potvrđuje se dodavanje softvera.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="button1" Content="Cancel" HorizontalAlignment="Left" Margin="213,320,0,0" VerticalAlignment="Top" Width="75" Click="cancel">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme otkazuje se dodavanje kursa.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
 
     </Grid>
 </Window>

@@ -4,13 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
+        xmlns:l="clr-namespace:HCI2___Back_To_Slay"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="HCI2___Back_To_Slay.windows.Choose_Software"
         mc:Ignorable="d"
         Title="Choose_Software" Height="350" Width="700">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Grid>
         <DataGrid x:Name="allSoftwareDG" HorizontalAlignment="Left" Margin="20,36,0,0" VerticalAlignment="Top" Height="201" Width="300"
                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
-                  SelectedItem="Binding Software" MouseLeftButtonUp="software_added_click" AutoGenerateColumns="false">
+                  SelectedItem="Binding Software" MouseLeftButtonUp="software_added_click" AutoGenerateColumns="false" l:HelpProvider.HelpKey="izbor_softvera">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="OS" Binding="{Binding Os}"></DataGridTextColumn>
@@ -25,7 +29,7 @@
         </DataGrid>
         <DataGrid x:Name="addedSoftwareDG" HorizontalAlignment="Left" Margin="350,36,0,0" VerticalAlignment="Top" Height="201" Width="300"
                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
-                   SelectedItem="Binding Software" MouseLeftButtonUp="software_removed_click" AutoGenerateColumns="false">
+                   SelectedItem="Binding Software" MouseLeftButtonUp="software_removed_click" AutoGenerateColumns="false" l:HelpProvider.HelpKey="izbor_softvera">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="OS" Binding="{Binding Os}"></DataGridTextColumn>
@@ -42,10 +46,26 @@
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="350,10,0,0" TextWrapping="Wrap" Text="Added software(click to remove):" VerticalAlignment="Top" RenderTransformOrigin="-0.037,0.176"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="20,242,0,0" TextWrapping="Wrap" Text="Search(name):" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="350,242,0,0" TextWrapping="Wrap" Text="Search(name):" VerticalAlignment="Top" RenderTransformOrigin="-0.103,0.007"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="17" Margin="20,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="17" Margin="350,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"/>
-        <Button x:Name="add_btn" Content="Save changes" HorizontalAlignment="Left" Margin="470,280,0,0" VerticalAlignment="Top" Width="75" Click="add_close"/>
-        <Button x:Name="close_btn" Content="Cancel" HorizontalAlignment="Left" Margin="575,280,0,0" VerticalAlignment="Top" Width="75" Click="close_win"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="17" Margin="20,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" l:HelpProvider.HelpKey="izbor_softvera"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="17" Margin="350,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" l:HelpProvider.HelpKey="izbor_softvera"/>
+        <Button x:Name="add_btn" Content="Save changes" HorizontalAlignment="Left" Margin="470,280,0,0" VerticalAlignment="Top" Width="75" Click="add_close">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme potvrđuje se spisak odabranih softvera.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="close_btn" Content="Cancel" HorizontalAlignment="Left" Margin="575,280,0,0" VerticalAlignment="Top" Width="75" Click="close_win">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme otkazuje se spisak izabranih softvera.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
 
     </Grid>
 </Window>
