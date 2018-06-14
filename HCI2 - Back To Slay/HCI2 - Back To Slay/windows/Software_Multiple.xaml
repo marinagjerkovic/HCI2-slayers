@@ -13,7 +13,7 @@
     <Grid>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left"  Margin="64,70,0,0" VerticalAlignment="Top"
                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
-                  SelectedItem="Binding Software" MouseDoubleClick="show_software" AutoGenerateColumns="false">
+                  SelectedItem="Binding Software" MouseDoubleClick="show_software" AutoGenerateColumns="false" l:HelpProvider.HelpKey="izlistavanje_softvera">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="OS" Binding="{Binding Os}"></DataGridTextColumn>

@@ -20,21 +20,53 @@
         <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="27,270,0,0" TextWrapping="Wrap" Text="Price:" VerticalAlignment="Top" />
         <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="27,70,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top"/>
 
-        <TextBox x:Name="id" HorizontalAlignment="Left" Margin="150,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Margin="150,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  IsReadOnly="true" BorderBrush="Transparent" />
-        <TextBox x:Name="description" HorizontalAlignment="Left" Margin="150,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top"    IsReadOnly="true" BorderBrush="Transparent"/>
-        <TextBox x:Name="maker" HorizontalAlignment="Left" Margin="150,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  IsReadOnly="true" BorderBrush="Transparent"/>
-        <TextBox x:Name="site" HorizontalAlignment="Left" Margin="150,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top"   IsReadOnly="true" BorderBrush="Transparent"/>
-        <TextBox x:Name="year" HorizontalAlignment="Left" Margin="150,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  IsReadOnly="true" BorderBrush="Transparent"/>
-        <TextBox x:Name="price" HorizontalAlignment="Left" Margin="150,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top"   IsReadOnly="true" BorderBrush="Transparent"/>
-        <TextBox x:Name="os_tb" HorizontalAlignment="Left" Margin="150, 150, 0, 0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
-        <Button x:Name="change" Content="Change data" HorizontalAlignment="Left" Margin="93,309,0,0" VerticalAlignment="Top" Width="75" Click="change_software" />
-        <Button x:Name="delete" Content="Delete " HorizontalAlignment="Left" Margin="191,309,0,0" VerticalAlignment="Top" Width="75" Click ="delete_software" />
-        <Button x:Name="update" Content="Save changes" HorizontalAlignment="Left" Margin="93,309,0,0" VerticalAlignment="Top" Width="75" Click="update_software" Visibility="Hidden"/>
-        <Button x:Name="back_btn" Content="Back" HorizontalAlignment="Left" Margin="191,309,0,0" VerticalAlignment="Top" Width="75" Click="back" Visibility="Hidden"/>
-        <RadioButton x:Name="win_btn" Content="Windows" HorizontalAlignment="Left" Margin="150,150,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden" />
-        <RadioButton x:Name="lin_btn" Content="Linux" HorizontalAlignment="Left" Margin="230,150,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden"/>
-        <RadioButton x:Name="both_btn" Content="Both" HorizontalAlignment="Left" Margin="300,150,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="hidden"/>
+        <TextBox x:Name="id" HorizontalAlignment="Left" Margin="150,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_softvera"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Margin="150,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_softvera"/>
+        <TextBox x:Name="description" HorizontalAlignment="Left" Margin="150,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top"    IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_softvera"/>
+        <TextBox x:Name="maker" HorizontalAlignment="Left" Margin="150,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_softvera"/>
+        <TextBox x:Name="site" HorizontalAlignment="Left" Margin="150,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top"   IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_softvera"/>
+        <TextBox x:Name="year" HorizontalAlignment="Left" Margin="150,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_softvera"/>
+        <TextBox x:Name="price" HorizontalAlignment="Left" Margin="150,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top"   IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_softvera"/>
+        <TextBox x:Name="os_tb" HorizontalAlignment="Left" Margin="150, 150, 0, 0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent" l:HelpProvider.HelpKey="izmena_softvera"/>
+        <Button x:Name="change" Content="Change data" HorizontalAlignment="Left" Margin="93,309,0,0" VerticalAlignment="Top" Width="75" Click="change_software" >
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button enables changing this software data.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="delete" Content="Delete " HorizontalAlignment="Left" Margin="191,309,0,0" VerticalAlignment="Top" Width="75" Click ="delete_software" >
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button enables deletion of this software.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="update" Content="Save changes" HorizontalAlignment="Left" Margin="93,309,0,0" VerticalAlignment="Top" Width="75" Click="update_software" Visibility="Hidden">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button saves changes on this software data.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="back_btn" Content="Back" HorizontalAlignment="Left" Margin="191,309,0,0" VerticalAlignment="Top" Width="75" Click="back" Visibility="Hidden">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button discards all the unsaved data of this software.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <RadioButton x:Name="win_btn" Content="Windows" HorizontalAlignment="Left" Margin="150,150,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden" l:HelpProvider.HelpKey="izmena_softvera"/>
+        <RadioButton x:Name="lin_btn" Content="Linux" HorizontalAlignment="Left" Margin="230,150,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden" l:HelpProvider.HelpKey="izmena_softvera"/>
+        <RadioButton x:Name="both_btn" Content="Both" HorizontalAlignment="Left" Margin="300,150,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="hidden" l:HelpProvider.HelpKey="izmena_softvera"/>
         
 
 

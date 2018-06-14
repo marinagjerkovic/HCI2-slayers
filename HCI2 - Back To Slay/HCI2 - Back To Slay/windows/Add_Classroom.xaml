@@ -39,7 +39,7 @@
             <Button.ToolTip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
-                        Klikom levog tastera miša na ovo dugme potvrđujete kreiranje učionice.
+                        Left mouse click on this button creates this new classroom.
                     </TextBlock>
                 </StackPanel>
             </Button.ToolTip>
@@ -48,7 +48,7 @@
             <Button.ToolTip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
-                        Klikom levog tastera miša na ovo dugme otkazujete kreiranje učionice i zatvarate trenutni prozor.
+                        Left mouse click on this button discards creating new classroom.
                     </TextBlock>
                 </StackPanel>
             </Button.ToolTip>
@@ -57,7 +57,7 @@
             <Button.ToolTip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
-                        Klikom levog tastera miša na ovo dugme otvara se prozor za izbor softvera koji se nalaze u trenutnoj učionici.
+                        Left mouse click on this button lets you choose all the software in this classroom.
                     </TextBlock>
                 </StackPanel>
             </Button.ToolTip>

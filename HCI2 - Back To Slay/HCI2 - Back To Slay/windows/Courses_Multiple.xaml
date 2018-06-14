@@ -3,13 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:l="clr-namespace:HCI2___Back_To_Slay"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
         mc:Ignorable="d"
         Title="Courses_Multiple" Height="330" Width="320">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Grid>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="44,39,0,0" VerticalAlignment="Top"
                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
-                  SelectedItem="Binding Course" MouseDoubleClick="show_course" AutoGenerateColumns="false" Height="200">
+                  SelectedItem="Binding Course" MouseDoubleClick="show_course" AutoGenerateColumns="false" Height="200" l:HelpProvider.HelpKey="izlistavanje_kurseva">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
@@ -17,7 +21,14 @@
                 <DataGridTextColumn Header="Date of conception" Binding="{Binding Date_of_conception}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="save_crs_btn" Content="Save selected course" HorizontalAlignment="Left" Margin="170,259,0,0" VerticalAlignment="Top" Visibility="Hidden" Click="save_course"/>
-
+        <Button x:Name="save_crs_btn" Content="Save selected course" HorizontalAlignment="Left" Margin="170,259,0,0" VerticalAlignment="Top" Visibility="Hidden" Click="save_course">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button sets this course to the subject.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
     </Grid>
 </Window>

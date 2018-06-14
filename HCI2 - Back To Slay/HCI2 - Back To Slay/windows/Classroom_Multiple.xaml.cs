@@ -58,7 +58,16 @@ namespace HCI2___Back_To_Slay.windows
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            int indeks = 0;
+            for (int i = 0; i < Application.Current.Windows.Count; i++)
+            {
+                if (Application.Current.Windows[i].Title.Equals("Classroom_Multiple"))
+                {
+                    indeks = i;
+                }
+            }
+
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[indeks]);
             if (focusedControl is DependencyObject)
             {
                 string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
