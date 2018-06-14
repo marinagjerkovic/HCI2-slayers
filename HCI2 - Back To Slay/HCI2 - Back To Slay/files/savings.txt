@@ -76,5 +76,5 @@ id12,desc2,30,False,True,True,WindowsAndLinux,
 id13,desc3,30,False,True,True,WindowsAndLinux,
 id14,desc4,30,False,True,True,WindowsAndLinux,
 id15,desc5,30,False,True,True,WindowsAndLinux,
-RC1,FTN 3. sprat,20,True,False,True,Linux,BS|CB
+RC1,FTN 3. sprat,20,True,False,True,Linux,BS|SP
 RC2,FTN 3. sprat,25,False,True,False,Windows,MLAB

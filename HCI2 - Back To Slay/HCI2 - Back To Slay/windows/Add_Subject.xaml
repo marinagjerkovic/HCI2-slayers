@@ -14,7 +14,7 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Subject id: " VerticalAlignment="Top" RenderTransformOrigin="0.089,0.547"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="11,41,0,0" TextWrapping="Wrap" Text="Name: " VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="11,76,0,0" TextWrapping="Wrap" Text="Description: " VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="11,153,0,0" TextWrapping="Wrap" Text="COURSE?" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="11,153,0,0" TextWrapping="Wrap" Text="Course:" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="10,186,0,0" TextWrapping="Wrap" Text="Size of groups: " VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="11,220,0,0" TextWrapping="Wrap" Text="Duration of period: " VerticalAlignment="Top" RenderTransformOrigin="-0.193,0.211"/>
         <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="10,254,0,0" TextWrapping="Wrap" Text="Number of periods: " VerticalAlignment="Top"/>
@@ -22,7 +22,7 @@
         <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Margin="11,321,0,0" TextWrapping="Wrap" Text="Needs a board?" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="9,353,0,0" TextWrapping="Wrap" Text="Needs a smart boart?" VerticalAlignment="Top" RenderTransformOrigin="-0.258,0.835"/>
         <TextBlock x:Name="textBlock10" HorizontalAlignment="Left" Margin="11,386,0,0" TextWrapping="Wrap" Text="Operating system: " VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock11" HorizontalAlignment="Left" Margin="10,419,0,0" TextWrapping="Wrap" Text="SOFTWARE?" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock11" HorizontalAlignment="Left" Margin="10,419,0,0" TextWrapping="Wrap" Text="Choose required software:" VerticalAlignment="Top"/>
 
         <TextBox x:Name="id" HorizontalAlignment="Left" Height="16" Margin="153,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
         <TextBox x:Name="name" HorizontalAlignment="Left" Height="16" Margin="153,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
@@ -57,6 +57,12 @@
                 </StackPanel>
             </Button.ToolTip>
         </Button>
+        <Button x:Name="add_sw_btn" Content="Click here to choose software" HorizontalAlignment="Left" Margin="181,415,0,0" VerticalAlignment="Top" Click="add_software"/>
+        <Button x:Name="add_crs" Content="Click here to add course" HorizontalAlignment="Left" Margin="153,153,0,0" VerticalAlignment="Top" Click="select_course"/>
+        <TextBox x:Name="sel_crs" HorizontalAlignment="Left" Height="20" Margin="153,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" IsReadOnly="True" Visibility="Hidden" BorderBrush="Transparent"/>
+        <Button x:Name="change_crs" Content="Change" HorizontalAlignment="Left" Margin="296,154,0,0" VerticalAlignment="Top" Height="20" Click="select_course" Visibility="Hidden"/>
+
+
 
 
 

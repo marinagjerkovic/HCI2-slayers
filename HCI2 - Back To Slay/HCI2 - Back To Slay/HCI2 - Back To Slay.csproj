@@ -108,14 +108,24 @@
     <Compile Include="windows\Classroom_Multiple.xaml.cs">
       <DependentUpon>Classroom_Multiple.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\Courses_Multiple.xaml.cs">
+      <DependentUpon>Courses_Multiple.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\Course_Info.xaml.cs">
       <DependentUpon>Course_Info.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\Helper.cs" />
     <Compile Include="windows\Software_Info.xaml.cs">
       <DependentUpon>Software_Info.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\Software_Multiple.xaml.cs">
       <DependentUpon>Software_Multiple.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\Subject_Info.xaml.cs">
+      <DependentUpon>Subject_Info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\Subject_Multiple.xaml.cs">
+      <DependentUpon>Subject_Multiple.xaml</DependentUpon>
     </Compile>
     <Page Include="HelpViewer.xaml">
       <SubType>Designer</SubType>
@@ -162,6 +172,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="windows\Courses_Multiple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="windows\Course_Info.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,6 +185,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\Software_Multiple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\Subject_Info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\Subject_Multiple.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -168,28 +168,14 @@ namespace HCI2___Back_To_Slay.windows
             year.IsReadOnly = !year.IsReadOnly;
             price.IsReadOnly = !price.IsReadOnly;
 
-            if (change.Visibility == System.Windows.Visibility.Visible)
-            {
-                change.Visibility = System.Windows.Visibility.Hidden;
-                delete.Visibility = System.Windows.Visibility.Hidden;
-                back_btn.Visibility = System.Windows.Visibility.Visible;
-                update.Visibility = System.Windows.Visibility.Visible;
-                win_btn.Visibility = System.Windows.Visibility.Visible;
-                lin_btn.Visibility = System.Windows.Visibility.Visible;
-                both_btn.Visibility = System.Windows.Visibility.Visible;
-                os_tb.Visibility = System.Windows.Visibility.Hidden;
-            }
-            else
-            {
-                change.Visibility = System.Windows.Visibility.Visible;
-                delete.Visibility = System.Windows.Visibility.Visible;
-                back_btn.Visibility = System.Windows.Visibility.Hidden;
-                update.Visibility = System.Windows.Visibility.Hidden;
-                win_btn.Visibility = System.Windows.Visibility.Hidden;
-                lin_btn.Visibility = System.Windows.Visibility.Hidden;
-                both_btn.Visibility = System.Windows.Visibility.Hidden;
-                os_tb.Visibility = System.Windows.Visibility.Visible;
-            }
+            change.Visibility = Helper.isVisible(change);
+            delete.Visibility = Helper.isVisible(delete);
+            back_btn.Visibility = Helper.isVisible(back_btn);
+            update.Visibility = Helper.isVisible(update);
+            win_btn.Visibility = Helper.isVisible(win_btn);
+            lin_btn.Visibility = Helper.isVisible(lin_btn);
+            both_btn.Visibility = Helper.isVisible(both_btn);
+            os_tb.Visibility = Helper.isVisible(os_tb);
         }
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)

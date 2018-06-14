@@ -26,7 +26,6 @@ namespace HCI2___Back_To_Slay
     ///
     public partial class MainWindow : Window
     {
-        public static Classroom current_cr;
 
         public static SfSchedule schedule;
         public DateTime mainDate;
@@ -269,9 +268,20 @@ namespace HCI2___Back_To_Slay
 
         private void show_all_classrooms(object sender, RoutedEventArgs e)
         {
-            //tba
             Classroom_Multiple cm = new Classroom_Multiple();
             cm.ShowDialog();
+        }
+
+        private void show_all_courses(object sender, RoutedEventArgs e)
+        {
+            Courses_Multiple cm = new Courses_Multiple(false);
+            cm.ShowDialog();
+        }
+
+        private void show_all_subjects(object sender, RoutedEventArgs e)
+        {
+            Subject_Multiple sm = new Subject_Multiple();
+            sm.ShowDialog();
         }
 
 

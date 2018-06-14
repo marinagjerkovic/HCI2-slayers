@@ -1,0 +1,36 @@
+﻿<Window x:Class="HCI2___Back_To_Slay.windows.Subject_Multiple"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
+        mc:Ignorable="d"
+        Title="Subject_Multiple" Height="300" Width="500">
+    <Grid>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="17,68,0,0" VerticalAlignment="Top"
+                  ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
+                  SelectedItem="Binding Subject" MouseDoubleClick="show_subject" AutoGenerateColumns="false">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Course name" Binding="{Binding Source.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Group size" Binding="{Binding Size_of_group}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Duration of period" Binding="{Binding Duration_of_period}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Number of periods" Binding="{Binding Num_of_periods}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Needs a board?" Binding="{Binding Board}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Needs a smart board?" Binding="{Binding Smart_board}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Needs a projector?" Binding="{Binding Projector}"></DataGridTextColumn>
+                <DataGridTextColumn Header="OS" Binding="{Binding Os}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Installed software">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="View" Click="show_software"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

@@ -62,7 +62,7 @@
                 </StackPanel>
             </Button.ToolTip>
         </Button>
-        <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="15,348,0,0" TextWrapping="Wrap" Text="Add software to this classroom" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="15,348,0,0" TextWrapping="Wrap" Text="Choose software for this classroom" VerticalAlignment="Top"/>
 
 
     </Grid>

@@ -21,9 +21,12 @@ namespace HCI2___Back_To_Slay.windows
 
     public partial class Classroom_Info : Window
     {
+
+        private Classroom current_cr;
+
         public Classroom_Info(Classroom cr)
         {
-            MainWindow.current_cr = cr;
+            current_cr = cr;
             InitializeComponent();
             load_data();
         }
@@ -73,30 +76,30 @@ namespace HCI2___Back_To_Slay.windows
 
             if (MainWindow.update_classroom_schedule(num, (bool)board_yes.IsChecked, (bool)smartb_yes.IsChecked, (bool)projector_yes.IsChecked, chosen_os))
             {
-                MainWindow.current_cr.Description = description.Text;
-                MainWindow.current_cr.Num_of_seats = num;
-                MainWindow.current_cr.Board = (bool)board_yes.IsChecked;
-                MainWindow.current_cr.Smart_board = (bool)smartb_yes.IsChecked;
-                MainWindow.current_cr.Projector = (bool)projector_yes.IsChecked;
+                current_cr.Description = description.Text;
+                current_cr.Num_of_seats = num;
+                current_cr.Board = (bool)board_yes.IsChecked;
+                current_cr.Smart_board = (bool)smartb_yes.IsChecked;
+                current_cr.Projector = (bool)projector_yes.IsChecked;
 
                 if (!chosen_os.Equals(Classroom.OpSystem.WindowsAndLinux))
                 {
-                    if (MainWindow.current_cr.Os.Equals(Classroom.OpSystem.WindowsAndLinux))
-                    {
-                        foreach (Software sw in MainWindow.current_cr.Software.ToList())
+
+                        foreach (Software sw in current_cr.Software.ToList())
                         {
-                            if (!sw.Os.Equals(chosen_os))
+                            if (!sw.Os.Equals(chosen_os) && !sw.Os.Equals(Classroom.OpSystem.WindowsAndLinux))
                             {
-                                MainWindow.current_cr.Software.Remove(sw);
+                                current_cr.Software.Remove(sw);
                             }
                         }
-                    }
-                    else
-                    {
-                        MainWindow.current_cr.Software = new List<Software>();
-                    }
+
                 }
-                MainWindow.current_cr.Os = chosen_os;
+                current_cr.Os = chosen_os;
+
+                MainWindow.allClassrooms.Remove(current_cr);
+                MainWindow.allClassroomsIds.Remove(current_cr.Id);
+                MainWindow.allClassrooms.Add(current_cr);
+                MainWindow.allClassroomsIds.Add(current_cr.Id);
 
                 load_data();
                 description.BorderBrush = new SolidColorBrush(Colors.Transparent);
@@ -114,8 +117,8 @@ namespace HCI2___Back_To_Slay.windows
             switch (result)
             {
                 case (MessageBoxResult.Yes):
-                    MainWindow.allClassrooms.Remove(MainWindow.current_cr);
-                    MainWindow.allClassroomsIds.Remove(MainWindow.current_cr.Id);
+                    MainWindow.allClassrooms.Remove(current_cr);
+                    MainWindow.allClassroomsIds.Remove(current_cr.Id);
                     this.Close();
                     break;
                 case (MessageBoxResult.No):
@@ -125,17 +128,17 @@ namespace HCI2___Back_To_Slay.windows
 
         private void show_software(object sender, RoutedEventArgs e)
         {
-            Software_Multiple sm = new Software_Multiple(MainWindow.current_cr.Software);
+            Software_Multiple sm = new Software_Multiple(current_cr);
             sm.ShowDialog();
         }
 
 
         private void load_data()
         {
-            id.Text = MainWindow.current_cr.Id;
-            description.Text = MainWindow.current_cr.Description;
-            num_of_seats.Text = MainWindow.current_cr.Num_of_seats + "";
-            if (MainWindow.current_cr.Board)
+            id.Text = current_cr.Id;
+            description.Text = current_cr.Description;
+            num_of_seats.Text = current_cr.Num_of_seats + "";
+            if (current_cr.Board)
             {
                 board_tb.Text = "Yes";
                 board_yes.IsChecked = true;
@@ -145,7 +148,7 @@ namespace HCI2___Back_To_Slay.windows
                 board_no.IsChecked = true;
                 board_tb.Text = "No";
             }
-            if (MainWindow.current_cr.Smart_board)
+            if (current_cr.Smart_board)
             {
                 smartb_yes.IsChecked = true;
                 smart_board_tb.Text = "Yes";
@@ -155,7 +158,7 @@ namespace HCI2___Back_To_Slay.windows
                 smartb_no.IsChecked = true;
                 smart_board_tb.Text = "No";
             }
-            if (MainWindow.current_cr.Projector)
+            if (current_cr.Projector)
             {
                 projector_yes.IsChecked = true;
                 projector_tb.Text = "Yes";
@@ -165,12 +168,12 @@ namespace HCI2___Back_To_Slay.windows
                 projector_no.IsChecked = true;
                 projector_tb.Text = "No";
             }
-            if (MainWindow.current_cr.Os.Equals(Classroom.OpSystem.Windows))
+            if (current_cr.Os.Equals(Classroom.OpSystem.Windows))
             {
                 win_btn.IsChecked = true;
                 os_tb.Text = Classroom.OpSystem.Windows.ToString();
             }
-            else if (MainWindow.current_cr.Os.Equals(Classroom.OpSystem.Linux))
+            else if (current_cr.Os.Equals(Classroom.OpSystem.Linux))
             {
                 lin_btn.IsChecked = true;
                 os_tb.Text = Classroom.OpSystem.Linux.ToString();
@@ -182,45 +185,33 @@ namespace HCI2___Back_To_Slay.windows
             }
         }
 
-        private Visibility isVisible(Control ctrl)
-        {
-            if (ctrl.Visibility == Visibility.Visible)
-            {
-                return Visibility.Hidden;
-            }
-            else
-            {
-                return Visibility.Visible;
-            }
-        }
-
         private void change_visibility()
         {
             description.IsReadOnly = !description.IsReadOnly;
             num_of_seats.IsReadOnly = !num_of_seats.IsReadOnly;
 
-            change.Visibility = isVisible(change);
-            delete.Visibility = isVisible(delete);
-            back_btn.Visibility = isVisible(back_btn);
-            update.Visibility = isVisible(update);
+            change.Visibility = Helper.isVisible(change);
+            delete.Visibility = Helper.isVisible(delete);
+            back_btn.Visibility = Helper.isVisible(back_btn);
+            update.Visibility = Helper.isVisible(update);
 
-            board_tb.Visibility = isVisible(board_tb);
-            smart_board_tb.Visibility = isVisible(smart_board_tb);
-            projector_tb.Visibility = isVisible(projector_tb);
-            os_tb.Visibility = isVisible(os_tb);
+            board_tb.Visibility = Helper.isVisible(board_tb);
+            smart_board_tb.Visibility = Helper.isVisible(smart_board_tb);
+            projector_tb.Visibility = Helper.isVisible(projector_tb);
+            os_tb.Visibility = Helper.isVisible(os_tb);
 
-            board_yes.Visibility = isVisible(board_yes);
-            board_no.Visibility = isVisible(board_no);
-            smartb_yes.Visibility = isVisible(smartb_yes);
-            smartb_no.Visibility = isVisible(smartb_no);
-            projector_yes.Visibility = isVisible(projector_yes);
-            projector_no.Visibility = isVisible(projector_no);
-            win_btn.Visibility = isVisible(win_btn);
-            lin_btn.Visibility = isVisible(lin_btn);
-            both_btn.Visibility = isVisible(both_btn);
+            board_yes.Visibility = Helper.isVisible(board_yes);
+            board_no.Visibility = Helper.isVisible(board_no);
+            smartb_yes.Visibility = Helper.isVisible(smartb_yes);
+            smartb_no.Visibility = Helper.isVisible(smartb_no);
+            projector_yes.Visibility = Helper.isVisible(projector_yes);
+            projector_no.Visibility = Helper.isVisible(projector_no);
+            win_btn.Visibility = Helper.isVisible(win_btn);
+            lin_btn.Visibility = Helper.isVisible(lin_btn);
+            both_btn.Visibility = Helper.isVisible(both_btn);
 
-            sw_tb.Visibility = isVisible(view_sw_btn);
-            view_sw_btn.Visibility = isVisible(view_sw_btn);
+            sw_tb.Visibility = Helper.isVisible(view_sw_btn);
+            view_sw_btn.Visibility = Helper.isVisible(view_sw_btn);
         }
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)

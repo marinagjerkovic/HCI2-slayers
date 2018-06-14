@@ -11,14 +11,14 @@
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="26,53,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="26,88,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="26,150,0,0" TextWrapping="Wrap" Text="Date of conception:" VerticalAlignment="Top"/>
-        <Button x:Name="change" Content="Change data" HorizontalAlignment="Left" Margin="100,229,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="delete" Content="Delete" HorizontalAlignment="Left" Margin="193,229,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="update" Content="Save changes" HorizontalAlignment="Left" Margin="100,229,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden"/>
-        <Button x:Name="back_btn" Content="Back" HorizontalAlignment="Left" Margin="193,229,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden"/>
+        <Button x:Name="change_btn" Content="Change data" HorizontalAlignment="Left" Margin="100,229,0,0" VerticalAlignment="Top" Width="75" Click="change_data"/>
+        <Button x:Name="delete_btn" Content="Delete" HorizontalAlignment="Left" Margin="193,229,0,0" VerticalAlignment="Top" Width="75" Click="delete"/>
+        <Button x:Name="update_btn" Content="Save changes" HorizontalAlignment="Left" Margin="100,229,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden" Click="update"/>
+        <Button x:Name="back_btn" Content="Back" HorizontalAlignment="Left" Margin="193,229,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden" Click="back"/>
         <TextBox x:Name="id" HorizontalAlignment="Left" Margin="148,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
         <TextBox x:Name="name" HorizontalAlignment="Left" Margin="148,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
-        <TextBox x:Name="description" HorizontalAlignment="Left" Height="23" Margin="154,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
-        <DatePicker HorizontalAlignment="Left" Margin="148,150,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <TextBox x:Name="description" HorizontalAlignment="Left" Margin="154,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
+        <DatePicker x:Name="date_picker" HorizontalAlignment="Left" Margin="148,150,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <TextBox x:Name="date" HorizontalAlignment="Left" Margin="154,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
 
 

@@ -28,7 +28,7 @@ namespace HCI2___Back_To_Slay.windows
 
         private void show_classroom(object sender, RoutedEventArgs e)
         {
-            DataGridRow row = Choose_Software.detect_selected_row((DependencyObject)e.OriginalSource);
+            DataGridRow row = Helper.detect_selected_row((DependencyObject)e.OriginalSource);
             dataGrid = ItemsControl.ItemsControlFromItemContainer(row) as DataGrid;
             int index = dataGrid.ItemContainerGenerator.IndexFromContainer(row);
             if (index == -1)
@@ -44,7 +44,7 @@ namespace HCI2___Back_To_Slay.windows
 
         private void show_software(object sender, RoutedEventArgs e)
         {
-            DataGridRow row = Choose_Software.detect_selected_row((DependencyObject)e.OriginalSource);
+            DataGridRow row = Helper.detect_selected_row((DependencyObject)e.OriginalSource);
             dataGrid = ItemsControl.ItemsControlFromItemContainer(row) as DataGrid;
             int index = dataGrid.ItemContainerGenerator.IndexFromContainer(row);
             if (index == -1)
@@ -52,7 +52,7 @@ namespace HCI2___Back_To_Slay.windows
                 return;
             }
 
-            Software_Multiple sm = new Software_Multiple(MainWindow.allClassrooms.ElementAt(index).Software);
+            Software_Multiple sm = new Software_Multiple(MainWindow.allClassrooms.ElementAt(index));
             sm.ShowDialog();
         }
 

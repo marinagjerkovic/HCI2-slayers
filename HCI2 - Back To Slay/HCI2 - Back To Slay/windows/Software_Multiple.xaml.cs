@@ -22,6 +22,13 @@ namespace HCI2___Back_To_Slay.windows
     public partial class Software_Multiple : Window
     {
         private ObservableCollection<Software> Show_Data = new ObservableCollection<Software>();
+        //private Classroom current_cr = null;
+
+        private List<Software> current_sws = new List<Software>();
+        private Classroom.OpSystem current_os;
+
+        private int index;
+        private bool sub;
 
         //constructor
         public Software_Multiple()
@@ -31,9 +38,30 @@ namespace HCI2___Back_To_Slay.windows
             dataGrid.ItemsSource = Show_Data;
         }
 
-        public Software_Multiple(List<Software> show)
+        public Software_Multiple(Classroom cr)
         {
-            foreach(Software sw in show)
+            current_sws = cr.Software;
+            current_os = cr.Os;
+            index = MainWindow.allClassrooms.IndexOf(cr);
+            sub = false;
+
+            foreach(Software sw in current_sws)
+            {
+                Show_Data.Add(sw);
+            }
+            InitializeComponent();
+            dataGrid.ItemsSource = Show_Data;
+            ar_sw.Visibility = Visibility.Visible;
+        }
+
+        public Software_Multiple(Subject subj)
+        {
+            current_sws = subj.Software;
+            current_os = subj.Os;
+            index = MainWindow.allSubjects.IndexOf(subj);
+            sub = true;
+
+            foreach (Software sw in current_sws)
             {
                 Show_Data.Add(sw);
             }
@@ -44,14 +72,15 @@ namespace HCI2___Back_To_Slay.windows
 
         private void choose_software(object sender, RoutedEventArgs e)
         {
-            Choose_Software sw = new Choose_Software();
+            Choose_Software.chosen_software = current_sws;
+            Choose_Software sw = new Choose_Software(current_os);
             sw.Closed += new EventHandler((sender2, e2) => load_data(sender2, e2));
             sw.ShowDialog();
         }
 
         private void show_software(object sender, RoutedEventArgs e)
         {
-            DataGridRow row = Choose_Software.detect_selected_row((DependencyObject)e.OriginalSource);
+            DataGridRow row = Helper.detect_selected_row((DependencyObject)e.OriginalSource);
             dataGrid = ItemsControl.ItemsControlFromItemContainer(row) as DataGrid;
             int index = dataGrid.ItemContainerGenerator.IndexFromContainer(row);
             if (index == -1)
@@ -61,16 +90,28 @@ namespace HCI2___Back_To_Slay.windows
 
             Software_Info si = new Software_Info(Show_Data.ElementAt(index));
 
-            si.Closed += new EventHandler((sender2, e2) => refresh_data(sender2, e2));
+            if (current_sws.Count()==0)
+            {
+                si.Closed += new EventHandler((sender2, e2) => refresh_data(sender2, e2));
+            }
             si.ShowDialog();
         }
 
         private void load_data(object sender, EventArgs e)
         {
+            current_sws = Choose_Software.chosen_software;
             Show_Data = new ObservableCollection<Software>();
-            foreach(Software sw in MainWindow.current_cr.Software)
+            foreach(Software sw in current_sws)
             {
                 Show_Data.Add(sw);
+            }
+            if (sub)
+            {
+                MainWindow.allSubjects.ElementAt(index).Software = current_sws;
+            }
+            else
+            {
+                MainWindow.allClassrooms.ElementAt(index).Software = current_sws;
             }
             dataGrid.ItemsSource = Show_Data;
         }

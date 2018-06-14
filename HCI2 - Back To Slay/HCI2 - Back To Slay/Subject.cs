@@ -178,7 +178,10 @@ namespace HCI2___Back_To_Slay
             }
         }
 
-        public Subject() { }
+        public Subject()
+        {
+            this.Software = new List<HCI2___Back_To_Slay.Software>();
+        }
 
         public Subject(string v1, string v2, string v3, Course course, int v4, int v5, int v6, bool v7, bool v8, bool v9, Classroom.OpSystem linux, List<Software> s)
         {
