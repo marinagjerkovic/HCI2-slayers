@@ -26,7 +26,7 @@
         <TextBox x:Name="os_tb" HorizontalAlignment="Left" Margin="150, 150, 0, 0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="true" BorderBrush="Transparent"/>
         <Button x:Name="change" Content="Change data" HorizontalAlignment="Left" Margin="93,309,0,0" VerticalAlignment="Top" Width="75" Click="change_software" />
         <Button x:Name="delete" Content="Delete " HorizontalAlignment="Left" Margin="191,309,0,0" VerticalAlignment="Top" Width="75" Click ="delete_software" />
-        <Button x:Name="update" Content="Update data" HorizontalAlignment="Left" Margin="93,309,0,0" VerticalAlignment="Top" Width="75" Click="update_software" Visibility="Hidden"/>
+        <Button x:Name="update" Content="Save changes" HorizontalAlignment="Left" Margin="93,309,0,0" VerticalAlignment="Top" Width="75" Click="update_software" Visibility="Hidden"/>
         <Button x:Name="back_btn" Content="Back" HorizontalAlignment="Left" Margin="191,309,0,0" VerticalAlignment="Top" Width="75" Click="back" Visibility="Hidden"/>
         <RadioButton x:Name="win_btn" Content="Windows" HorizontalAlignment="Left" Margin="150,150,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden" />
         <RadioButton x:Name="lin_btn" Content="Linux" HorizontalAlignment="Left" Margin="230,150,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden"/>

@@ -28,6 +28,8 @@ namespace HCI2___Back_To_Slay
     ///
     public partial class MainWindow : Window
     {
+        public static Classroom current_cr;
+
         public static SfSchedule schedule;
         public DateTime mainDate;
         public static List<string> allClassroomsIds = new List<string>();
@@ -198,6 +200,11 @@ namespace HCI2___Back_To_Slay
             return r;
         }
 
+        public static bool update_classroom_schedule(int num_of_seats, bool board, bool smart_board, bool projector, Classroom.OpSystem os)
+        {
+            return true;
+        }
+
         private void remove_classroom_from_schedule(Object sender, RoutedEventArgs e)
         {
             if (resourceType.ResourceCollection.Count <= 1)
@@ -322,6 +329,22 @@ namespace HCI2___Back_To_Slay
         private bool fitCheck(Appointment app, Classroom cr)
         {
             return (app.Classroom.Num_of_seats >= app.Subject.Size_of_group);
+        }
+        
+       
+
+
+        private void show_all_software(object sender, RoutedEventArgs e)
+        {
+            Software_Multiple sm = new Software_Multiple();
+            sm.ShowDialog();
+        }
+
+        private void show_all_classrooms(object sender, RoutedEventArgs e)
+        {
+            //tba
+            Classroom_Multiple cm = new Classroom_Multiple();
+            cm.ShowDialog();
         }
 
         ScheduleAppointment temp_app;

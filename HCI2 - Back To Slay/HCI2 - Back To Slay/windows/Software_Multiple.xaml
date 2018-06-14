@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
         mc:Ignorable="d"
-        Title="Software_Multiple" Height="400" Width="600">
+        Title="Software_Multiple" Height="300" Width="800">
     <Grid>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left"  Margin="64,70,0,0" VerticalAlignment="Top"
                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
@@ -13,13 +13,14 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="OS" Binding="{Binding Os}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Description" Binding="{Binding Description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="150"></DataGridTextColumn>
                 <DataGridTextColumn Header="Maker" Binding="{Binding Maker}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Site" Binding="{Binding Site}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Year of publication" Binding="{Binding Year}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Price" Binding="{Binding Price}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="ar_sw" Content="Add/remove software" HorizontalAlignment="Left" Margin="64,32,0,0" VerticalAlignment="Top" Visibility="Hidden" Click="choose_software"/>
 
     </Grid>
 </Window>

@@ -7,9 +7,9 @@ BS,WindowsAndLinux,BS player,BSFactory,www.bs.com,2001,5,movies
 MLAB,Windows,Matlab,MatlabFactory,www.matlab.com,2003,24,functions
 CHRM,WindowsAndLinux,Google Chrome,Google,www.googlechrome.com,2005,0,browser
 courses
-SW15,Softversko inzenjerstvo,informacione tehnologije,05-Jun-13 00:00:00
-SW16,Softversko inzenjerstvo,informacione tehnologije,04-Dec-13 00:00:00
-RA15,Racunarstvo i automatika,elektrotehnika,02-Mar-05 00:00:00
+SW15,Softversko inzenjerstvo,informacione tehnologije,06-May-13 00:00:00
+SW16,Softversko inzenjerstvo,informacione tehnologije,12-Apr-13 00:00:00
+RA15,Racunarstvo i automatika,elektrotehnika,03-Feb-05 00:00:00
 AR16,Arhitektura,arhitektura eksterijera,01-Jan-11 00:00:00
 subjects
 ISA15,Internet softverske arhitekture,web,True,False,True,3,1,15,SW15,Windows,ECL|VS|CHRM
@@ -76,5 +76,5 @@ id12,desc2,30,False,True,True,WindowsAndLinux,
 id13,desc3,30,False,True,True,WindowsAndLinux,
 id14,desc4,30,False,True,True,WindowsAndLinux,
 id15,desc5,30,False,True,True,WindowsAndLinux,
-RC1,FTN 3. sprat,20,True,False,True,WindowsAndLinux,CHRM|ECL|VS
+RC1,FTN 3. sprat,20,True,False,True,Linux,BS|CB
 RC2,FTN 3. sprat,25,False,True,False,Windows,MLAB

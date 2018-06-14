@@ -29,27 +29,7 @@ namespace HCI2___Back_To_Slay.windows
             current_sw = sw;
             InitializeComponent();
             this.Title = current_sw.Name;
-            id.Text = sw.Id;
-            name.Text = sw.Name;
-            description.Text = sw.Description;
-            maker.Text = sw.Maker;
-            site.Text = sw.Site;
-            year.Text = sw.Year+"";
-            price.Text = sw.Price + "";
-            if (current_sw.Os.Equals(Classroom.OpSystem.Windows))
-            {
-                win_btn.IsChecked = true;
-                os_tb.Text = Classroom.OpSystem.Windows.ToString();
-            }else if (current_sw.Os.Equals(Classroom.OpSystem.Linux))
-            {
-                lin_btn.IsChecked = true;
-                os_tb.Text = Classroom.OpSystem.Linux.ToString();
-            }else
-            {
-                both_btn.IsChecked = true;
-                os_tb.Text = Classroom.OpSystem.WindowsAndLinux.ToString();
-            }
-
+            load_data();
         }
 
         private void change_software(object sender, RoutedEventArgs e)
@@ -65,13 +45,12 @@ namespace HCI2___Back_To_Slay.windows
 
         private void update_software(object sender, RoutedEventArgs e)
         {
-
-
             if (name.Text.Equals("") || description.Text.Equals("") || maker.Text.Equals("") || site.Text.Equals(""))
             {
                 MessageBox.Show("Field's can't be empty!", "Error!");
                 return;
             }
+
             current_sw.Name = name.Text;
             current_sw.Description = description.Text;
             current_sw.Maker = maker.Text;
@@ -115,7 +94,7 @@ namespace HCI2___Back_To_Slay.windows
             MainWindow.allSoftware.Add(current_sw);
             MainWindow.allSoftwareIds.Add(current_sw.Id);
             updated = current_sw.Id;
-            
+               
 
             change_visibility();
             description.BorderBrush = new SolidColorBrush(Colors.Transparent);
@@ -124,7 +103,6 @@ namespace HCI2___Back_To_Slay.windows
             year.BorderBrush = new SolidColorBrush(Colors.Transparent);
             maker.BorderBrush = new SolidColorBrush(Colors.Transparent);
             site.BorderBrush = new SolidColorBrush(Colors.Transparent);
-            MessageBox.Show("Info updated!", "Info!");
         }
 
         private void delete_software(object sender, RoutedEventArgs e)
@@ -152,6 +130,33 @@ namespace HCI2___Back_To_Slay.windows
             maker.BorderBrush = new SolidColorBrush(Colors.Transparent);
             site.BorderBrush = new SolidColorBrush(Colors.Transparent);
             change_visibility();
+        }
+
+
+        private void load_data()
+        {
+            id.Text = current_sw.Id;
+            name.Text = current_sw.Name;
+            description.Text = current_sw.Description;
+            maker.Text = current_sw.Maker;
+            site.Text = current_sw.Site;
+            year.Text = current_sw.Year + "";
+            price.Text = current_sw.Price + "";
+            if (current_sw.Os.Equals(Classroom.OpSystem.Windows))
+            {
+                win_btn.IsChecked = true;
+                os_tb.Text = Classroom.OpSystem.Windows.ToString();
+            }
+            else if (current_sw.Os.Equals(Classroom.OpSystem.Linux))
+            {
+                lin_btn.IsChecked = true;
+                os_tb.Text = Classroom.OpSystem.Linux.ToString();
+            }
+            else
+            {
+                both_btn.IsChecked = true;
+                os_tb.Text = Classroom.OpSystem.WindowsAndLinux.ToString();
+            }
         }
 
         private void change_visibility()
