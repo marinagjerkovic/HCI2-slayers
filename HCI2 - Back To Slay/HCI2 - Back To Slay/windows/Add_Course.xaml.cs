@@ -42,7 +42,13 @@ namespace HCI2___Back_To_Slay.windows
             MainWindow.allCourses.Add(course);
             MainWindow.allCoursesIds.Add(id.Text);
             MessageBox.Show("Successfully added a new course!");
-            this.Close();
+
+            id.Text = "";
+            name.Text = "";
+            description.Text = "";
+            datepicker.Text = "";
+
+            //this.Close();
         }
 
         private void cancel(object sender, RoutedEventArgs e)

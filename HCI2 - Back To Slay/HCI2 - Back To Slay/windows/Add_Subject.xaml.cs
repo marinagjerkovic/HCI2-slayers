@@ -115,7 +115,19 @@ namespace HCI2___Back_To_Slay.windows
             MainWindow.allSubjects.Add(current_sub);
             MainWindow.allSubjectsIds.Add(id.Text);
             MessageBox.Show("Successfully added a new subject!");
-            this.Close();
+
+            current_sub = new Subject();
+            id.Text = "";
+            name.Text = "";
+            description.Text = "";
+            group_size.Text = "";
+            num_periods.Text = "";
+            duration.Text = "";
+            add_crs.Visibility = System.Windows.Visibility.Visible;
+            sel_crs.Visibility = System.Windows.Visibility.Hidden;
+            change_crs.Visibility = System.Windows.Visibility.Hidden;                        
+            Courses_Multiple.selected_crs = null;
+            //this.Close();
         }
 
         private void cancel(object sender, RoutedEventArgs e)

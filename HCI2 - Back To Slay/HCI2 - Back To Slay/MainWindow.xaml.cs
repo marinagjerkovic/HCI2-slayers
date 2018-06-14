@@ -747,5 +747,15 @@ namespace HCI2___Back_To_Slay
         {
 
         }
+
+        private void show_help(object sender, RoutedEventArgs e)
+        {
+            HelpProvider.ShowHelp("index", this);        
+        }
+
+        private void start_demo(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

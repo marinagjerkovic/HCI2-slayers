@@ -83,6 +83,10 @@
                     <MenuItem Header="Add new software" Click="add_new_software"/>
                     <MenuItem Header="Show all software" Click="show_all_software"/>
                 </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="Help" Click="show_help"/>
+                    <MenuItem Header="Demo" Click="start_demo"/>
+                </MenuItem>
 
             </Menu>
             <Grid x:Name="LayoutRoot">

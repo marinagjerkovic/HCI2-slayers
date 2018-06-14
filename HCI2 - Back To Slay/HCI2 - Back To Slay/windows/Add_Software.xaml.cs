@@ -77,7 +77,15 @@ namespace HCI2___Back_To_Slay.windows
             MainWindow.allSoftware.Add(sw);
             MainWindow.allSoftwareIds.Add(id.Text);
             MessageBox.Show("Successfully added a new software!");
-            this.Close();
+
+            id.Text = "";
+            name.Text = "";
+            description.Text = "";
+            maker.Text = "";
+            site.Text = "";
+            year.Text = "";
+            price.Text = "";
+            //this.Close();
         }
 
         private void cancel(object sender, RoutedEventArgs e)

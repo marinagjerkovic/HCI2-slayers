@@ -7,14 +7,6 @@
         mc:Ignorable="d"
         Title="HelpViewer" Height="500" Width="1000">
     <DockPanel>
-        <ToolBar DockPanel.Dock="Top">
-            <Button Command="NavigationCommands.BrowseBack">
-                Back
-            </Button>
-            <Button Command="NavigationCommands.BrowseForward">
-                Forward
-            </Button>
-        </ToolBar>
         <WebBrowser Name="wbHelp" Navigating="wbHelp_Navigating"></WebBrowser>
     </DockPanel>
 </Window>
