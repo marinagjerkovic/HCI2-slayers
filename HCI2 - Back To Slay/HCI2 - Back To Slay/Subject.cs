@@ -178,6 +178,20 @@ namespace HCI2___Back_To_Slay
             }
         }
 
+        public string Course_name
+        {
+            get
+            {
+                return course.Name;
+            }
+
+            set
+            {
+                course.Name = value;
+            }
+        }
+
+
         public Subject()
         {
             this.Software = new List<HCI2___Back_To_Slay.Software>();

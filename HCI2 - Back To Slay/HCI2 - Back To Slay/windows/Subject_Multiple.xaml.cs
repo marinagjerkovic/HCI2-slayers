@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
 
 namespace HCI2___Back_To_Slay.windows
 {
@@ -19,38 +20,101 @@ namespace HCI2___Back_To_Slay.windows
     /// </summary>
     public partial class Subject_Multiple : Window
     {
+
+        private ObservableCollection<Subject> temp = new ObservableCollection<Subject>();
+
         public Subject_Multiple()
         {
             InitializeComponent();
             dataGrid.ItemsSource = MainWindow.allSubjects;
+
+            kombo.Items.Add("id");
+            kombo.Items.Add("name");
+            kombo.Items.Add("description");
         }
 
         private void show_subject(object sender, RoutedEventArgs e)
         {
-            DataGridRow row = Helper.detect_selected_row((DependencyObject)e.OriginalSource);
-            dataGrid = ItemsControl.ItemsControlFromItemContainer(row) as DataGrid;
-            int index = dataGrid.ItemContainerGenerator.IndexFromContainer(row);
-            if (index == -1)
-            {
-                return;
-            }
-            Subject_Info si = new Subject_Info(MainWindow.allSubjects.ElementAt(index));
+            Subject_Info si = new Subject_Info((Subject)dataGrid.SelectedItem);
+            si.Closed += new EventHandler((sender2, e2) => check_data(sender2, e2));
             si.ShowDialog();
         }
 
 
         private void show_software(object sender, RoutedEventArgs e)
         {
-            DataGridRow row = Helper.detect_selected_row((DependencyObject)e.OriginalSource);
-            dataGrid = ItemsControl.ItemsControlFromItemContainer(row) as DataGrid;
-            int index = dataGrid.ItemContainerGenerator.IndexFromContainer(row);
-            if (index == -1)
+            Software_Multiple sm = new Software_Multiple((Subject)dataGrid.SelectedItem);
+            sm.ShowDialog();
+        }
+
+        private void search_subjects(object sender, RoutedEventArgs e)
+        {
+            string search_text = search_tb.Text.ToLower();
+            string search_crit = (string)kombo.SelectedItem;
+            if (search_text.Equals(""))
             {
+                temp = null;
+                dataGrid.ItemsSource = MainWindow.allSubjects;
+            }
+            else
+            {
+                load_temp(search_crit, search_text, true);
+                dataGrid.ItemsSource = temp;
+            }
+        }
+
+        private void load_temp(string search_crit, string search_text, bool reload)
+        {
+            temp = new ObservableCollection<Subject>();
+            switch (search_crit)
+            {
+                case ("id"):
+                    foreach (Subject sub in MainWindow.allSubjects)
+                    {
+                        if (sub.Id.ToLower().Contains(search_text))
+                        {
+                            temp.Add(sub);
+                        }
+                    }
+                    break;
+                case ("description"):
+                    foreach (Subject sub in MainWindow.allSubjects)
+                    {
+                        if (sub.Description.ToLower().Contains(search_text))
+                        {
+                            temp.Add(sub);
+                        }
+                    }
+                    break;
+                case (null):
+                    if (reload)
+                    {
+                        MessageBox.Show("No search criterium selected!");
+                    }
+                    temp = MainWindow.allSubjects;
+                    break;
+            }
+            if (temp.Count() == 0)
+            {
+                MessageBox.Show("No subjects found!");
                 return;
             }
+        }
 
-            Software_Multiple sm = new Software_Multiple(MainWindow.allSubjects.ElementAt(index));
-            sm.ShowDialog();
+        private void check_data(object sender, EventArgs e)
+        {
+            if (temp != null)
+            {
+                string search_text = search_tb.Text.ToLower();
+                string search_crit = (string)kombo.SelectedItem;
+                load_temp(search_crit, search_text, false);
+                dataGrid.ItemsSource = temp;
+            }
+        }
+
+        private void criteria_changed(object sender, EventArgs e)
+        {
+            search_tb.Text = "";
         }
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -71,5 +135,6 @@ namespace HCI2___Back_To_Slay.windows
                 HelpProvider.ShowHelp(str, this);
             }
         }
+
     }
 }
