@@ -35,14 +35,37 @@ namespace HCI2___Back_To_Slay.windows
 
         private void delete(object sender, RoutedEventArgs e)
         {
-
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this course from the system?", "sinisa the best", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case (MessageBoxResult.Yes):
+                    if (MainWindow.update_classroom_schedule(current_crs.Id))
+                    {
+                        MainWindow.allCourses.Remove(current_crs);
+                        MainWindow.allCoursesIds.Remove(current_crs.Id);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("This course is used in current schedule - please remove it before deleting it!");
+                    }
+                    break;
+                case (MessageBoxResult.No):
+                    break;
+            }
         }
 
         private void change_data(object sender, RoutedEventArgs e)
         {
-            name.BorderBrush = Helper.colors[0];
-            description.BorderBrush = Helper.colors[0];
-            change_visibility();
+            if (MainWindow.update_course_schedule(current_crs.Id))
+            {
+                name.BorderBrush = Helper.colors[0];
+                description.BorderBrush = Helper.colors[0];
+                change_visibility();
+            }else
+            {
+                MessageBox.Show("This course is used in current schedule - please remove it before updating it!");
+            }
         }
 
         private void update(object sender, RoutedEventArgs e)
@@ -53,13 +76,13 @@ namespace HCI2___Back_To_Slay.windows
                 return;
             }
 
-            current_crs.Name = name.Text;
-            current_crs.Description = description.Text;
-            current_crs.Date_of_conception = DateTime.Parse(date_picker.Text);
+                current_crs.Name = name.Text;
+                current_crs.Description = description.Text;
+                current_crs.Date_of_conception = DateTime.Parse(date_picker.Text);
 
-            date.Text = Convert.ToString(current_crs.Date_of_conception);
-            MainWindow.allCourses.Remove(current_crs);
-            MainWindow.allCourses.Add(current_crs);
+                date.Text = Convert.ToString(current_crs.Date_of_conception);
+                MainWindow.allCourses.Remove(current_crs);
+                MainWindow.allCourses.Add(current_crs);
 
             name.BorderBrush = Helper.colors[1];
             description.BorderBrush = Helper.colors[1];

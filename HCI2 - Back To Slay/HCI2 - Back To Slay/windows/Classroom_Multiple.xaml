@@ -6,14 +6,14 @@
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
         xmlns:l="clr-namespace:HCI2___Back_To_Slay"
         mc:Ignorable="d"
-        Title="Classroom_Multiple" Height="300" Width="800">
+        Title="Classroom_Multiple" Height="300" Width="900">
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
     </Window.CommandBindings>
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="64,70,0,0" VerticalAlignment="Top"
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="54,50,0,0" VerticalAlignment="Top"
                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
-                  SelectedItem="Binding Classroom" MouseDoubleClick="show_classroom" AutoGenerateColumns="false" l:HelpProvider.HelpKey="izlistavanje_ucionica">
+                  SelectedItem="Binding Classroom" MouseDoubleClick="show_classroom" AutoGenerateColumns="false" l:HelpProvider.HelpKey="izlistavanje_ucionica" Height="150">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Description" Width="150" Binding="{Binding Description}"></DataGridTextColumn>
@@ -40,6 +40,7 @@
             </DataGrid.Columns>
             
         </DataGrid>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="54,219,0,0" TextWrapping="Wrap" Text="Search: " VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
