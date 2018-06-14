@@ -108,6 +108,9 @@
     <Compile Include="windows\Classroom_Multiple.xaml.cs">
       <DependentUpon>Classroom_Multiple.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\Course_Info.xaml.cs">
+      <DependentUpon>Course_Info.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\Software_Info.xaml.cs">
       <DependentUpon>Software_Info.xaml</DependentUpon>
     </Compile>
@@ -156,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\Classroom_Multiple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\Course_Info.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
