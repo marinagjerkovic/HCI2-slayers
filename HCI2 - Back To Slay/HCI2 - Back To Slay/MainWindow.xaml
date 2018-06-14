@@ -4,11 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:schedule="http://schemas.syncfusion.com/wpf"
-
+        xmlns:l="clr-namespace:HCI2___Back_To_Slay"
+        
         xmlns:local="clr-namespace:HCI2___Back_To_Slay"
         mc:Ignorable="d"
         Title="MainWindow"     Height="{Binding SystemParameters.PrimaryScreenHeight}" 
         Width="{Binding SystemParameters.PrimaryScreenWidth}">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Window.Resources>
         <Style TargetType="schedule:HeaderTitleBarView">
             <Setter Property="Foreground" Value="#373837" />
@@ -64,13 +68,11 @@
                 </MenuItem>
                 <MenuItem Header="Course">
                     <MenuItem Header="Add new course" Click="add_new_course"/>
-                    <MenuItem Header="Update course info"/>
-                    <MenuItem Header="Remove course"/>
+                    <MenuItem Header="Show all courses" Click="show_all_courses"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Subject">
                     <MenuItem Header="Add new subject" Click="add_new_subject"/>
-                    <MenuItem Header="Update subject info"/>
-                    <MenuItem Header="Remove subject"/>
+                    <MenuItem Header="Show all subjects" Click="show_all_subjects"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Software">
                     <MenuItem Header="Add new software" Click="add_new_software"/>

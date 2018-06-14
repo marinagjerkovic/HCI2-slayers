@@ -21,9 +21,11 @@ namespace HCI2___Back_To_Slay.windows
     public partial class Add_Classroom : Window
     {
 
+        private Classroom current_cr;
+
         public Add_Classroom()
         {
-            MainWindow.current_cr = new Classroom();
+            current_cr = new Classroom();
             InitializeComponent();
         }
 
@@ -35,19 +37,19 @@ namespace HCI2___Back_To_Slay.windows
                 return;
             }
 
-            if(id.Text.Equals("") || description.Text.Equals("") || MainWindow.current_cr.Software.Count() == 0)
+            if(id.Text.Equals("") || description.Text.Equals("") || current_cr.Software.Count() == 0)
             {
                 MessageBox.Show("You didn't input all fields - check again!");
                 return;
             }
 
-            MainWindow.current_cr.Id = id.Text;
-            MainWindow.current_cr.Description = description.Text;
+            current_cr.Id = id.Text;
+            current_cr.Description = description.Text;
 
             int num = 0;
             if (Int32.TryParse(num_of_seats.Text, out num))
             {
-                MainWindow.current_cr.Num_of_seats = num;
+                current_cr.Num_of_seats = num;
             }
             else
             {
@@ -57,48 +59,48 @@ namespace HCI2___Back_To_Slay.windows
 
             if (projYes.IsChecked==true)
             {
-                MainWindow.current_cr.Projector = true;
+                current_cr.Projector = true;
             }
             else
             {
-                MainWindow.current_cr.Projector = false;
+                current_cr.Projector = false;
             }
 
             if (boardYes.IsChecked == true)
             {
-                MainWindow.current_cr.Board = true;
+                current_cr.Board = true;
             }
             else
             {
-                MainWindow.current_cr.Board = false;
+                current_cr.Board = false;
             }
 
             if (smartYes.IsChecked == true)
             {
-                MainWindow.current_cr.Smart_board = true;
+                current_cr.Smart_board = true;
             }
             else
             {
-                MainWindow.current_cr.Smart_board = false;
+                current_cr.Smart_board = false;
             }
 
             if (win.IsChecked == true)
             {
-                MainWindow.current_cr.Os = Classroom.OpSystem.Windows;
+                current_cr.Os = Classroom.OpSystem.Windows;
             }
             else if (lin.IsChecked == true)
             {
-                MainWindow.current_cr.Os = Classroom.OpSystem.Linux;
+                current_cr.Os = Classroom.OpSystem.Linux;
             }
             else
             {
-                MainWindow.current_cr.Os = Classroom.OpSystem.WindowsAndLinux;
+                current_cr.Os = Classroom.OpSystem.WindowsAndLinux;
             }
 
             //dodaj softver
 
             MainWindow.allClassroomsIds.Add(id.Text);
-            MainWindow.allClassrooms.Add(MainWindow.current_cr);
+            MainWindow.allClassrooms.Add(current_cr);
             MainWindow.enableSchedule();
 
             MessageBox.Show("Successfully added a new classroom!");
@@ -122,11 +124,35 @@ namespace HCI2___Back_To_Slay.windows
             {
                 a = Classroom.OpSystem.WindowsAndLinux;
             }
+            Choose_Software.chosen_software = current_cr.Software;
             Choose_Software cs = new Choose_Software(a);
+            cs.Closed += new EventHandler((sender2, e2) => load_data(sender2, e2));
             cs.ShowDialog();
-
         }
 
+        private void load_data(object sender, EventArgs e)
+        {
+            current_cr.Software = Choose_Software.chosen_software;
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            int indeks=0;
+            for (int i = 0; i < Application.Current.Windows.Count; i++)
+            {
+                if (Application.Current.Windows[i].Title.Equals("Add Classroom"))
+                {
+                    indeks = i;
+                }
+            }
+
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[indeks]);
+            if (focusedControl is DependencyObject)
+            {     
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
+            }
+        }
 
     }
 }

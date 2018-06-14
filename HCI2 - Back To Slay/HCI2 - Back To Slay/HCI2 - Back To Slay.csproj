@@ -80,6 +80,11 @@
     </ApplicationDefinition>
     <Compile Include="Appointment.cs" />
     <Compile Include="Course.cs" />
+    <Compile Include="HelpProvider.cs" />
+    <Compile Include="HelpViewer.xaml.cs">
+      <DependentUpon>HelpViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JavaScriptControlHelper.cs" />
     <Compile Include="Software.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="windows\Add_Classroom.xaml.cs">
@@ -103,12 +108,29 @@
     <Compile Include="windows\Classroom_Multiple.xaml.cs">
       <DependentUpon>Classroom_Multiple.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\Courses_Multiple.xaml.cs">
+      <DependentUpon>Courses_Multiple.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\Course_Info.xaml.cs">
+      <DependentUpon>Course_Info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\Helper.cs" />
     <Compile Include="windows\Software_Info.xaml.cs">
       <DependentUpon>Software_Info.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\Software_Multiple.xaml.cs">
       <DependentUpon>Software_Multiple.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\Subject_Info.xaml.cs">
+      <DependentUpon>Subject_Info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\Subject_Multiple.xaml.cs">
+      <DependentUpon>Subject_Multiple.xaml</DependentUpon>
+    </Compile>
+    <Page Include="HelpViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -150,11 +172,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="windows\Courses_Multiple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\Course_Info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="windows\Software_Info.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\Software_Multiple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\Subject_Info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\Subject_Multiple.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,6 +241,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="files\savings.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Help\error.html" />
+    <Content Include="Help\index.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

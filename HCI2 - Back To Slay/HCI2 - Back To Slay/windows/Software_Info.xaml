@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
+        xmlns:l="clr-namespace:HCI2___Back_To_Slay"
         mc:Ignorable="d"
         Title="Software_Info" Height="370" Width="400">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="27,10,0,0" TextWrapping="Wrap" Text="Id: " VerticalAlignment="Top" RenderTransformOrigin="1.571,1.414" Height="26" Width="27" />
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="27,40,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"  />

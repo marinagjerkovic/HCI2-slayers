@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
+        xmlns:l="clr-namespace:HCI2___Back_To_Slay"
         mc:Ignorable="d"
         Title="Add Classroom" Height="460" Width="400">
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Grid Margin="0,0,2,1">
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="12,22,0,0" TextWrapping="Wrap" Text="Classroom id: " VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="12,55,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top"/>
@@ -16,24 +21,48 @@
         <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="12,250,0,0" TextWrapping="Wrap" Text="Has a smart board?" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Margin="15,299,0,0" TextWrapping="Wrap" Text="Operating system: " VerticalAlignment="Top"/>
 
-        <TextBox x:Name="id" HorizontalAlignment="Left" Height="16" Margin="176,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
-        <TextBox x:Name="description" HorizontalAlignment="Left" Height="16" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" Margin="176,55,0,0"/>
-        <TextBox x:Name="num_of_seats" HorizontalAlignment="Left" Height="16" Margin="176,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181"/>
-        <RadioButton x:Name="projYes" Content="Yes" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="176,148,0,0" GroupName="projector" IsChecked="true"/>
-        <RadioButton x:Name="projNo" Content="No" HorizontalAlignment="Left" Margin="322,148,0,0" VerticalAlignment="Top" GroupName="projector"/>
-        <RadioButton x:Name="boardYes" Content="Yes" HorizontalAlignment="Left" Margin="176,200,0,0" VerticalAlignment="Top" GroupName="board" IsChecked="true"/>
-        <RadioButton x:Name="boardNo" Content="No" HorizontalAlignment="Left" Margin="322,200,0,0" VerticalAlignment="Top" GroupName="board"/>
-        <RadioButton x:Name="smartYes" Content="Yes" HorizontalAlignment="Left" Margin="176,251,0,0" VerticalAlignment="Top" GroupName="smart_board" IsChecked="true"/>
-        <RadioButton x:Name="smartNo" Content="No" HorizontalAlignment="Left" Margin="322,250,0,0" VerticalAlignment="Top" GroupName="smart_board"/>
-        <RadioButton x:Name="win" Content="Windows" HorizontalAlignment="Left" Margin="176,299,0,0" VerticalAlignment="Top" GroupName="op_system" IsChecked="true" />
-        <RadioButton x:Name="lin" Content="Linux" HorizontalAlignment="Left" Margin="261,299,0,0" VerticalAlignment="Top" GroupName="op_system"/>
-        <RadioButton x:Name="both" Content="Both" HorizontalAlignment="Left" Margin="322,299,0,0" VerticalAlignment="Top" GroupName="op_system"/>
+        <TextBox x:Name="id" HorizontalAlignment="Left" Height="16" Margin="176,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" l:HelpProvider.HelpKey="dodavanje_ucionice"/>
+        <TextBox x:Name="description" HorizontalAlignment="Left" Height="16" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" Margin="176,55,0,0" l:HelpProvider.HelpKey="dodavanje_ucionice"/>
+        <TextBox x:Name="num_of_seats" HorizontalAlignment="Left" Height="16" Margin="176,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" l:HelpProvider.HelpKey="dodavanje_ucionice"/>
+        <RadioButton x:Name="projYes" Content="Yes" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="176,148,0,0" GroupName="projector" IsChecked="true" l:HelpProvider.HelpKey="dodavanje_ucionice"/>
+        <RadioButton x:Name="projNo" Content="No" HorizontalAlignment="Left" Margin="322,148,0,0" VerticalAlignment="Top" GroupName="projector" l:HelpProvider.HelpKey="dodavanje_ucionice"/>
+        <RadioButton x:Name="boardYes" Content="Yes" HorizontalAlignment="Left" Margin="176,200,0,0" VerticalAlignment="Top" GroupName="board" IsChecked="true" l:HelpProvider.HelpKey="dodavanje_ucionice"/>
+        <RadioButton x:Name="boardNo" Content="No" HorizontalAlignment="Left" Margin="322,200,0,0" VerticalAlignment="Top" GroupName="board" l:HelpProvider.HelpKey="dodavanje_ucionice"/>
+        <RadioButton x:Name="smartYes" Content="Yes" HorizontalAlignment="Left" Margin="176,251,0,0" VerticalAlignment="Top" GroupName="smart_board" IsChecked="true" l:HelpProvider.HelpKey="dodavanje_ucionice"/>
+        <RadioButton x:Name="smartNo" Content="No" HorizontalAlignment="Left" Margin="322,250,0,0" VerticalAlignment="Top" GroupName="smart_board" l:HelpProvider.HelpKey="dodavanje_ucionice"/>
+        <RadioButton x:Name="win" Content="Windows" HorizontalAlignment="Left" Margin="176,299,0,0" VerticalAlignment="Top" GroupName="op_system" IsChecked="true" l:HelpProvider.HelpKey="dodavanje_ucionice"/>
+        <RadioButton x:Name="lin" Content="Linux" HorizontalAlignment="Left" Margin="261,299,0,0" VerticalAlignment="Top" GroupName="op_system" l:HelpProvider.HelpKey="dodavanje_ucionice"/>
+        <RadioButton x:Name="both" Content="Both" HorizontalAlignment="Left" Margin="322,299,0,0" VerticalAlignment="Top" GroupName="op_system" l:HelpProvider.HelpKey="dodavanje_ucionice"/>
 
 
-        <Button x:Name="add_classroom_btn" Content="Add classroom" HorizontalAlignment="Left" Margin="71,392,0,0" VerticalAlignment="Top" Width="85" Click="add_classroom"/>
-        <Button x:Name="cancel_btn" Content="Cancel" HorizontalAlignment="Left" Margin="207,392,0,0" VerticalAlignment="Top" Width="75" Click="cancel"/>
-        <Button x:Name="choose_btn" Content="Choose software" HorizontalAlignment="Left" Margin="230,344,0,0" VerticalAlignment="Top" Click="choose_software"/>
-        <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="15,348,0,0" TextWrapping="Wrap" Text="Add software to this classroom" VerticalAlignment="Top"/>
+        <Button x:Name="add_classroom_btn" Content="Add classroom" HorizontalAlignment="Left" Margin="71,392,0,0" VerticalAlignment="Top" Width="85" Click="add_classroom">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme potvrđujete kreiranje učionice.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="cancel_btn" Content="Cancel" HorizontalAlignment="Left" Margin="207,392,0,0" VerticalAlignment="Top" Width="75" Click="cancel">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme otkazujete kreiranje učionice i zatvarate trenutni prozor.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="choose_btn" Content="Choose software" HorizontalAlignment="Left" Margin="230,344,0,0" VerticalAlignment="Top" Click="choose_software">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme otvara se prozor za izbor softvera koji se nalaze u trenutnoj učionici.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="15,348,0,0" TextWrapping="Wrap" Text="Choose software for this classroom" VerticalAlignment="Top"/>
 
 
     </Grid>

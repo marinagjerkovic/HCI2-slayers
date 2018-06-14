@@ -4,13 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
+        xmlns:l="clr-namespace:HCI2___Back_To_Slay"
         mc:Ignorable="d"
         Title="Add_Subject" Height="520" Width="400">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Subject id: " VerticalAlignment="Top" RenderTransformOrigin="0.089,0.547"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="11,41,0,0" TextWrapping="Wrap" Text="Name: " VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="11,76,0,0" TextWrapping="Wrap" Text="Description: " VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="11,153,0,0" TextWrapping="Wrap" Text="COURSE?" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="11,153,0,0" TextWrapping="Wrap" Text="Course:" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="10,186,0,0" TextWrapping="Wrap" Text="Size of groups: " VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="11,220,0,0" TextWrapping="Wrap" Text="Duration of period: " VerticalAlignment="Top" RenderTransformOrigin="-0.193,0.211"/>
         <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="10,254,0,0" TextWrapping="Wrap" Text="Number of periods: " VerticalAlignment="Top"/>
@@ -18,25 +22,47 @@
         <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Margin="11,321,0,0" TextWrapping="Wrap" Text="Needs a board?" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="9,353,0,0" TextWrapping="Wrap" Text="Needs a smart boart?" VerticalAlignment="Top" RenderTransformOrigin="-0.258,0.835"/>
         <TextBlock x:Name="textBlock10" HorizontalAlignment="Left" Margin="11,386,0,0" TextWrapping="Wrap" Text="Operating system: " VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock11" HorizontalAlignment="Left" Margin="10,419,0,0" TextWrapping="Wrap" Text="SOFTWARE?" VerticalAlignment="Top"/>
-        
-        <TextBox x:Name="id" HorizontalAlignment="Left" Height="16" Margin="153,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="16" Margin="153,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="description" HorizontalAlignment="Left" Height="59" Margin="153,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="group_size" HorizontalAlignment="Left" Height="16" Margin="153,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="duration" HorizontalAlignment="Left" Height="16" Margin="153,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="num_periods" HorizontalAlignment="Left" Height="16" Margin="153,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
-        <RadioButton x:Name="projYes" Content="Yes" HorizontalAlignment="Left" Margin="153,288,0,0" VerticalAlignment="Top" GroupName="projector" IsChecked="true"/>
-        <RadioButton x:Name="projNo" Content="No" HorizontalAlignment="Left" Margin="308,288,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="boardYes" Content="Yes" HorizontalAlignment="Left" Margin="153,321,0,0" VerticalAlignment="Top" GroupName="board" IsChecked="true"/>
-        <RadioButton x:Name="boardNo" Content="No" HorizontalAlignment="Left" Margin="308,321,0,0" VerticalAlignment="Top" GroupName="board"/>
-        <RadioButton x:Name="smartYes" Content="Yes" HorizontalAlignment="Left" Margin="153,353,0,0" VerticalAlignment="Top" GroupName="smart_board" IsChecked="true"/>
-        <RadioButton x:Name="smartNo" Content="No" HorizontalAlignment="Left" Margin="308,353,0,0" VerticalAlignment="Top" GroupName="smart_board"/>
-        <RadioButton x:Name="win" Content="Windows" HorizontalAlignment="Left" Margin="153,386,0,0" VerticalAlignment="Top" GroupName="op_system" IsChecked="True"/>
-        <RadioButton x:Name="linux" Content="Linux" HorizontalAlignment="Left" Margin="237,386,0,0" VerticalAlignment="Top" GroupName="op_system"/>
-        <RadioButton x:Name="both" Content="Both" HorizontalAlignment="Left" Margin="308,386,0,0" VerticalAlignment="Top" GroupName="op_system"/>
-        <Button x:Name="button" Content="Add subject" HorizontalAlignment="Left" Margin="69,450,0,0" VerticalAlignment="Top" Width="80" Click="add_new_subject"/>
-        <Button x:Name="button1" Content="Cancel" HorizontalAlignment="Left" Margin="221,450,0,0" VerticalAlignment="Top" Width="80" Click="cancel"/>
+        <TextBlock x:Name="textBlock11" HorizontalAlignment="Left" Margin="10,419,0,0" TextWrapping="Wrap" Text="Choose required software:" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="id" HorizontalAlignment="Left" Height="16" Margin="153,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="16" Margin="153,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <TextBox x:Name="description" HorizontalAlignment="Left" Height="59" Margin="153,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <TextBox x:Name="group_size" HorizontalAlignment="Left" Height="16" Margin="153,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <TextBox x:Name="duration" HorizontalAlignment="Left" Height="16" Margin="153,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <TextBox x:Name="num_periods" HorizontalAlignment="Left" Height="16" Margin="153,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <RadioButton x:Name="projYes" Content="Yes" HorizontalAlignment="Left" Margin="153,288,0,0" VerticalAlignment="Top" GroupName="projector" IsChecked="true" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <RadioButton x:Name="projNo" Content="No" HorizontalAlignment="Left" Margin="308,288,0,0" VerticalAlignment="Top" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <RadioButton x:Name="boardYes" Content="Yes" HorizontalAlignment="Left" Margin="153,321,0,0" VerticalAlignment="Top" GroupName="board" IsChecked="true" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <RadioButton x:Name="boardNo" Content="No" HorizontalAlignment="Left" Margin="308,321,0,0" VerticalAlignment="Top" GroupName="board" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <RadioButton x:Name="smartYes" Content="Yes" HorizontalAlignment="Left" Margin="153,353,0,0" VerticalAlignment="Top" GroupName="smart_board" IsChecked="true" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <RadioButton x:Name="smartNo" Content="No" HorizontalAlignment="Left" Margin="308,353,0,0" VerticalAlignment="Top" GroupName="smart_board" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <RadioButton x:Name="win" Content="Windows" HorizontalAlignment="Left" Margin="153,386,0,0" VerticalAlignment="Top" GroupName="op_system" IsChecked="True" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <RadioButton x:Name="linux" Content="Linux" HorizontalAlignment="Left" Margin="237,386,0,0" VerticalAlignment="Top" GroupName="op_system" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <RadioButton x:Name="both" Content="Both" HorizontalAlignment="Left" Margin="308,386,0,0" VerticalAlignment="Top" GroupName="op_system" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <Button x:Name="button" Content="Add subject" HorizontalAlignment="Left" Margin="69,450,0,0" VerticalAlignment="Top" Width="80" Click="add_new_subject" >
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme potvrđuje se dodavanje predmeta.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="button1" Content="Cancel" HorizontalAlignment="Left" Margin="221,450,0,0" VerticalAlignment="Top" Width="80" Click="cancel">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme otkazuje se dodavanje predmeta.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="add_sw_btn" Content="Click here to choose software" HorizontalAlignment="Left" Margin="181,415,0,0" VerticalAlignment="Top" Click="add_software"/>
+        <Button x:Name="add_crs" Content="Click here to add course" HorizontalAlignment="Left" Margin="153,153,0,0" VerticalAlignment="Top" Click="select_course"/>
+        <TextBox x:Name="sel_crs" HorizontalAlignment="Left" Height="20" Margin="153,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" IsReadOnly="True" Visibility="Hidden" BorderBrush="Transparent"/>
+        <Button x:Name="change_crs" Content="Change" HorizontalAlignment="Left" Margin="296,154,0,0" VerticalAlignment="Top" Height="20" Click="select_course" Visibility="Hidden"/>
+
+
 
 
 

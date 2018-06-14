@@ -28,7 +28,6 @@ namespace HCI2___Back_To_Slay
     ///
     public partial class MainWindow : Window
     {
-        public static Classroom current_cr;
 
         public static SfSchedule schedule;
         public DateTime mainDate;
@@ -200,9 +199,56 @@ namespace HCI2___Back_To_Slay
             return r;
         }
 
-        public static bool update_classroom_schedule(int num_of_seats, bool board, bool smart_board, bool projector, Classroom.OpSystem os)
+        public static bool update_classroom_schedule(string id)
         {
-            return true;
+            bool retVal = true;
+            foreach(Appointment app in realApps)
+            {
+                if (app.Classroom.Id == id)
+                {
+                    retVal = false;
+                    break;
+                }
+            }
+            return retVal;
+        }
+
+        public static bool update_subject_schedule(string id)
+        {
+            bool retVal = true;
+            foreach (Appointment app in realApps)
+            {
+                if (app.Subject.Id == id)
+                {
+                    retVal = false;
+                    break;
+                }
+            }
+            return retVal;
+        }
+
+        public static bool update_course_schedule(string id)
+        {
+            bool retVal = true;
+            foreach (Appointment app in realApps)
+            {
+                if (app.Subject.Course.Id == id)
+                {
+                    retVal = false;
+                    break;
+                }
+            }
+            return retVal;
+        }
+
+        public static bool update_software_schedule(string id)
+        {
+            bool retVal = true;
+            if (realApps.Count > 0)
+            {
+                retVal = false;
+            }
+            return retVal;
         }
 
         private void remove_classroom_from_schedule(Object sender, RoutedEventArgs e)
@@ -307,33 +353,7 @@ namespace HCI2___Back_To_Slay
             }
             Console.WriteLine("UKLONJEN JEDAN PREDMET! Sada ima " + realApps.Count() + " apointmenta");
         }
-        
-        private void updateClassroomSchedule(Classroom cr)
-        {
-            List<Subject> subject2remove = new List<Subject>();
-            foreach(Appointment app in realApps)
-            {
-                if(app.Classroom.Id==cr.Id && app.Start.DayOfWeek!=DayOfWeek.Sunday)
-                {
-                    if(fitCheck(app, cr)&& subject2remove.Contains(app.Subject))
-                    {
-                        subject2remove.Add(app.Subject);
-                        break;
-                    }
-                        
-                }
-            }
-            
-        }
-
-        private bool fitCheck(Appointment app, Classroom cr)
-        {
-            return (app.Classroom.Num_of_seats >= app.Subject.Size_of_group);
-        }
-        
-       
-
-
+    
         private void show_all_software(object sender, RoutedEventArgs e)
         {
             Software_Multiple sm = new Software_Multiple();
@@ -342,9 +362,19 @@ namespace HCI2___Back_To_Slay
 
         private void show_all_classrooms(object sender, RoutedEventArgs e)
         {
-            //tba
             Classroom_Multiple cm = new Classroom_Multiple();
             cm.ShowDialog();
+        }
+
+        private void show_all_courses(object sender, RoutedEventArgs e)
+        {
+            Courses_Multiple cm = new Courses_Multiple(false);
+            cm.ShowDialog();
+        }
+        private void show_all_subjects(object sender, RoutedEventArgs e)
+        {
+            Subject_Multiple sm = new Subject_Multiple();
+            sm.ShowDialog();
         }
 
         ScheduleAppointment temp_app;
@@ -606,6 +636,21 @@ namespace HCI2___Back_To_Slay
                     pis.WriteLine(scc.Metadata.ElementAt(1).Value + "," + scc.Type);
                 }*/
             }
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
+            }
+        }
+
+        public void doThings(string param)
+        {
+            Title = param;
         }
     }
 }

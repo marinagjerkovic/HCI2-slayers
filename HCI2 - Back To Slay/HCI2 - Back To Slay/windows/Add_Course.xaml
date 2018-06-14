@@ -4,20 +4,40 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
+        xmlns:l="clr-namespace:HCI2___Back_To_Slay"
         mc:Ignorable="d"
         Title="Add Course" Height="300" Width="300">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="20,10,0,0" TextWrapping="Wrap" Text="Course id: " VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="20,46,0,0" TextWrapping="Wrap" Text="Name: " VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="20,82,0,0" TextWrapping="Wrap" Text="Description: " VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="20,153,0,0" TextWrapping="Wrap" Text="Date of conception: " VerticalAlignment="Top"/>
-        
-        <TextBox x:Name="id" HorizontalAlignment="Left" Height="16" Margin="150,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="16" Margin="150,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="description" HorizontalAlignment="Left" Height="52" Margin="150,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <DatePicker Name="datepicker" HorizontalAlignment="Left" Margin="150,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.056,-1.191"/>
-        <Button x:Name="button" Content="Add course" HorizontalAlignment="Left" Margin="37,216,0,0" VerticalAlignment="Top" Width="90" Click="add_new_course"/>
-        <Button x:Name="button1" Content="Cancel" HorizontalAlignment="Left" Margin="165,216,0,0" VerticalAlignment="Top" Width="90" Click="cancel"/>
+
+        <TextBox x:Name="id" HorizontalAlignment="Left" Height="16" Margin="150,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" l:HelpProvider.HelpKey="dodavanje_kursa"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="16" Margin="150,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" l:HelpProvider.HelpKey="dodavanje_kursa"/>
+        <TextBox x:Name="description" HorizontalAlignment="Left" Height="52" Margin="150,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" l:HelpProvider.HelpKey="dodavanje_kursa"/>
+        <DatePicker Name="datepicker" HorizontalAlignment="Left" Margin="150,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.056,-1.191" l:HelpProvider.HelpKey="dodavanje_kursa"/>
+        <Button x:Name="button" Content="Add course" HorizontalAlignment="Left" Margin="37,216,0,0" VerticalAlignment="Top" Width="90" Click="add_new_course">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme potvrđuje se dodavanje kursa.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="button1" Content="Cancel" HorizontalAlignment="Left" Margin="165,216,0,0" VerticalAlignment="Top" Width="90" Click="cancel">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Klikom levog tastera miša na ovo dugme otkazuje se dodavanje kursa.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
 
 
     </Grid>

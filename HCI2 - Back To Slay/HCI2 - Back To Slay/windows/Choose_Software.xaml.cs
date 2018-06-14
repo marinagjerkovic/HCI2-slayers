@@ -22,45 +22,31 @@ namespace HCI2___Back_To_Slay.windows
     public partial class Choose_Software : Window
     {
 
-        public ObservableCollection<Software> all = new ObservableCollection<Software>();
-        public ObservableCollection<Software> added = new ObservableCollection<Software>();
-        private DataGrid currentDG=null;
-        private static Classroom.OpSystem currentOs;
-        
+        private ObservableCollection<Software> all = new ObservableCollection<Software>();
+        private ObservableCollection<Software> added = new ObservableCollection<Software>();
+        public static List<Software> chosen_software = new List<Software>();
+        private DataGrid currentDG = null;
 
         public Choose_Software(Classroom.OpSystem a)
         {
             InitializeComponent();
-            MessageBox.Show(a + "");
-            MessageBox.Show(currentOs + "");
-            if (MainWindow.current_cr.Software.Count() == 0 || a!=currentOs) 
+            if (chosen_software.Count() == 0)
             {
-                //os changed -> remove if something is already added
-                if (a != currentOs)
-                {
-                    MainWindow.current_cr.Software = new List<Software>();
-                }
-                currentOs = a;
-                MessageBox.Show("BREAK");
-                MessageBox.Show(a + "");
-                MessageBox.Show(currentOs + "");
-                all = new ObservableCollection<Software>();
-                added = new ObservableCollection<Software>();
                 foreach (Software sw in MainWindow.allSoftware)
                 {
-                    if (sw.Os.Equals(a) || sw.Os.Equals(Classroom.OpSystem.WindowsAndLinux))
+                    if (a.Equals(Classroom.OpSystem.WindowsAndLinux) || sw.Os.Equals(a) || sw.Os.Equals(Classroom.OpSystem.WindowsAndLinux))
                     {
                         all.Add(sw);
                     }
-                   
                 }
-            }else
+            }
+            else
             {
                 foreach (Software sw in MainWindow.allSoftware)
                 {
-                    if(sw.Os.Equals(a) || sw.Os.Equals(Classroom.OpSystem.WindowsAndLinux))
+                    if (a.Equals(Classroom.OpSystem.WindowsAndLinux) || sw.Os.Equals(a) || sw.Os.Equals(Classroom.OpSystem.WindowsAndLinux))
                     {
-                        if (MainWindow.current_cr.Software.Contains(sw))
+                        if (chosen_software.Contains(sw))
                         {
                             added.Add(sw);
                         }
@@ -76,57 +62,10 @@ namespace HCI2___Back_To_Slay.windows
             allSoftwareDG.ItemsSource = all;
         }
 
-        public Choose_Software()
-        {
-            InitializeComponent();
-
-            foreach(Software sw in MainWindow.allSoftware)
-            {
-                if(sw.Os.Equals(MainWindow.current_cr.Os) || sw.Os.Equals(Classroom.OpSystem.WindowsAndLinux))
-                {
-                    if (MainWindow.current_cr.Software.Contains(sw))
-                    {
-                        added.Add(sw);
-                    }
-                    else
-                    {
-                        all.Add(sw);
-                    }
-                }
-            }
-
-            addedSoftwareDG.ItemsSource = added;
-            allSoftwareDG.ItemsSource = all;
-        }
-
-        public static DataGridRow detect_selected_row(DependencyObject dep)
-        {
-
-            // iteratively traverse the visual tree
-            while ((dep != null) &&
-            !(dep is DataGridCell))
-            {
-                dep = VisualTreeHelper.GetParent(dep);
-            }
-
-            if (dep is DataGridCell)
-            {
-
-                DataGridCell cell = dep as DataGridCell;
-                while ((dep != null) && !(dep is DataGridRow))
-                {
-                    dep = VisualTreeHelper.GetParent(dep);
-                }
-            }
-            DataGridRow row = dep as DataGridRow;
-            return row;
-
-        }
-
         private void software_added_click(object sender, MouseButtonEventArgs e)
         {
             currentDG = (DataGrid)sender;
-            DataGridRow row = detect_selected_row((DependencyObject)e.OriginalSource);
+            DataGridRow row = Helper.detect_selected_row((DependencyObject)e.OriginalSource);
             currentDG = ItemsControl.ItemsControlFromItemContainer(row) as DataGrid;
             int index = currentDG.ItemContainerGenerator.IndexFromContainer(row);
             if (index == -1)
@@ -144,7 +83,7 @@ namespace HCI2___Back_To_Slay.windows
         private void software_removed_click(object sender, MouseButtonEventArgs e)
         {
             currentDG = (DataGrid)sender;
-            DataGridRow row = detect_selected_row((DependencyObject)e.OriginalSource);
+            DataGridRow row = Helper.detect_selected_row((DependencyObject)e.OriginalSource);
             currentDG = ItemsControl.ItemsControlFromItemContainer(row) as DataGrid;
             int index = currentDG.ItemContainerGenerator.IndexFromContainer(row);
             if (index == -1)
@@ -163,7 +102,7 @@ namespace HCI2___Back_To_Slay.windows
         {
             Button btn = (Button)sender;
             currentDG = (DataGrid)btn.Parent;
-            DataGridRow row = detect_selected_row((DependencyObject)e.OriginalSource);
+            DataGridRow row = Helper.detect_selected_row((DependencyObject)e.OriginalSource);
             currentDG = ItemsControl.ItemsControlFromItemContainer(row) as DataGrid;
             int index = currentDG.ItemContainerGenerator.IndexFromContainer(row);
             if (index == -1)
@@ -173,7 +112,7 @@ namespace HCI2___Back_To_Slay.windows
             if (currentDG.Name.Equals("allSoftwareDG"))
             {
                 Software_Info si = new Software_Info(all.ElementAt(index));
-                
+
                 si.Closed += new EventHandler((sender2, e2) => refresh_data(sender2, e2));
                 si.ShowDialog();
             }
@@ -187,7 +126,7 @@ namespace HCI2___Back_To_Slay.windows
 
         private void add_close(object sender, RoutedEventArgs e)
         {
-            MainWindow.current_cr.Software = added.ToList();
+            chosen_software = added.ToList();
             this.Close();
         }
 
@@ -204,7 +143,7 @@ namespace HCI2___Back_To_Slay.windows
             if (Software_Info.deleted != null)
             {
 
-                foreach(Software sw in all)
+                foreach (Software sw in all)
                 {
                     if (sw.Id.Equals(Software_Info.deleted))
                     {
@@ -215,7 +154,7 @@ namespace HCI2___Back_To_Slay.windows
                 }
                 if (!found)
                 {
-                    foreach(Software sw in added)
+                    foreach (Software sw in added)
                     {
                         if (sw.Id.Equals(Software_Info.deleted))
                         {
@@ -265,6 +204,25 @@ namespace HCI2___Back_To_Slay.windows
                     }
                 }
                 return;
+            }
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            int indeks = 0;
+            for (int i = 0; i < Application.Current.Windows.Count; i++)
+            {
+                if (Application.Current.Windows[i].Title.Equals("Choose_Software"))
+                {
+                    indeks = i;
+                }
+            }
+
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[indeks]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
             }
         }
     }
