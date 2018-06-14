@@ -33,15 +33,15 @@ namespace HCI2___Back_To_Slay.windows
 
         private void back(object sender, RoutedEventArgs e)
         {
-            description.BorderBrush = new SolidColorBrush(Colors.Transparent);
-            num_of_seats.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            description.BorderBrush = Helper.colors[1];
+            num_of_seats.BorderBrush = Helper.colors[1];
             change_visibility();
         }
 
         private void change_classroom(object sender, RoutedEventArgs e)
         {
-            description.BorderBrush = new SolidColorBrush(Colors.Red);
-            num_of_seats.BorderBrush = new SolidColorBrush(Colors.Red);
+            description.BorderBrush = Helper.colors[0];
+            num_of_seats.BorderBrush = Helper.colors[0];
             change_visibility();
         }
 
@@ -74,7 +74,7 @@ namespace HCI2___Back_To_Slay.windows
                 chosen_os = Classroom.OpSystem.WindowsAndLinux;
             }
 
-            if (MainWindow.update_classroom_schedule(num, (bool)board_yes.IsChecked, (bool)smartb_yes.IsChecked, (bool)projector_yes.IsChecked, chosen_os))
+            if (MainWindow.update_classroom_schedule(current_cr.Id))
             {
                 current_cr.Description = description.Text;
                 current_cr.Num_of_seats = num;
@@ -102,8 +102,8 @@ namespace HCI2___Back_To_Slay.windows
                 MainWindow.allClassroomsIds.Add(current_cr.Id);
 
                 load_data();
-                description.BorderBrush = new SolidColorBrush(Colors.Transparent);
-                num_of_seats.BorderBrush = new SolidColorBrush(Colors.Transparent);
+                description.BorderBrush = Helper.colors[1];
+                num_of_seats.BorderBrush = Helper.colors[1];
                 change_visibility();
             }
 

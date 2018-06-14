@@ -40,6 +40,8 @@ namespace HCI2___Back_To_Slay.windows
 
         private void change_data(object sender, RoutedEventArgs e)
         {
+            name.BorderBrush = Helper.colors[0];
+            description.BorderBrush = Helper.colors[0];
             change_visibility();
         }
 
@@ -59,12 +61,15 @@ namespace HCI2___Back_To_Slay.windows
             MainWindow.allCourses.Remove(current_crs);
             MainWindow.allCourses.Add(current_crs);
 
-
+            name.BorderBrush = Helper.colors[1];
+            description.BorderBrush = Helper.colors[1];
             change_visibility();
         }
 
         private void back(object sender, RoutedEventArgs e)
         {
+            name.BorderBrush = Helper.colors[1];
+            description.BorderBrush = Helper.colors[1];
             change_visibility();
         }
 

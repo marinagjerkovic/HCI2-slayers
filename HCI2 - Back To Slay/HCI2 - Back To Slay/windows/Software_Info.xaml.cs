@@ -35,12 +35,12 @@ namespace HCI2___Back_To_Slay.windows
         private void change_software(object sender, RoutedEventArgs e)
         {
             change_visibility();
-            description.BorderBrush = new SolidColorBrush(Colors.Red);
-            name.BorderBrush = new SolidColorBrush(Colors.Red);
-            price.BorderBrush = new SolidColorBrush(Colors.Red);
-            year.BorderBrush = new SolidColorBrush(Colors.Red);
-            maker.BorderBrush = new SolidColorBrush(Colors.Red);
-            site.BorderBrush = new SolidColorBrush(Colors.Red);
+            description.BorderBrush = Helper.colors[0];
+            name.BorderBrush = Helper.colors[0];
+            price.BorderBrush = Helper.colors[0];
+            year.BorderBrush = Helper.colors[0];
+            maker.BorderBrush = Helper.colors[0];
+            site.BorderBrush = Helper.colors[0];
         }
 
         private void update_software(object sender, RoutedEventArgs e)
@@ -97,12 +97,12 @@ namespace HCI2___Back_To_Slay.windows
                
 
             change_visibility();
-            description.BorderBrush = new SolidColorBrush(Colors.Transparent);
-            name.BorderBrush = new SolidColorBrush(Colors.Transparent);
-            price.BorderBrush = new SolidColorBrush(Colors.Transparent);
-            year.BorderBrush = new SolidColorBrush(Colors.Transparent);
-            maker.BorderBrush = new SolidColorBrush(Colors.Transparent);
-            site.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            description.BorderBrush = Helper.colors[1];
+            name.BorderBrush = Helper.colors[1];
+            price.BorderBrush = Helper.colors[1];
+            year.BorderBrush = Helper.colors[1];
+            maker.BorderBrush = Helper.colors[1];
+            site.BorderBrush = Helper.colors[1];
         }
 
         private void delete_software(object sender, RoutedEventArgs e)
@@ -123,12 +123,12 @@ namespace HCI2___Back_To_Slay.windows
         
         private void back(object sender, RoutedEventArgs e)
         {
-            description.BorderBrush = new SolidColorBrush(Colors.Transparent);
-            name.BorderBrush = new SolidColorBrush(Colors.Transparent);
-            price.BorderBrush = new SolidColorBrush(Colors.Transparent);
-            year.BorderBrush = new SolidColorBrush(Colors.Transparent);
-            maker.BorderBrush = new SolidColorBrush(Colors.Transparent);
-            site.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            description.BorderBrush = Helper.colors[1];
+            name.BorderBrush = Helper.colors[1];
+            price.BorderBrush = Helper.colors[1];
+            year.BorderBrush = Helper.colors[1];
+            maker.BorderBrush = Helper.colors[1];
+            site.BorderBrush = Helper.colors[1];
             change_visibility();
         }
 
