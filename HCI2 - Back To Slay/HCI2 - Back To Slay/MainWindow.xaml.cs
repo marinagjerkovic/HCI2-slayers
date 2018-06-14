@@ -49,6 +49,7 @@ namespace HCI2___Back_To_Slay
 
         public ResourceType resourceType;
 
+        public static Dictionary<Appointment, ScheduleAppointment> appointments = new Dictionary<Appointment, ScheduleAppointment>();
         public MainWindow()
         {
             InitializeComponent();
@@ -185,7 +186,7 @@ namespace HCI2___Back_To_Slay
         private Resource create_resource(Classroom cr)
         {
             string symbol = cr.Id;
-            string display = "seats: " + cr.Num_of_seats + "\tProjector: " + cr.Projector + "\tBoard: " + cr.Board + "\tsmart board: " + cr.Smart_board + "\tOS: "
+            string display = symbol+"\nseats: " + cr.Num_of_seats + "\tProjector: " + cr.Projector + "\tBoard: " + cr.Board + "\tsmart board: " + cr.Smart_board + "\tOS: "
                 + cr.Os + "\nsoftware: ";
             display += cr.softwares();
             Resource r = new Resource { DisplayName = display, ResourceName = symbol, TypeName="Classroom"};
@@ -268,6 +269,7 @@ namespace HCI2___Back_To_Slay
                 }
             }
         }
+
         private void add_subject_on_schedule(Object sender, RoutedEventArgs e)
         {
             Subject subject = (Subject)subjectsDG.SelectedItem;
@@ -291,7 +293,8 @@ namespace HCI2___Back_To_Slay
                     StartTime = mainDate,
                     EndTime = mainDate.AddMinutes(subject.Duration_of_period * 45),
                     Subject = subject.Name + "\n" + subject.Course.Name,
-                    AllDay = false
+                    AllDay = false,
+                    Location = cr.Id
                 };
                 Appointment realApp = new Appointment(cr, subject, app.StartTime,app.EndTime);
                 realApps.Add(realApp);
@@ -313,6 +316,7 @@ namespace HCI2___Back_To_Slay
                 }
                 app.ResourceCollection.Add(res);
                 schedule.Appointments.Add(app);
+                appointments[realApp] = app;
                 
             }
             //Console.WriteLine("__________ZAVRSENO DODAVANJE_______________");
@@ -327,7 +331,7 @@ namespace HCI2___Back_To_Slay
             foreach (ScheduleAppointment app in schedule.Appointments)
             {
                 Console.WriteLine(app.StartTime.ToShortTimeString());
-                if (app.Subject.Contains(subject.Name) && app.Subject.Contains(subject.Course.Name))
+                if (app.Subject.Contains(subject.Name))
                 {
                     Console.Write(" for remove");
                     removeApp.Add(app);
@@ -338,6 +342,7 @@ namespace HCI2___Back_To_Slay
                 if (app.Subject.Contains(subject.Name) && app.Subject.Contains(subject.Course.Name))
                 {
                     schedule.Appointments.Remove(app);
+                    
                 }
             }
             foreach(Appointment realApp in realApps)
@@ -350,6 +355,7 @@ namespace HCI2___Back_To_Slay
             foreach (Appointment realApp in removeRealApp)
             {
                 realApps.Remove(realApp);
+                appointments.Remove(realApp);
             }
             Console.WriteLine("UKLONJEN JEDAN PREDMET! Sada ima " + realApps.Count() + " apointmenta");
         }
@@ -371,10 +377,94 @@ namespace HCI2___Back_To_Slay
             Courses_Multiple cm = new Courses_Multiple(false);
             cm.ShowDialog();
         }
+
         private void show_all_subjects(object sender, RoutedEventArgs e)
         {
             Subject_Multiple sm = new Subject_Multiple();
             sm.ShowDialog();
+        }
+
+        private void menu_file_save(object sender, RoutedEventArgs e) {
+            schedule.ExportICS();
+        }
+
+        private void menu_file_open(object sender, RoutedEventArgs e) {
+            if (schedule != null && schedule.IsEnabled)
+            {
+                if (MessageBox.Show("Do you want to save first?", "New Schedule", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    schedule.ExportICS();
+            }
+            appointments.Clear();
+            schedule.Appointments.Clear();
+            realApps.Clear();
+            resourceType = new ResourceType { TypeName = "Classroom" };
+            schedule.ScheduleResourceTypeCollection = new ObservableCollection<ResourceType> { resourceType };
+            schedule.Resource = "Classroom";
+            schedule.Refresh();
+            schedule.ImportICS();           
+            foreach(ScheduleAppointment app in schedule.Appointments)
+            {
+                Appointment realApp = new Appointment(app);
+                realApps.Add(realApp);
+                appointments[realApp] = app;
+            }
+            add_resources_open();
+            schedule.Refresh();
+        }
+
+        private void menu_file_new(object sender, RoutedEventArgs e) {
+            if (schedule != null && schedule.IsEnabled)
+            {
+                if (MessageBox.Show("Do you want to save first?", "New Schedule", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    schedule.ExportICS();
+            }
+              
+            schedule = new SfSchedule();
+            schedule.Appointments.Clear();
+            schedule.TimeMode = TimeModes.TwentyFourHours;
+            schedule.TimeInterval = TimeInterval.FifteenMin;
+            schedule.ScheduleType = ScheduleType.Week;
+            schedule.FirstDayOfWeek = DayOfWeek.Monday;
+            schedule.WorkStartHour = 6;
+            schedule.WorkEndHour = 23;
+            schedule.ShowNonWorkingHours = false;
+            resourceType = new ResourceType { TypeName = "Classroom" };
+
+            schedule.ScheduleResourceTypeCollection = new ObservableCollection<ResourceType> { resourceType };
+            schedule.Resource = "Classroom";
+            schedule.MoveToDate(mainDate);
+            schedule.PreviewMouseLeftButtonUp += schedule_PreviewMouseLeftButtonUp;
+            schedule.AppointmentEndDragging += schedule_AppointmentDropped;  
+        }
+
+        private void add_resources_open()
+        {
+            foreach(Appointment app in realApps)
+            {
+                Classroom cr = app.Classroom;
+
+                string symbol = cr.Id;
+                bool found = false;
+                foreach (Resource r in resourceType.ResourceCollection.ToArray())
+                {
+                    if (r.ResourceName == symbol)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                Resource res = create_resource(cr);
+                if (!found)
+                {
+                    resourceType.ResourceCollection.Add(res);
+                }
+                appointments[app].ResourceCollection.Add(res);
+            }
+            foreach(ScheduleAppointment app in schedule.Appointments)
+            {
+                foreach(Resource res in app.ResourceCollection)
+                    Console.WriteLine(res.ResourceName+res.TypeName);
+            }
         }
 
         ScheduleAppointment temp_app;
@@ -651,6 +741,11 @@ namespace HCI2___Back_To_Slay
         public void doThings(string param)
         {
             Title = param;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

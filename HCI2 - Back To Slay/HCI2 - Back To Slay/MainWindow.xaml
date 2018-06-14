@@ -62,6 +62,11 @@
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="Open" Click="menu_file_open"/>
+                    <MenuItem Header="Save" Click="menu_file_save"/>
+                    <MenuItem Header="New" Click="menu_file_new"/>
+                </MenuItem>
                 <MenuItem Header="Classroom">
                     <MenuItem Header="Add new classroom" Click="add_new_classroom"/>
                     <MenuItem Header="Show all classrooms" Click="show_all_classrooms"/>

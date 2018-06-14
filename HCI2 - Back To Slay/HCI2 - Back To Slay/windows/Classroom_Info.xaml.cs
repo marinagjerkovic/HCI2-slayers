@@ -74,7 +74,7 @@ namespace HCI2___Back_To_Slay.windows
                 chosen_os = Classroom.OpSystem.WindowsAndLinux;
             }
 
-            if (MainWindow.update_classroom_schedule(num, (bool)board_yes.IsChecked, (bool)smartb_yes.IsChecked, (bool)projector_yes.IsChecked, chosen_os))
+            if (MainWindow.update_classroom_schedule(current_cr.Id))
             {
                 current_cr.Description = description.Text;
                 current_cr.Num_of_seats = num;
