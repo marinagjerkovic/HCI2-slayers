@@ -27,7 +27,15 @@ namespace HCI2___Back_To_Slay.windows
 
         private void show_subject(object sender, RoutedEventArgs e)
         {
-
+            DataGridRow row = Helper.detect_selected_row((DependencyObject)e.OriginalSource);
+            dataGrid = ItemsControl.ItemsControlFromItemContainer(row) as DataGrid;
+            int index = dataGrid.ItemContainerGenerator.IndexFromContainer(row);
+            if (index == -1)
+            {
+                return;
+            }
+            Subject_Info si = new Subject_Info(MainWindow.allSubjects.ElementAt(index));
+            si.ShowDialog();
         }
 
 

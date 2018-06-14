@@ -13,6 +13,8 @@ namespace HCI2___Back_To_Slay.windows
     public static class Helper
     {
 
+        public static SolidColorBrush[] colors = {new SolidColorBrush(Colors.Red), new SolidColorBrush(Colors.Transparent)};
+
         public static DataGridRow detect_selected_row(DependencyObject dep)
         {
 
