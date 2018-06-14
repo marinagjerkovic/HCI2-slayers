@@ -43,7 +43,7 @@
             <Button.ToolTip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
-                        Klikom levog tastera miša na ovo dugme potvrđuje se dodavanje predmeta.
+                        Left mouse click on this button creates this new subject.
                     </TextBlock>
                 </StackPanel>
             </Button.ToolTip>
@@ -52,15 +52,39 @@
             <Button.ToolTip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
-                        Klikom levog tastera miša na ovo dugme otkazuje se dodavanje predmeta.
+                        Left mouse click on this button discards creating new software.
                     </TextBlock>
                 </StackPanel>
             </Button.ToolTip>
         </Button>
-        <Button x:Name="add_sw_btn" Content="Click here to choose software" HorizontalAlignment="Left" Margin="181,415,0,0" VerticalAlignment="Top" Click="add_software"/>
-        <Button x:Name="add_crs" Content="Click here to add course" HorizontalAlignment="Left" Margin="153,153,0,0" VerticalAlignment="Top" Click="select_course"/>
-        <TextBox x:Name="sel_crs" HorizontalAlignment="Left" Height="20" Margin="153,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" IsReadOnly="True" Visibility="Hidden" BorderBrush="Transparent"/>
-        <Button x:Name="change_crs" Content="Change" HorizontalAlignment="Left" Margin="296,154,0,0" VerticalAlignment="Top" Height="20" Click="select_course" Visibility="Hidden"/>
+        <Button x:Name="add_sw_btn" Content="Click here to choose software" HorizontalAlignment="Left" Margin="181,415,0,0" VerticalAlignment="Top" Click="add_software">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button lets you choose list of software for this subject.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="add_crs" Content="Click here to add course" HorizontalAlignment="Left" Margin="153,153,0,0" VerticalAlignment="Top" Click="select_course">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button lets you choose course for this subject.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <TextBox x:Name="sel_crs" HorizontalAlignment="Left" Height="20" Margin="153,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" IsReadOnly="True" Visibility="Hidden" BorderBrush="Transparent" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <Button x:Name="change_crs" Content="Change" HorizontalAlignment="Left" Margin="296,154,0,0" VerticalAlignment="Top" Height="20" Click="select_course" Visibility="Hidden">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button lets you change selected course for this subject.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
 
 
 

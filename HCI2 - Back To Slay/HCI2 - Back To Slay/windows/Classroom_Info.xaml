@@ -31,7 +31,7 @@
             <Button.ToolTip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
-                        Klikom levog tastera miša na ovo dugme otvara se prozor sa spiskom softvera koji postoje u učionici.
+                        Left mouse click on this button shows list of software in this classroom.
                     </TextBlock>
                 </StackPanel>
             </Button.ToolTip>
@@ -40,7 +40,7 @@
             <Button.ToolTip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
-                        Klikom levog tastera miša na ovo dugme omogućuju se izmene podataka učionice.
+                        Left mouse click on this button enables changing data of this classroom.
                     </TextBlock>
                 </StackPanel>
             </Button.ToolTip>
@@ -49,7 +49,7 @@
             <Button.ToolTip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
-                        Klikom levog tastera miša na ovo dugme otvara se dijalog za potvrđivanje brisanja učionice.
+                        Left mouse click on this button enables deletion of this classroom.
                     </TextBlock>
                 </StackPanel>
             </Button.ToolTip>
@@ -58,7 +58,7 @@
             <Button.ToolTip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
-                        Klikom levog tastera miša na ovo dugme čuvaju se načinjene izmene.
+                        Left mouse click on this button saves made changes on this classroom data.
                     </TextBlock>
                 </StackPanel>
             </Button.ToolTip>
@@ -67,21 +67,21 @@
             <Button.ToolTip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
-                        Klikom levog tastera miša na ovo dugme nesačuvane izmene se zanemaruju.
+                       Left mouse click on this button discards all the unsaved changes of this classroom data.
                     </TextBlock>
                 </StackPanel>
             </Button.ToolTip>
         </Button>
 
-        <RadioButton x:Name="win_btn" Content="Windows" HorizontalAlignment="Left" Margin="150,240,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden"/>
-        <RadioButton x:Name="lin_btn" Content="Linux" HorizontalAlignment="Left" Margin="230,240,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden"/>
-        <RadioButton x:Name="both_btn" Content="Both" HorizontalAlignment="Left" Margin="300,240,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden"/>
-        <RadioButton x:Name="board_yes" Content="Yes" HorizontalAlignment="Left" Margin="150,150,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_board" Visibility="Hidden"/>
-        <RadioButton x:Name="board_no" Content="No" HorizontalAlignment="Left" Margin="230,150,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_board" Visibility="Hidden"/>
-        <RadioButton x:Name="smartb_yes" Content="Yes" HorizontalAlignment="Left" Margin="150,180,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_smartb" Visibility="Hidden"/>
-        <RadioButton x:Name="smartb_no" Content="No" HorizontalAlignment="Left" Margin="230,180,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_smartb" Visibility="Hidden"/>
-        <RadioButton x:Name="projector_yes" Content="Yes" HorizontalAlignment="Left" Margin="150,210,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_projector" Visibility="Hidden"/>
-        <RadioButton x:Name="projector_no" Content="No" HorizontalAlignment="Left" Margin="230,210,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_projector" Visibility="Hidden"/>
+        <RadioButton x:Name="win_btn" Content="Windows" HorizontalAlignment="Left" Margin="150,240,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <RadioButton x:Name="lin_btn" Content="Linux" HorizontalAlignment="Left" Margin="230,240,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <RadioButton x:Name="both_btn" Content="Both" HorizontalAlignment="Left" Margin="300,240,0,0" VerticalAlignment="Top" FontSize="10" GroupName="radio_os" Visibility="Hidden" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <RadioButton x:Name="board_yes" Content="Yes" HorizontalAlignment="Left" Margin="150,150,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_board" Visibility="Hidden" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <RadioButton x:Name="board_no" Content="No" HorizontalAlignment="Left" Margin="230,150,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_board" Visibility="Hidden" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <RadioButton x:Name="smartb_yes" Content="Yes" HorizontalAlignment="Left" Margin="150,180,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_smartb" Visibility="Hidden" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <RadioButton x:Name="smartb_no" Content="No" HorizontalAlignment="Left" Margin="230,180,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_smartb" Visibility="Hidden" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <RadioButton x:Name="projector_yes" Content="Yes" HorizontalAlignment="Left" Margin="150,210,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_projector" Visibility="Hidden" l:HelpProvider.HelpKey="izmena_ucionice"/>
+        <RadioButton x:Name="projector_no" Content="No" HorizontalAlignment="Left" Margin="230,210,0,0" VerticalAlignment="Top"  FontSize="10" GroupName="radio_projector" Visibility="Hidden" l:HelpProvider.HelpKey="izmena_ucionice"/>
 
 
 

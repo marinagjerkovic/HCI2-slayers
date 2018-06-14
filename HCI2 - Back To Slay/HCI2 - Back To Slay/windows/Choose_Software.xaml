@@ -52,7 +52,7 @@
             <Button.ToolTip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
-                        Klikom levog tastera miša na ovo dugme potvrđuje se spisak odabranih softvera.
+                        Left mouse click on this button sets chosen list of software.
                     </TextBlock>
                 </StackPanel>
             </Button.ToolTip>
@@ -61,7 +61,7 @@
             <Button.ToolTip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
-                        Klikom levog tastera miša na ovo dugme otkazuje se spisak izabranih softvera.
+                        Left mouse click on this button discards changing list of chosen software.
                     </TextBlock>
                 </StackPanel>
             </Button.ToolTip>

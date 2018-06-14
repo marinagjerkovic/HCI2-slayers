@@ -25,7 +25,15 @@
                 <DataGridTemplateColumn Header="Installed software">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="View" Click="show_software"></Button>
+                            <Button Content="View" Click="show_software">
+                                <Button.ToolTip>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button shows all software in this classroom.
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Button.ToolTip>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -44,5 +44,24 @@ namespace HCI2___Back_To_Slay.windows
             Software_Multiple sm = new Software_Multiple(MainWindow.allSubjects.ElementAt(index));
             sm.ShowDialog();
         }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            int indeks = 0;
+            for (int i = 0; i < Application.Current.Windows.Count; i++)
+            {
+                if (Application.Current.Windows[i].Title.Equals("Subject_Multiple"))
+                {
+                    indeks = i;
+                }
+            }
+
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[indeks]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
+            }
+        }
     }
 }

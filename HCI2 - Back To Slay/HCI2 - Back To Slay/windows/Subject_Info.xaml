@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:l="clr-namespace:HCI2___Back_To_Slay"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
         mc:Ignorable="d"
         Title="Subject_Info" Height="520" Width="400">
@@ -19,23 +20,63 @@
         <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="19,145,0,0" TextWrapping="Wrap" Text="Course" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock10" HorizontalAlignment="Left" Margin="19,355,0,0" TextWrapping="Wrap" Text="Operating system:" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock11" HorizontalAlignment="Left" Margin="19,385,0,0" TextWrapping="Wrap" Text="Required software: " VerticalAlignment="Top"/>
-        <Button x:Name="change_btn" Content="Change data" HorizontalAlignment="Left" Margin="172,442,0,0" VerticalAlignment="Top" Width="75" Click="change"/>
-        <Button x:Name="delete_btn" Content="Delete" HorizontalAlignment="Left" Margin="284,442,0,0" VerticalAlignment="Top" Width="75" Click="delete"/>
-        <Button x:Name="update_btn" Content="Save changes" HorizontalAlignment="Left" Margin="172,442,0,0" VerticalAlignment="Top" Width="75" Click="update" Visibility="Hidden"/>
-        <Button x:Name="back_btn" Content="Back" HorizontalAlignment="Left" Margin="284,442,0,0" VerticalAlignment="Top" Width="75" Click="back" Visibility="Hidden"/>
+        <Button x:Name="change_btn" Content="Change data" HorizontalAlignment="Left" Margin="172,442,0,0" VerticalAlignment="Top" Width="75" Click="change">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button allows you to change data of this subject.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="delete_btn" Content="Delete" HorizontalAlignment="Left" Margin="284,442,0,0" VerticalAlignment="Top" Width="75" Click="delete">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button allows you to delete this subject.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="update_btn" Content="Save changes" HorizontalAlignment="Left" Margin="172,442,0,0" VerticalAlignment="Top" Width="75" Click="update" Visibility="Hidden">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                       Left mouse click on this button saves the changes you've made on data of this subject.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="back_btn" Content="Back" HorizontalAlignment="Left" Margin="284,442,0,0" VerticalAlignment="Top" Width="75" Click="back" Visibility="Hidden">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button discards all the unsaved data of this subject.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
         
-        <TextBox x:Name="id" HorizontalAlignment="Left" Height="15" Margin="172,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187"/>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="15" Margin="172,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187"/>
-        <TextBox x:Name="description" HorizontalAlignment="Left" Height="15" Margin="172,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187"/>
-        <TextBox x:Name="course" HorizontalAlignment="Left" Height="15" Margin="172,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115"/>
-        <TextBox x:Name="size" HorizontalAlignment="Left" Height="15" Margin="172,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
-        <TextBox x:Name="duration" HorizontalAlignment="Left" Height="15" Margin="172,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
-        <TextBox x:Name="number" HorizontalAlignment="Left" Height="15" Margin="172,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
-        <TextBox x:Name="board_tb" HorizontalAlignment="Left" Height="15" Margin="172,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
-        <TextBox x:Name="smart_board_tb" HorizontalAlignment="Left" Height="15" Margin="172,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
-        <TextBox x:Name="projector_tb" HorizontalAlignment="Left" Height="15" Margin="172,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
-        <TextBox x:Name="os_tb" HorizontalAlignment="Left" Height="15" Margin="172,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
-        <Button x:Name="show_sw_btn" Content="Click here to view software" HorizontalAlignment="Left" Margin="172,385,0,0" VerticalAlignment="Top" Click="show_software"/>
+        <TextBox x:Name="id" HorizontalAlignment="Left" Height="15" Margin="172,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187" l:HelpProvider.HelpKey="izmena_predmeta"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="15" Margin="172,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187" l:HelpProvider.HelpKey="izmena_predmeta"/>
+        <TextBox x:Name="description" HorizontalAlignment="Left" Height="15" Margin="172,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187" l:HelpProvider.HelpKey="izmena_predmeta"/>
+        <TextBox x:Name="course" HorizontalAlignment="Left" Height="15" Margin="172,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" l:HelpProvider.HelpKey="izmena_predmeta"/>
+        <TextBox x:Name="size" HorizontalAlignment="Left" Height="15" Margin="172,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" l:HelpProvider.HelpKey="izmena_predmeta"/>
+        <TextBox x:Name="duration" HorizontalAlignment="Left" Height="15" Margin="172,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" l:HelpProvider.HelpKey="izmena_predmeta"/>
+        <TextBox x:Name="number" HorizontalAlignment="Left" Height="15" Margin="172,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" l:HelpProvider.HelpKey="izmena_predmeta"/>
+        <TextBox x:Name="board_tb" HorizontalAlignment="Left" Height="15" Margin="172,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" l:HelpProvider.HelpKey="izmena_predmeta"/>
+        <TextBox x:Name="smart_board_tb" HorizontalAlignment="Left" Height="15" Margin="172,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" l:HelpProvider.HelpKey="izmena_predmeta"/>
+        <TextBox x:Name="projector_tb" HorizontalAlignment="Left" Height="15" Margin="172,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" l:HelpProvider.HelpKey="izmena_predmeta"/>
+        <TextBox x:Name="os_tb" HorizontalAlignment="Left" Height="15" Margin="172,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" l:HelpProvider.HelpKey="izmena_predmeta"/>
+        <Button x:Name="show_sw_btn" Content="Click here to view software" HorizontalAlignment="Left" Margin="172,385,0,0" VerticalAlignment="Top" Click="show_software">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button shows list of all the software this subject needs.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
 
 
 
