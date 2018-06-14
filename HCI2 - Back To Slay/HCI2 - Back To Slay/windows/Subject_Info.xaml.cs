@@ -39,12 +39,21 @@ namespace HCI2___Back_To_Slay.windows
 
         private void change(object sender, RoutedEventArgs e)
         {
+            name.BorderBrush = Helper.colors[0];
+            description.BorderBrush = Helper.colors[0];
+            number.BorderBrush = Helper.colors[0];
+            duration.BorderBrush = Helper.colors[0];
+            size.BorderBrush = Helper.colors[0];
             change_visibility();
         }
 
         private void update(object sender, RoutedEventArgs e)
         {
-
+            name.BorderBrush = Helper.colors[1];
+            description.BorderBrush = Helper.colors[1];
+            number.BorderBrush = Helper.colors[1];
+            duration.BorderBrush = Helper.colors[1]; 
+            size.BorderBrush = Helper.colors[1];
             change_visibility();
         }
 
@@ -55,6 +64,11 @@ namespace HCI2___Back_To_Slay.windows
 
         private void back(object sender, RoutedEventArgs e)
         {
+            name.BorderBrush = Helper.colors[1];
+            description.BorderBrush = Helper.colors[1];
+            number.BorderBrush = Helper.colors[1];
+            duration.BorderBrush = Helper.colors[1];
+            size.BorderBrush = Helper.colors[1];
             change_visibility();
         }
 
@@ -76,6 +90,17 @@ namespace HCI2___Back_To_Slay.windows
             back_btn.Visibility = Helper.isVisible(back_btn);
             show_sw_btn.Visibility = Helper.isVisible(show_sw_btn);
             change_crs_btn.Visibility = Helper.isVisible(change_crs_btn);
+
+            board_yes.Visibility = Helper.isVisible(board_yes);
+            board_no.Visibility = Helper.isVisible(board_no);
+            smart_board_yes.Visibility = Helper.isVisible(smart_board_yes);
+            smart_board_no.Visibility = Helper.isVisible(smart_board_no);
+            projector_yes.Visibility = Helper.isVisible(projector_yes);
+            projector_no.Visibility = Helper.isVisible(projector_no);
+            win_btn.Visibility = Helper.isVisible(win_btn);
+            lin_btn.Visibility = Helper.isVisible(lin_btn);
+            both_btn.Visibility = Helper.isVisible(both_btn);
+
 
             name.IsReadOnly = !name.IsReadOnly;
             description.IsReadOnly = !description.IsReadOnly;
