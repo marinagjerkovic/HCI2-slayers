@@ -17,6 +17,7 @@ using Syncfusion.UI.Xaml.Schedule;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
+using System.Windows.Automation.Peers;
 
 
 
@@ -50,10 +51,17 @@ namespace HCI2___Back_To_Slay
         public ResourceType resourceType;
 
         public static Dictionary<Appointment, ScheduleAppointment> appointments = new Dictionary<Appointment, ScheduleAppointment>();
+
+        public static RoutedCommand exitDemoMode = new RoutedCommand();
+        public static Boolean demoModeOn = false;
+
         public MainWindow()
         {
             InitializeComponent();
             //loadData();
+
+            this.DataContext = this;
+            exitDemoMode.InputGestures.Add(new KeyGesture(Key.Escape));
 
             mainDate = new DateTime(2018, 6, 10, 6, 0, 0);
             schedule = new SfSchedule();
@@ -753,8 +761,197 @@ namespace HCI2___Back_To_Slay
             HelpProvider.ShowHelp("index", this);        
         }
 
-        private void start_demo(object sender, RoutedEventArgs e)
+        private async void start_demo(object sender, RoutedEventArgs e)
         {
+            demoModeOn = true;            
+            await start();
+
+        }
+       
+
+        private async Task start()
+        {
+            while (demoModeOn)
+            {
+                deleteDemoEntities();
+                fillDemoEntities();
+                await startingDemo();
+            }
+
+            deleteDemoEntities();
+
+            
+        }
+
+        private void fillDemoEntities()
+        {
+            Software s = new Software();
+            s.Id = "Example_Id";
+            s.Description = "Example_Description";
+            s.Maker = "Example_Maker";
+            s.Name = "Example_Name";
+            s.Os = Classroom.OpSystem.Linux;
+            s.Price = 100;
+            s.Site = "Example_Site";
+            s.Year = 2000;
+            allSoftware.Add(s);
+            allSoftwareIds.Add("Example_Id");
+
+            Course c = new Course();
+            c.Date_of_conception = System.DateTime.Now;
+            c.Description = "Example_Description";
+            c.Id = "Example_Id";
+            c.Name = "Example_Name";
+            allCourses.Add(c);
+            allCoursesIds.Add("Example_Id");
+
+            Classroom cr = new Classroom();
+            cr.Board = false;
+            cr.Description = "Example_Description";
+            cr.Id = "Example_Id";
+            cr.Num_of_seats = 15;
+            cr.Os = Classroom.OpSystem.Linux;
+            cr.Projector = true;
+            cr.Smart_board = false;
+            cr.Software.Add(s);
+            allClassrooms.Add(cr);
+            allClassroomsIds.Add("Example_Id");
+
+
+        }
+
+        private async Task startingDemo()
+        {
+            Add_Subject adds = new Add_Subject();
+            adds.Show();
+
+            await addSubjectDemo(adds);
+            adds.Close();
+        }
+
+        private async Task addSubjectDemo(Add_Subject adds)
+        {
+            await Task.Delay(1500);
+            adds.id.Text = "Example_Id";
+            await Task.Delay(1500);
+            adds.name.Text = "Example_Name";
+            await Task.Delay(1500);
+            adds.description.Text = "Example_Description";
+            await Task.Delay(1500);
+            Brush color = adds.add_crs.Background;
+            adds.add_crs.Background = Brushes.Blue;
+            await Task.Delay(1500);
+            adds.add_crs.Background = color;
+            Courses_Multiple cm = new Courses_Multiple(false);
+            await chooseCourseDemo(cm);
+            await Task.Delay(1500);
+            
+            cm.Close();
+            await Task.Delay(1500);
+            adds.group_size.Text = "15";
+            await Task.Delay(1500);
+            adds.duration.Text = "2";
+            await Task.Delay(1500);
+            adds.num_periods.Text = "2";
+            await Task.Delay(1500);
+            adds.projNo.IsChecked = true;
+            await Task.Delay(1500);
+            adds.boardNo.IsChecked = true;
+            await Task.Delay(1500);
+            adds.smartNo.IsChecked = true;
+            await Task.Delay(1500);
+            adds.linux.IsChecked = true;
+            await Task.Delay(1500);
+            Choose_Software cs = new Choose_Software(Classroom.OpSystem.Linux);
+            await Task.Delay(1500);
+            adds.add_sw_btn.Background = Brushes.Blue;
+            await Task.Delay(1500);
+            adds.add_sw_btn.Background = color;
+            await chooseSoftwareDemo(cs);
+            await Task.Delay(1500);
+            
+            cs.Close();
+            await Task.Delay(1500);
+            adds.button.Background = Brushes.Blue;
+            await Task.Delay(1500);
+        }
+
+        private async Task chooseSoftwareDemo(Choose_Software cs)
+        {
+            cs.Show();
+            cs.allSoftwareDG.SelectedIndex = 0;
+
+            await Task.Delay(1500);
+            cs.add_btn.Background = Brushes.Blue;
+        }
+
+        private async Task chooseCourseDemo(Courses_Multiple cm)
+        {
+            cm.save_crs_btn.Visibility = Visibility.Visible;
+            cm.Show();
+            cm.dataGrid.SelectedIndex = 0;
+
+            await Task.Delay(1500);
+            cm.save_crs_btn.Background = Brushes.Blue;
+        }
+
+        private static void deleteDemoEntities()
+        {
+            Classroom delclass = null;
+            Subject delsubj = null;
+            Course delcourse = null;
+            Software delsoft = null;
+            foreach (Classroom c in allClassrooms)
+            {
+                if (c.Id == "Example_Id")
+                {
+                    delclass = c;
+                }
+            }
+            allClassrooms.Remove(delclass);
+            allClassroomsIds.Remove("Example_Id");
+
+            foreach (Subject s in allSubjects)
+            {
+                if (s.Id == "Example_Id")
+                {
+                    delsubj = s;
+                }
+            }
+            allSubjects.Remove(delsubj);
+            allSubjectsIds.Remove("Example_Id");
+            
+            foreach (Software s in allSoftware)
+            {
+                if (s.Id == "Example_Id")
+                {
+                    delsoft = s;
+                }
+            }
+            allSoftware.Remove(delsoft);
+            allSoftwareIds.Remove("Example_Id");
+
+            foreach (Course c in allCourses)
+            {
+                if (c.Id == "Example_Id")
+                {
+                    delcourse = c;
+                }
+            }
+            allCourses.Remove(delcourse);
+            allCoursesIds.Remove("Example_Id");
+
+            
+        }
+
+        private void exit_demo(object sender, RoutedEventArgs e)
+        {
+            if (demoModeOn)
+            {
+                //radi sta se radi kad se iskljuci demo
+                demoModeOn = false;
+                MessageBox.Show("exit demo");
+            }
             
         }
     }

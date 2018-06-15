@@ -12,6 +12,7 @@
         Width="{Binding SystemParameters.PrimaryScreenWidth}">
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+        <CommandBinding Command="{x:Static l:MainWindow.exitDemoMode}" Executed="exit_demo"/>
     </Window.CommandBindings>
     <Window.Resources>
         <Style TargetType="schedule:HeaderTitleBarView">
