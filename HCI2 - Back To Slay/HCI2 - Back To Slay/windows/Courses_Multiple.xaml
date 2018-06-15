@@ -21,22 +21,16 @@
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="100"></DataGridTextColumn>
                 <DataGridTextColumn Header="Date of conception" Binding="{Binding Date_of_conception}"></DataGridTextColumn>
             </DataGrid.Columns>
-            <DataGrid.Resources >
+            <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
-                    <Setter Property="Background" Value="Red" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="DataGridRow">
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter Property="Background" Value="Red" />
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="BorderBrush" Value="Blue" />
+                            <Setter Property="BorderThickness" Value="2" />
+                        </Trigger>
+                    </Style.Triggers>
                 </Style>
-            </DataGrid.Resources>
+            </DataGrid.RowStyle>
         </DataGrid>
         <Button x:Name="save_crs_btn" Content="Save selected course" HorizontalAlignment="Left" Margin="44,289,0,0" VerticalAlignment="Top" Click="save_course" Visibility="Hidden">
             <Button.ToolTip>
