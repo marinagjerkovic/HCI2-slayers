@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace HCI2___Back_To_Slay.windows
 {
@@ -26,6 +27,7 @@ namespace HCI2___Back_To_Slay.windows
         {
             this.DataContext = this;
             exitDemoMode.InputGestures.Add(new KeyGesture(Key.Escape));
+            this.Closing += new CancelEventHandler(Window_Closing);
 
             InitializeComponent();
             current_sub = new Subject();
@@ -212,10 +214,31 @@ namespace HCI2___Back_To_Slay.windows
             if (MainWindow.demoModeOn)
             {
                 //radi sta se radi kad se iskljuci demo
-                MainWindow.demoModeOn = false;
-                MessageBox.Show("exit demo");
+                MainWindow.turnOfDemo = true;
+                //MessageBox.Show("exit demo");
+                
             }
 
         }
+
+        public void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (MainWindow.demoModeOn)
+            {
+                e.Cancel = true;
+                if (MainWindow.turnOfDemo)
+                {
+                    //MessageBox.Show("Wait until demo creating subject finishes");
+                }
+                else
+                {
+                    //MessageBox.Show("Press 'Esc' key on keyboard if you want to stop demo mode and wait until it finishes");
+                }
+
+                
+            }
+
+        }
+
     }
 }

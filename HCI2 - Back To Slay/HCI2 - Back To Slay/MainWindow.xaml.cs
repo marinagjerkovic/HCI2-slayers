@@ -18,6 +18,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
 using System.Windows.Automation.Peers;
+using System.ComponentModel;
 
 
 
@@ -54,6 +55,7 @@ namespace HCI2___Back_To_Slay
 
         public static RoutedCommand exitDemoMode = new RoutedCommand();
         public static Boolean demoModeOn = false;
+        public static Boolean turnOfDemo = false;
 
         public MainWindow()
         {
@@ -62,6 +64,7 @@ namespace HCI2___Back_To_Slay
 
             this.DataContext = this;
             exitDemoMode.InputGestures.Add(new KeyGesture(Key.Escape));
+            this.Closing += new CancelEventHandler(Window_Closing);
 
             mainDate = new DateTime(2018, 6, 10, 6, 0, 0);
             schedule = new SfSchedule();
@@ -764,8 +767,9 @@ namespace HCI2___Back_To_Slay
 
         private async void start_demo(object sender, RoutedEventArgs e)
         {
-            
-            demoModeOn = true;            
+            MessageBox.Show("Press 'Esc' key on keyboard if you want to stop demo mode and wait until it finishes");
+            demoModeOn = true;
+            turnOfDemo = false;           
             await start();
             
         }
@@ -779,6 +783,11 @@ namespace HCI2___Back_To_Slay
                 deleteDemoEntities();
                 fillDemoEntities();
                 await startingDemo();
+                if (turnOfDemo)
+                {
+                    demoModeOn = false;
+                    turnOfDemo = false;
+                }
             }
 
             deleteDemoEntities();
@@ -830,83 +839,135 @@ namespace HCI2___Back_To_Slay
             adds.Show();
 
             await addSubjectDemo(adds);
+            demoModeOn = false;
             adds.Close();
+            demoModeOn = true;
         }
 
         private async Task addSubjectDemo(Add_Subject adds)
         {
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             adds.id.Text = "Example_Id";
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             adds.name.Text = "Example_Name";
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             adds.description.Text = "Example_Description";
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             Brush color = adds.add_crs.Background;
             adds.add_crs.Background = SystemColors.HighlightBrush;
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             adds.add_crs.Background = color;
             Courses_Multiple cm = new Courses_Multiple(false);
             cm.IsHitTestVisible = false;
-            await chooseCourseDemo(cm);
+            await chooseCourseDemo(cm);            
             await Task.Delay(1500);
             
             
             adds.sel_crs.Text = ((Course)(cm.dataGrid.Items[0])).Name;
+            demoModeOn = false;
             cm.Close();
+            demoModeOn = true;
+            if (turnOfDemo)
+                return;
             adds.sel_crs.Visibility = Visibility.Visible;
             adds.change_crs.Visibility = Visibility.Visible;
             adds.add_crs.Visibility = Visibility.Hidden;
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             adds.group_size.Text = "15";
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             adds.duration.Text = "2";
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             adds.num_periods.Text = "2";
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             adds.projNo.IsChecked = true;
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             adds.boardNo.IsChecked = true;
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             adds.smartNo.IsChecked = true;
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             adds.linux.IsChecked = true;
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             Choose_Software cs = new Choose_Software(Classroom.OpSystem.Linux);
             cs.IsHitTestVisible = false;            
             adds.add_sw_btn.Background = SystemColors.HighlightBrush;
             await Task.Delay(1500);
             adds.add_sw_btn.Background = color;
-            await chooseSoftwareDemo(cs);            
+            await chooseSoftwareDemo(cs);
+            demoModeOn = false;
+            cs.Close();
+            demoModeOn = true;
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             adds.button.Background = SystemColors.HighlightBrush;
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
         }
 
         private async Task chooseSoftwareDemo(Choose_Software cs)
         {
+            
             cs.Show();
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             cs.allSoftwareDG.SelectedIndex = 0;
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);            
             Software s = (Software)cs.allSoftwareDG.Items[0];
             Choose_Software.all.RemoveAt(0);
             Choose_Software.added.Add(s);
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             cs.add_btn.Background = SystemColors.HighlightBrush;
-            await Task.Delay(1000);
-            cs.Close();
+            if (turnOfDemo)
+                return;
+            await Task.Delay(1000);            
             Choose_Software.all.Add(s);
             Choose_Software.added.RemoveAt(0);
         }
 
         private async Task chooseCourseDemo(Courses_Multiple cm)
         {
+            if (turnOfDemo)
+                return;
             cm.save_crs_btn.Visibility = Visibility.Visible;
             cm.Show();
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             cm.dataGrid.SelectedIndex = 0;
-
+            if (turnOfDemo)
+                return;
             await Task.Delay(1500);
             cm.save_crs_btn.Background = SystemColors.HighlightBrush;
         }
@@ -965,8 +1026,26 @@ namespace HCI2___Back_To_Slay
             if (demoModeOn)
             {
                 //radi sta se radi kad se iskljuci demo
-                demoModeOn = false;
-                MessageBox.Show("exit demo");
+                turnOfDemo = true;
+                //MessageBox.Show("exit demo");
+            }
+            
+        }
+
+        public void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (demoModeOn)
+            {
+                e.Cancel = true;
+                if (turnOfDemo)
+                {
+                    //MessageBox.Show("Wait until demo creating subject finishes");
+                }else
+                {
+                    //MessageBox.Show("Press 'Esc' key on keyboard if you want to stop demo mode and wait until it finishes");
+                }
+
+                
             }
             
         }
