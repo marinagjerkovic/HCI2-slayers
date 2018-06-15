@@ -31,8 +31,10 @@ namespace HCI2___Back_To_Slay
     public partial class MainWindow : Window
     {
 
-        public static SfSchedule schedule;
+        //public static SfSchedule schedule;
         public DateTime mainDate;
+        public static bool enable = true;
+        public static bool cancel = false;
         public static List<string> allClassroomsIds = new List<string>();
         public static List<string> allCoursesIds = new List<string>();
         public static List<string> allSoftwareIds = new List<string>();
@@ -67,44 +69,31 @@ namespace HCI2___Back_To_Slay
             this.Closing += new CancelEventHandler(Window_Closing);
 
             mainDate = new DateTime(2018, 6, 10, 6, 0, 0);
-            schedule = new SfSchedule();
+            //schedule = new SfSchedule();
             schedule.TimeMode = TimeModes.TwentyFourHours;
-            schedule.TimeInterval = TimeInterval.FifteenMin;
+            schedule.TimeInterval = TimeInterval.ThirtyMin;
             schedule.ScheduleType = ScheduleType.Week;
             schedule.FirstDayOfWeek = DayOfWeek.Monday;
             schedule.WorkStartHour = 6;
             schedule.WorkEndHour = 23;
             schedule.ShowNonWorkingHours = false;
             resourceType = new ResourceType { TypeName = "Classroom" };
-
-            schedule.ScheduleResourceTypeCollection = new ObservableCollection<ResourceType> { resourceType };
-            schedule.Resource = "Classroom";
-
-            
-
-            //initialize collections
-
             schedule.ScheduleResourceTypeCollection = new ObservableCollection<ResourceType> { resourceType };
             schedule.Resource = "Classroom";
             schedule.MoveToDate(mainDate);
-            schedule.PreviewMouseLeftButtonUp += schedule_PreviewMouseLeftButtonUp;
+            
+            //schedule.PreviewMouseLeftButtonUp += schedule_PreviewMouseLeftButtonUp;
             schedule.AppointmentEndDragging += schedule_AppointmentDropped;
-            this.scheduleGrid.Children.Add(schedule);
+            
+            schedule.AppointmentStartResizing += schedule_start_resize;
+            schedule.AppointmentEndResizing += schedule_end_resize;
+            schedule.AppointmentResizing += schedule_resize;
+            //schedule.AppointmentEditorOpening += schedule_editor_open;
+            //schedule.AppointmentEditorClosed += schedule_editor_closed;
+            
+            schedule.IsEnabled = enable;
+            
 
-            /*
-            List<Software> ss = new List<Software>()
-            {
-                new Software("soft_id","soft_name",Classroom.OpSystem.Linux,"soft_maker", "soft_site",1999,200.09,"soft_desc"),
-                new Software("soft_id2","soft_name2",Classroom.OpSystem.Linux,"soft_maker2","soft_site2",1999,220.09,"soft_2desc")
-            };
-            Course course = new Course("1", "ime", "opis", DateTime.Now);
-            Subject subject = new Subject("1", "name", "description", course, 10, 2, 2, true, true, true, Classroom.OpSystem.Linux, ss);
-            Subject subject2 = new Subject("2", "name2", "description2", course, 15, 3, 2, true, true, true, Classroom.OpSystem.Linux, ss);
-            Subject subject3 = new Subject("3", "name3", "description3", course, 20, 2, 3, true, true, true, Classroom.OpSystem.Linux, ss);
-
-            Appointment app1 = new Appointment();
-            app1.Subject = subject;
-            */
             allSubjects = new ObservableCollection<Subject>();
             allSoftware = new ObservableCollection<Software>();
             allClassrooms = new ObservableCollection<Classroom>();
@@ -118,7 +107,7 @@ namespace HCI2___Back_To_Slay
             //leftSubjects.Add(subject);
             //leftSubjects.Add(subject2);
             //leftSubjects.Add(subject3);
-            Console.WriteLine(allClassrooms.Count());
+            //Console.WriteLine(allClassrooms.Count());
             classroomsDG.ItemsSource = allClassrooms;
             subjectsDG.ItemsSource = allSubjects;
 
@@ -135,7 +124,29 @@ namespace HCI2___Back_To_Slay
             //schedule.appo
         }
 
-        public static void enableSchedule()
+        private void schedule_end_resize(object sender, AppointmentEndResizingEventArgs args)
+        {
+            args.Cancel = true;
+        }
+
+        private void schedule_start_resize(object sender, AppointmentStartResizingEventArgs args)
+        {
+            args.Cancel = true;
+        }
+
+        private void schedule_resize(object sender, AppointmentResizingEventArgs args)
+        {
+            
+        }
+
+        private void schedule_editor_open(object sender, AppointmentEditorOpeningEventArgs args)
+        {
+            args.Cancel = true;
+        }
+
+       
+
+        public void enableSchedule()
         {
             if (allClassrooms.Count > 0)
             {
@@ -145,10 +156,14 @@ namespace HCI2___Back_To_Slay
 
         public static void disableSchedule()
         {
+            
             if (allClassrooms.Count == 0)
             {
-                schedule.IsEnabled = false;
             }
+        }
+        private void disable_schedule()
+        {
+            schedule.IsEnabled = false;
         }
 
         private void add_new_classroom(object sender, RoutedEventArgs e)
@@ -180,18 +195,24 @@ namespace HCI2___Back_To_Slay
             Classroom cr = (Classroom)classroomsDG.SelectedItem;
             string symbol = cr.Id;
             bool found = false;
+            Console.WriteLine("________dodavanje uc RESURSI______");
+
             foreach (Resource r in resourceType.ResourceCollection.ToArray())
             {
+                Console.WriteLine(r.TypeName + " " + r.ResourceName + "\n" + r.DisplayName + "\n");
                 if (r.ResourceName == symbol)
                 {
                     found = true;
                     break;
                 }
             }
+            Console.WriteLine("__________");
             if (!found)
             {
                 resourceType.ResourceCollection.Add(create_resource(cr));
             }
+            schedule.Refresh();
+            
         }
 
         private Resource create_resource(Classroom cr)
@@ -285,18 +306,41 @@ namespace HCI2___Back_To_Slay
         {
             Subject subject = (Subject)subjectsDG.SelectedItem;
             Classroom cr = (Classroom)classroomsDG.SelectedItem;
+            if (cr == null)
+            {
+                string crId = "";
+                foreach(Resource res in resourceType.ResourceCollection)
+                {
+                    crId = res.ResourceName;
+                }
+                cr = get_new_classroom(crId);
+                if (cr == null)
+                {
+                    MessageBox.Show("You must select classroom first!");
+                    return;
+                }
+            }
+            if(!classroom_drag_check(cr, subject))
+            {
+                MessageBox.Show("Subject don't fit in this classroom, check seat number/equipment/software");
+                return;
+            }
+            
 
             if (allClassrooms.Count == 0)
             {
                 MessageBox.Show("You can't add anything on schedule before you create classroom!");
                 return;
             }
-            if (cr == null)
-            {
-                MessageBox.Show("You must select classroom first!");
-                return;
-            }
             
+            foreach(ScheduleAppointment app in schedule.Appointments)
+            {
+                if (app.Subject.Contains(subject.Name))
+                {
+                    MessageBox.Show("This subject is allready added!");
+                    return;
+                }
+            }
             for (int i = 0; i < subject.Num_of_periods; i++)
             {
                 ScheduleAppointment app = new ScheduleAppointment()
@@ -307,9 +351,11 @@ namespace HCI2___Back_To_Slay
                     AllDay = false,
                     Location = cr.Id
                 };
+                
                 Appointment realApp = new Appointment(cr, subject, app.StartTime,app.EndTime);
+                
                 realApps.Add(realApp);
-                Console.WriteLine("Dodat 1 sad ima " + realApps.Count() + " appointmenta");
+                //Console.WriteLine("Dodat 1 sad ima " + realApps.Count() + " appointmenta");
                 string symbol = cr.Id;
                 bool found=false;
                 foreach (Resource r in resourceType.ResourceCollection.ToArray())
@@ -328,7 +374,8 @@ namespace HCI2___Back_To_Slay
                 app.ResourceCollection.Add(res);
                 schedule.Appointments.Add(app);
                 appointments[realApp] = app;
-                
+                Console.WriteLine("____dodat predmet_____");
+                realApp.printApp();
             }
             //Console.WriteLine("__________ZAVRSENO DODAVANJE_______________");
         }
@@ -341,7 +388,7 @@ namespace HCI2___Back_To_Slay
             Console.WriteLine("__schApps___");
             foreach (ScheduleAppointment app in schedule.Appointments)
             {
-                Console.WriteLine(app.StartTime.ToShortTimeString());
+                Console.WriteLine(app.StartTime.Day);
                 if (app.Subject.Contains(subject.Name))
                 {
                     Console.Write(" for remove");
@@ -368,6 +415,7 @@ namespace HCI2___Back_To_Slay
                 realApps.Remove(realApp);
                 appointments.Remove(realApp);
             }
+            schedule.Refresh();
             Console.WriteLine("UKLONJEN JEDAN PREDMET! Sada ima " + realApps.Count() + " apointmenta");
         }
     
@@ -400,7 +448,7 @@ namespace HCI2___Back_To_Slay
         }
 
         private void menu_file_open(object sender, RoutedEventArgs e) {
-            if (schedule != null && schedule.IsEnabled)
+            if (schedule != null && schedule.IsEnabled && schedule.Appointments.Count>0)
             {
                 if (MessageBox.Show("Do you want to save first?", "New Schedule", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                     schedule.ExportICS();
@@ -416,6 +464,8 @@ namespace HCI2___Back_To_Slay
             foreach(ScheduleAppointment app in schedule.Appointments)
             {
                 Appointment realApp = new Appointment(app);
+                Console.WriteLine("____OPEN_____");
+                //realApp.printApp();
                 realApps.Add(realApp);
                 appointments[realApp] = app;
             }
@@ -444,78 +494,206 @@ namespace HCI2___Back_To_Slay
             schedule.ScheduleResourceTypeCollection = new ObservableCollection<ResourceType> { resourceType };
             schedule.Resource = "Classroom";
             schedule.MoveToDate(mainDate);
-            schedule.PreviewMouseLeftButtonUp += schedule_PreviewMouseLeftButtonUp;
+            //schedule.PreviewMouseLeftButtonUp += schedule_PreviewMouseLeftButtonUp;
             schedule.AppointmentEndDragging += schedule_AppointmentDropped;  
+
         }
 
         private void add_resources_open()
         {
             foreach(Appointment app in realApps)
             {
-                Classroom cr = app.Classroom;
-
-                string symbol = cr.Id;
+                ScheduleAppointment sapp = appointments[app];
+                Resource res;
                 bool found = false;
                 foreach (Resource r in resourceType.ResourceCollection.ToArray())
                 {
-                    if (r.ResourceName == symbol)
+                    if (r.ResourceName == sapp.Location)
                     {
+                        app.printApp();
                         found = true;
                         break;
                     }
                 }
-                Resource res = create_resource(cr);
+                if (app.Classroom != null)
+                {
+                    Classroom cr = app.Classroom;
+                    res = create_resource(cr);
+                }
+                else
+                {
+                    res = new Resource() { ResourceName = sapp.Location, TypeName = "Classroom", DisplayName = sapp.Location };
+                }
                 if (!found)
                 {
                     resourceType.ResourceCollection.Add(res);
                 }
-                appointments[app].ResourceCollection.Add(res);
+                sapp.ResourceCollection.Add(res);
+            }
+        }
+
+        private bool drop_check(Appointment app, string newCrId, DateTime newStartTime, DateTime newEndTime)
+        {
+            //DateTime newEndTime = newStartTime.AddMinutes
+            
+            if (app==null || app.Subject==null || app.Classroom == null)
+            {
+                MessageBox.Show("000Moving is forbidden because meanwhile some of the loaded subject/classroom/course are deleted");
+                return false;
+            }
+            else 
+            {
+                //MessageBox.Show(app.Classroom.Id+ newCrId);
+                if(app.Classroom.Id != newCrId )
+                {
+                    Classroom newCr = get_new_classroom(newCrId);
+                    if(!classroom_drag_check(newCr, app.Subject))
+                    {
+                        MessageBox.Show("111Moving is forbidden because selected subject can't fit in chosen classroom\nCheck group size/equipment/software");
+                        return false;
+                    }
+                }
+                if(!appointment_time_check(newCrId, newStartTime,newEndTime)){
+                    {
+                        MessageBox.Show("222Appointment can't fit in the choosen time!");
+                        return false;
+                    }
+                }
+            }
+                
+            return true;
+        }
+
+        private bool appointment_time_check(string newCrId, DateTime newStartTime, DateTime newEndTime)
+        {
+          
+            ScheduleAppointment selApp = schedule.SelectedAppointment;
+            if (selApp == null)
+            {
+                //MessageBox.Show("time_check0");
+                return false;
+            }
+            if(newStartTime.Hour < 6 || newEndTime.Hour > 23)
+            {
+                //MessageBox.Show("time_check1");
+                return false;
             }
             foreach(ScheduleAppointment app in schedule.Appointments)
             {
-                foreach(Resource res in app.ResourceCollection)
-                    Console.WriteLine(res.ResourceName+res.TypeName);
+                //da ne proverava sa sammim sobom
+                //da ne proverava razl ucionice
+                if (app.Location==newCrId && selApp.StartTime != app.StartTime && app.StartTime.DayOfWeek!=DayOfWeek.Sunday && app.StartTime.DayOfWeek == newStartTime.DayOfWeek)
+                {
+                    MessageBox.Show(newStartTime + "-" + newEndTime + ";"+app.StartTime + "-"+app.EndTime);
+                    if ((newStartTime>app.StartTime && newStartTime<app.EndTime) ||
+                        (newEndTime > app.StartTime && newEndTime < app.EndTime) || (newStartTime<app.StartTime && newEndTime > app.EndTime))
+                    {
+                        //MessageBox.Show("timecheck2");
+                        return false;
+                    }
+                }
+                else
+                {
+                    bool a = selApp.StartTime != app.StartTime;
+                    bool b = app.StartTime.DayOfWeek != DayOfWeek.Sunday;
+                    bool c = app.StartTime.DayOfWeek == newStartTime.DayOfWeek;
+                    Console.WriteLine("_____proverica_____\n" + a+" " + b+" " + c);
+                }
             }
+            return true;
         }
 
-        ScheduleAppointment temp_app;
-        private void schedule_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private bool classroom_drag_check(Classroom cr, Subject sub)
         {
-            
-            Console.WriteLine("POCEO");
-            temp_app = (ScheduleAppointment)AppointmentCloning((sender as SfSchedule).SelectedAppointment);
-        }
-
-        internal object AppointmentCloning(ScheduleAppointment app)
-        {
-            Console.WriteLine("POCEO");
-            if (app != null)
+            bool sofware_check = true;
+            foreach(Software sw in sub.Software)
             {
-                Console.WriteLine("KLONIRA");
-                ScheduleAppointment newapp = new ScheduleAppointment();
-                newapp.Subject = app.Subject;
-                newapp.StartTime = app.StartTime;
-                newapp.EndTime = app.EndTime;
-                Resource res = (Resource)app.ResourceCollection.ToArray()[0];
-                newapp.ResourceCollection.Add(create_resource(res));
-                return newapp;
+                if(!cr.Software.Contains(sw)){
+                   // MessageBox.Show("classroom check sw");
+                    return false;
+                }
             }
-            Console.WriteLine("NULL");
-            return null;
+            return (cr.Num_of_seats >= sub.Size_of_group) &&
+                   !(cr.Projector == false && sub.Projector == true) &&
+                   !(cr.Board == false && sub.Board == true) &&
+                   !(cr.Smart_board == false && sub.Smart_board == true) &&
+                   !(cr.Os != Classroom.OpSystem.WindowsAndLinux && cr.Os != sub.Os)&&
+                   sofware_check;
         }
 
         private void schedule_AppointmentDropped(object sender, AppointmentEndDraggingEventArgs args)
         {
-            ScheduleAppointment app = schedule.SelectedAppointment;
-            if (MessageBox.Show("Are you Sure for Drag and Drop the appointment?", "Drag and Drop", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            args.Cancel = cancel;
+            Console.WriteLine(args.To + "\n" + args.From);
+            ScheduleAppointment app = (ScheduleAppointment)args.Appointment;
+            if (app != null && !cancel)
             {
-                Console.WriteLine("usao " + temp_app.StartTime.DayOfWeek+app.StartTime.DayOfWeek);
-                (sender as SfSchedule).Appointments.Remove((sender as SfSchedule).SelectedAppointment);
-                schedule.Appointments.Add(temp_app);
+                Console.WriteLine("___________________pomeranje______________________\n" + app.StartTime+" "+app.EndTime.DayOfWeek+" "+app.EndTime);
+                string newCr = "";
+                foreach (Resource res in app.ResourceCollection)
+                {
+                    newCr = res.ResourceName;
+                    break;
+                }
+                Appointment realApp = get_real_appointment(app);
+                DateTime to = args.To;
+                //Console.WriteLine(to.ToShortTimeString());
+                DateTime end = to.AddMinutes(realApp.Subject.Duration_of_period * 45);
+                //Console.WriteLine(realApp.Subject.Duration_of_period+": "+ to.ToShortTimeString() + " - " + end.ToShortTimeString());
+                realApp.printApp();
+                //Console.WriteLine(newCr + " get real app: " + realApp.Classroom.Id);
+                if (!drop_check(realApp, newCr, to, end))
+                {
+                    app.ResourceCollection.Clear();
+                    app.ResourceCollection.Add(create_resource(realApp.Classroom));
+                    schedule.Refresh();
+                    args.Cancel = true;
+                    app.ResourceCollection.Clear();
+                    app.ResourceCollection.Add(create_resource(realApp.Classroom));
+                    schedule.Refresh();
+                }
+                else
+                {
+                    foreach (Resource res in app.ResourceCollection)
+                    {
+                        //Console.WriteLine("novi resurs: " + res.ResourceName);
+                        appointments.Remove(get_real_appointment(app));
+                        Appointment newReal = new Appointment(app);
+                        newReal.printApp();
+                        app.Location = res.ResourceName;
+                        appointments[newReal] = app;
+                        break;
+                    }
+                }
             }
-            else
+            schedule.Refresh();
+        }
+
+        private Appointment get_real_appointment(ScheduleAppointment app)
+        {
+            foreach(Appointment realApp in appointments.Keys)
             {
+                if(appointments[realApp] == app)
+                {
+                    return realApp;
+                }
+                
+       
             }
+            MessageBox.Show("nema odg realApp!!");
+            return null;
+        }
+
+        private Classroom get_new_classroom(string id)
+        {
+            foreach(Classroom cr in allClassrooms)
+            {
+                if(cr.Id == id)
+                {
+                    return cr;
+                }
+            }
+            return null;
         }
 
         private void loadData()

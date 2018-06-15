@@ -79,7 +79,7 @@ namespace HCI2___Back_To_Slay
             foreach(Classroom cr in MainWindow.allClassrooms)
             {
                 
-                Console.WriteLine("app location:" + app.Location+"\n app name"+app.Subject);
+                //Console.WriteLine("app location:" + app.Location+"\n app name"+app.Subject);
                 if (cr.Id == app.Location)
                 {
                     
@@ -89,19 +89,41 @@ namespace HCI2___Back_To_Slay
             }
             foreach (Subject sub in MainWindow.allSubjects)
             {
-                if (app.Subject.Contains(sub.Name))
+                string ime="";
+                string kurs="";
+                if (app.Subject.Contains("\n"))
                 {
+                    ime = app.Subject.Split('\n')[0];
+                    kurs = app.Subject.Split('\n')[1];
+                }
+                else
+                {
+                    ime = app.Subject;
+                }
+                if (sub.Name==ime)
+                {                   
                     this.subject = sub;
-                    app.Subject += "\n" + subject.Course.Name;
+                    if (sub != null && sub.Course != null && !app.Subject.Contains(sub.Course.Name))
+                        app.Subject += "\n" + subject.Course.Name;
                     break;
                 }
             }
+            if(subject == null || classroom == null)
+            {
+                MainWindow.cancel = true;
+            }
+            else
+            {
+                MainWindow.cancel = false;
 
+            }
         }
 
         public void printApp()
         {
-            Console.WriteLine("(" + classroom.Id + "," + subject.Name + "," + start.ToShortTimeString() + ","+end.ToShortTimeString()+")");
+            Console.WriteLine("(" + classroom.Id + start.DayOfWeek + "," + subject.Name + "," +subject.Course.Name+"," + subject.Size_of_group + "\n" + 
+                                subject.Projector + "," + subject.Board + "," + subject.Smart_board + "," + subject.Os + "," +
+                                subject.Num_of_periods + "," + subject.Duration_of_period + ")");
         }
     }
 }
