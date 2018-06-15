@@ -48,6 +48,7 @@ namespace HCI2___Back_To_Slay.windows
                 duration.BorderBrush = Helper.colors[0];
                 size.BorderBrush = Helper.colors[0];
                 change_visibility();
+                temp = current_sub.Course;
             }
             else
             {

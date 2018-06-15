@@ -6,16 +6,16 @@
         xmlns:l="clr-namespace:HCI2___Back_To_Slay"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
         mc:Ignorable="d"
-        Title="Subject_Multiple" Height="300" Width="500">
+        Title="Subject_Multiple" Height="300" Width="900">
     <Grid>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="17,68,0,0" VerticalAlignment="Top"
                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
-                  SelectedItem="Binding Subject" MouseDoubleClick="show_subject" AutoGenerateColumns="false" l:HelpProvider.HelpKey="izlistavanje_predmeta">
+                  SelectedItem="Binding Subject" MouseDoubleClick="show_subject" AutoGenerateColumns="false" l:HelpProvider.HelpKey="izlistavanje_predmeta" Height="150">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Course name" Binding="{Binding Source.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Course name" Binding="{Binding Course_name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Group size" Binding="{Binding Size_of_group}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Duration of period" Binding="{Binding Duration_of_period}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Number of periods" Binding="{Binding Num_of_periods}"></DataGridTextColumn>
@@ -41,6 +41,9 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="17,232,0,0" TextWrapping="Wrap" Text="Search by:" VerticalAlignment="Top"/>
+        <TextBox x:Name="search_tb" HorizontalAlignment="Left" Height="23" Margin="245,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="search_subjects"/>
+        <ComboBox x:Name="kombo" HorizontalAlignment="Left" Margin="88,232,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="criteria_changed"/>
 
     </Grid>
 </Window>

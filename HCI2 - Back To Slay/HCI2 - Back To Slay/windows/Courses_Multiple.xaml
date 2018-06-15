@@ -6,7 +6,7 @@
         xmlns:l="clr-namespace:HCI2___Back_To_Slay"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
         mc:Ignorable="d"
-        Title="Courses_Multiple" Height="330" Width="320">
+        Title="Courses_Multiple" Height="350" Width="500">
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
     </Window.CommandBindings>
@@ -17,11 +17,11 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Description" Binding="{Binding Description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="100"></DataGridTextColumn>
                 <DataGridTextColumn Header="Date of conception" Binding="{Binding Date_of_conception}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="save_crs_btn" Content="Save selected course" HorizontalAlignment="Left" Margin="170,259,0,0" VerticalAlignment="Top" Visibility="Hidden" Click="save_course">
+        <Button x:Name="save_crs_btn" Content="Save selected course" HorizontalAlignment="Left" Margin="210,290,0,0" VerticalAlignment="Top" Click="save_course" Visibility="Hidden">
             <Button.ToolTip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
@@ -30,5 +30,9 @@
                 </StackPanel>
             </Button.ToolTip>
         </Button>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="44,259,0,0" TextWrapping="Wrap" Text="Search by:" VerticalAlignment="Top"/>
+        <ComboBox x:Name="kombo" HorizontalAlignment="Left" Margin="114,253,0,0" VerticalAlignment="Top" Width="95" SelectionChanged="criteria_changed"/>
+        <TextBox x:Name="search_tb" HorizontalAlignment="Left" Height="23" Margin="218,252,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" TextChanged="search_courses"/>
+
     </Grid>
 </Window>
