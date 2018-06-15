@@ -40,13 +40,19 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        
-        <TextBox x:Name="search_tb" HorizontalAlignment="Left" Height="23" Margin="300,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" TextChanged="search_classrooms"/>
-        <ComboBox x:Name="kombo" HorizontalAlignment="Left" Margin="136,212,0,0" VerticalAlignment="Top" Width="134" SelectionChanged="criteria_changed">
 
-        </ComboBox>
+        <TextBox x:Name="search_tb" HorizontalAlignment="Left" Height="23" Margin="300,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" TextChanged="search_classrooms" l:HelpProvider.HelpKey="izlistavanje_ucionica"/>
+        <ComboBox x:Name="kombo" HorizontalAlignment="Left" Margin="136,212,0,0" VerticalAlignment="Top" Width="134" SelectionChanged="criteria_changed"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="54,212,0,0" TextWrapping="Wrap" Text="Search by:" VerticalAlignment="Top"/>
-        <Button x:Name="add_cr_btn" Content="Add new classroom" HorizontalAlignment="Left" Margin="631,214,0,0" VerticalAlignment="Top" Click="add_new_classroom"/>
+        <Button x:Name="add_cr_btn" Content="Add new classroom" HorizontalAlignment="Left" Margin="631,214,0,0" VerticalAlignment="Top" Click="add_new_classroom">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button allows you to create new classroom.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
 
 
     </Grid>

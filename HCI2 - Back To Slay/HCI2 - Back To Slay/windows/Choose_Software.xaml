@@ -76,7 +76,15 @@
                 </StackPanel>
             </Button.ToolTip>
         </Button>
-        <Button x:Name="add_sw_btn" Content="Add new software" HorizontalAlignment="Left" Margin="221,248,0,0" VerticalAlignment="Top" Click="add_new_software"/>
+        <Button x:Name="add_sw_btn" Content="Add new software" HorizontalAlignment="Left" Margin="221,248,0,0" VerticalAlignment="Top" Click="add_new_software">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button lets you create new Software.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
 
 
     </Grid>

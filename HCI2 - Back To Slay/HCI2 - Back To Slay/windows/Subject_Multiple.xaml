@@ -42,9 +42,17 @@
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="17,232,0,0" TextWrapping="Wrap" Text="Search by:" VerticalAlignment="Top"/>
-        <TextBox x:Name="search_tb" HorizontalAlignment="Left" Height="23" Margin="245,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="search_subjects"/>
+        <TextBox x:Name="search_tb" HorizontalAlignment="Left" Height="23" Margin="245,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="search_subjects" l:HelpProvider.HelpKey="izlistavanje_predmeta"/>
         <ComboBox x:Name="kombo" HorizontalAlignment="Left" Margin="88,232,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="criteria_changed"/>
-        <Button x:Name="add_sub_btn" Content="Add new subject" HorizontalAlignment="Left" Margin="883,228,0,0" VerticalAlignment="Top" Click="add_new_subject"/>
+        <Button x:Name="add_sub_btn" Content="Add new subject" HorizontalAlignment="Left" Margin="883,228,0,0" VerticalAlignment="Top" Click="add_new_subject">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button allows you to create new subject.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
 
     </Grid>
 </Window>

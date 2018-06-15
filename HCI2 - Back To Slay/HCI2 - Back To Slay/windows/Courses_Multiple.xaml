@@ -44,7 +44,15 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="44,259,0,0" TextWrapping="Wrap" Text="Search by:" VerticalAlignment="Top"/>
         <ComboBox x:Name="kombo" HorizontalAlignment="Left" Margin="114,253,0,0" VerticalAlignment="Top" Width="95" SelectionChanged="criteria_changed"/>
         <TextBox x:Name="search_tb" HorizontalAlignment="Left" Height="23" Margin="218,252,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" TextChanged="search_courses"/>
-        <Button x:Name="add_crs_btn" Content="Add new course" HorizontalAlignment="Left" Margin="230,289,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.011,0.641" Click="add_new_course"/>
+        <Button x:Name="add_crs_btn" Content="Add new course" HorizontalAlignment="Left" Margin="230,289,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.011,0.641" Click="add_new_course">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button allows you to create new course.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
 
     </Grid>
 </Window>
