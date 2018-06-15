@@ -161,25 +161,25 @@ namespace HCI2___Back_To_Slay
         private void add_new_classroom(object sender, RoutedEventArgs e)
         {
             Add_Classroom add_classroom_window = new Add_Classroom();
-            add_classroom_window.Show();
+            add_classroom_window.ShowDialog();
         }
 
         private void add_new_course(object sender, RoutedEventArgs e)
         {
             Add_Course add_course_window = new Add_Course();
-            add_course_window.Show();
+            add_course_window.ShowDialog();
         }
 
         private void add_new_subject(object sender, RoutedEventArgs e)
         {
             Add_Subject add_subject_window = new Add_Subject();
-            add_subject_window.Show();
+            add_subject_window.ShowDialog();
         }
 
         private void add_new_software(object sender, RoutedEventArgs e)
         {
             Add_Software add_software_window = new Add_Software();
-            add_software_window.Show();
+            add_software_window.ShowDialog();
         }
 
         private void add_classroom_on_schedule(Object sender, RoutedEventArgs e)
