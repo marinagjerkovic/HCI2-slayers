@@ -32,6 +32,12 @@ namespace HCI2___Back_To_Slay.windows
                 return;
             }
 
+            if(id.Text.Equals("") || name.Text.Equals("") || description.Text.Equals("") || datepicker.Text.Equals(""))
+            {
+                MessageBox.Show("Error - fields can't be empty!");
+                return;
+            }
+
             Course course = new Course();
 
             course.Id = id.Text;

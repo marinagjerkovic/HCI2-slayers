@@ -29,6 +29,7 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="64,230,0,0" TextWrapping="Wrap" Text="Search by:" VerticalAlignment="Top"/>
         <TextBox x:Name="search_tb" HorizontalAlignment="Left" Height="23" Margin="286,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.665,0.088" TextChanged="search_software"/>
         <ComboBox x:Name="kombo" HorizontalAlignment="Left" Margin="139,230,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="criteria_changed"/>
+        <Button x:Name="add_sw_btn" Content="Add new software" HorizontalAlignment="Left" Margin="422,233,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.193,0.086" Click="add_new_software"/>
 
 
     </Grid>

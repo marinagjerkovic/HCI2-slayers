@@ -6,7 +6,7 @@
         xmlns:l="clr-namespace:HCI2___Back_To_Slay"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay.windows"
         mc:Ignorable="d"
-        Title="Subject_Multiple" Height="300" Width="900">
+        Title="Subject_Multiple" Height="300" Width="1000">
     <Grid>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="17,68,0,0" VerticalAlignment="Top"
                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
@@ -44,6 +44,7 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="17,232,0,0" TextWrapping="Wrap" Text="Search by:" VerticalAlignment="Top"/>
         <TextBox x:Name="search_tb" HorizontalAlignment="Left" Height="23" Margin="245,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="search_subjects"/>
         <ComboBox x:Name="kombo" HorizontalAlignment="Left" Margin="88,232,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="criteria_changed"/>
+        <Button x:Name="add_sub_btn" Content="Add new subject" HorizontalAlignment="Left" Margin="883,228,0,0" VerticalAlignment="Top" Click="add_new_subject"/>
 
     </Grid>
 </Window>

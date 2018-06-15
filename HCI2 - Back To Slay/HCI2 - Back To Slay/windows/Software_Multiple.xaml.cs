@@ -38,7 +38,7 @@ namespace HCI2___Back_To_Slay.windows
             Show_Data = MainWindow.allSoftware;
             InitializeComponent();
             dataGrid.ItemsSource = Show_Data;
-
+            add_sw_btn.Visibility = System.Windows.Visibility.Visible;
             load_kombo();
         }
 
@@ -56,6 +56,7 @@ namespace HCI2___Back_To_Slay.windows
             InitializeComponent();
             dataGrid.ItemsSource = Show_Data;
             ar_sw.Visibility = Visibility.Visible;
+            add_sw_btn.Visibility = System.Windows.Visibility.Hidden;
 
             load_kombo();
         }
@@ -74,6 +75,7 @@ namespace HCI2___Back_To_Slay.windows
             InitializeComponent();
             dataGrid.ItemsSource = Show_Data;
             ar_sw.Visibility = Visibility.Visible;
+            add_sw_btn.Visibility = System.Windows.Visibility.Hidden;
 
             load_kombo();
         }
@@ -236,6 +238,14 @@ namespace HCI2___Back_To_Slay.windows
                 load_temp(search_crit, search_text, false);
                 dataGrid.ItemsSource = temp;
             }
+        }
+
+        private void add_new_software(object sender, RoutedEventArgs e)
+        {
+            Add_Software asw = new Add_Software();
+            asw.ShowDialog();
+            //reload,itemssource
+            //vrati disable na false
         }
 
 

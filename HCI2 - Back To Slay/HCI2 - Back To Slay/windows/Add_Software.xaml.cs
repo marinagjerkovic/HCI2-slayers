@@ -19,6 +19,7 @@ namespace HCI2___Back_To_Slay.windows
     /// </summary>
     public partial class Add_Software : Window
     {
+
         public Add_Software()
         {
             InitializeComponent();

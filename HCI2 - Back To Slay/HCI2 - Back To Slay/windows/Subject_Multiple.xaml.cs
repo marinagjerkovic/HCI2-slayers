@@ -117,6 +117,12 @@ namespace HCI2___Back_To_Slay.windows
             search_tb.Text = "";
         }
 
+        private void add_new_subject(object sender, RoutedEventArgs e)
+        {
+            Add_Subject asub = new Add_Subject();
+            asub.ShowDialog();
+        }
+
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             int indeks = 0;

@@ -21,12 +21,15 @@ namespace HCI2___Back_To_Slay.windows
     public partial class Courses_Multiple : Window
     {
         public static Course selected_crs;
+        public static RoutedCommand exitDemoMode = new RoutedCommand();
 
         private ObservableCollection<Course> temp = new ObservableCollection<Course>();
 
         public Courses_Multiple(bool show)
         {
-            
+            this.DataContext = this;
+            exitDemoMode.InputGestures.Add(new KeyGesture(Key.Escape));
+
             InitializeComponent();
             dataGrid.ItemsSource = MainWindow.allCourses;
             kombo.Items.Add("id");
@@ -36,6 +39,8 @@ namespace HCI2___Back_To_Slay.windows
             if (show)
             {
                 save_crs_btn.Visibility = System.Windows.Visibility.Visible;
+                dataGrid.SelectedIndex = 2;
+                
             }
         }
 
@@ -132,6 +137,12 @@ namespace HCI2___Back_To_Slay.windows
             }
         }
 
+        private void add_new_course(object sender, RoutedEventArgs e)
+        {
+            Add_Course ac = new Add_Course();
+            ac.ShowDialog();
+        }
+
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             int indeks = 0;
@@ -149,6 +160,17 @@ namespace HCI2___Back_To_Slay.windows
                 string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
                 HelpProvider.ShowHelp(str, this);
             }
+        }
+
+        private void exit_demo(object sender, RoutedEventArgs e)
+        {
+            if (MainWindow.demoModeOn)
+            {
+                //radi sta se radi kad se iskljuci demo
+                MainWindow.demoModeOn = false;
+                MessageBox.Show("exit demo");
+            }
+
         }
     }
 }
