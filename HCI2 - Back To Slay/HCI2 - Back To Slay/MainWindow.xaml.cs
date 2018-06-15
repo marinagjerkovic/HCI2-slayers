@@ -51,7 +51,7 @@ namespace HCI2___Back_To_Slay
 
         public ObservableCollection<Appointment> app2add { get; set; }
 
-        public ResourceType resourceType;
+        public static ResourceType resourceType;
 
         public static Dictionary<Appointment, ScheduleAppointment> appointments = new Dictionary<Appointment, ScheduleAppointment>();
 
@@ -234,6 +234,13 @@ namespace HCI2___Back_To_Slay
 
         public static bool update_classroom_schedule(string id)
         {
+            foreach(Resource res in resourceType.ResourceCollection)
+            {
+                if(res.ResourceName == id)
+                {
+                    return false;
+                }
+            }
             bool retVal = true;
             foreach(Appointment app in realApps)
             {
