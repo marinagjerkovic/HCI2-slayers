@@ -39,7 +39,7 @@ namespace HCI2___Back_To_Slay.windows
             switch (result)
             {
                 case (MessageBoxResult.Yes):
-                    if (MainWindow.update_classroom_schedule(current_crs.Id))
+                    if (MainWindow.update_course_schedule(current_crs.Id))
                     {
                         MainWindow.allCourses.Remove(current_crs);
                         MainWindow.allCoursesIds.Remove(current_crs.Id);
