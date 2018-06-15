@@ -655,6 +655,7 @@ namespace HCI2___Back_To_Slay
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
+            deleteDemoEntities();
             using (StreamWriter pis = new StreamWriter(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\files\\savings.txt"))
             {
                 //pis.WriteLine(updateInterval + "," + cbUpdateInterval.SelectedIndex);
@@ -912,7 +913,7 @@ namespace HCI2___Back_To_Slay
             Software delsoft = null;
             foreach (Classroom c in allClassrooms)
             {
-                if (c.Id == "Example_Id")
+                if (c.Id.Equals("Example_Id"))
                 {
                     delclass = c;
                 }
@@ -922,7 +923,7 @@ namespace HCI2___Back_To_Slay
 
             foreach (Subject s in allSubjects)
             {
-                if (s.Id == "Example_Id")
+                if (s.Id.Equals("Example_Id"))
                 {
                     delsubj = s;
                 }
@@ -932,7 +933,7 @@ namespace HCI2___Back_To_Slay
             
             foreach (Software s in allSoftware)
             {
-                if (s.Id == "Example_Id")
+                if (s.Id.Equals("Example_Id"))
                 {
                     delsoft = s;
                 }
@@ -942,7 +943,7 @@ namespace HCI2___Back_To_Slay
 
             foreach (Course c in allCourses)
             {
-                if (c.Id == "Example_Id")
+                if (c.Id.Equals("Example_Id"))
                 {
                     delcourse = c;
                 }
