@@ -10,6 +10,7 @@
         Title="Choose_Software" Height="350" Width="700">
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+        <CommandBinding Command="{x:Static l:MainWindow.exitDemoMode}" Executed="exit_demo"/>
     </Window.CommandBindings>
     <Grid>
         <DataGrid x:Name="allSoftwareDG" HorizontalAlignment="Left" Margin="20,36,0,0" VerticalAlignment="Top" Height="201" Width="300"
