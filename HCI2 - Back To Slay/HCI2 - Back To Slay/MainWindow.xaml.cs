@@ -790,11 +790,12 @@ namespace HCI2___Back_To_Slay
             s.Description = "Example_Description";
             s.Maker = "Example_Maker";
             s.Name = "Example_Name";
-            s.Os = Classroom.OpSystem.Windows;
+            s.Os = Classroom.OpSystem.Linux;
             s.Price = 100;
             s.Site = "Example_Site";
             s.Year = 2000;
             allSoftware.Add(s);
+            allSoftwareIds.Add("Example_Id");
 
             Course c = new Course();
             c.Date_of_conception = System.DateTime.Now;
@@ -802,6 +803,20 @@ namespace HCI2___Back_To_Slay
             c.Id = "Example_Id";
             c.Name = "Example_Name";
             allCourses.Add(c);
+            allCoursesIds.Add("Example_Id");
+
+            Classroom cr = new Classroom();
+            cr.Board = false;
+            cr.Description = "Example_Description";
+            cr.Id = "Example_Id";
+            cr.Num_of_seats = 15;
+            cr.Os = Classroom.OpSystem.Linux;
+            cr.Projector = true;
+            cr.Smart_board = false;
+            cr.Software.Add(s);
+            allClassrooms.Add(cr);
+            allClassroomsIds.Add("Example_Id");
+
 
         }
 
@@ -811,82 +826,122 @@ namespace HCI2___Back_To_Slay
             adds.Show();
 
             await addSubjectDemo(adds);
+            adds.Close();
         }
 
         private async Task addSubjectDemo(Add_Subject adds)
         {
+            await Task.Delay(1500);
             adds.id.Text = "Example_Id";
             await Task.Delay(1500);
             adds.name.Text = "Example_Name";
             await Task.Delay(1500);
             adds.description.Text = "Example_Description";
             await Task.Delay(1500);
-            typeof(Button).GetMethod("set_IsPressed", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(adds.add_crs, new object[] { true });
-            await Task.Delay(2000);
+            Brush color = adds.add_crs.Background;
+            adds.add_crs.Background = Brushes.Blue;
+            await Task.Delay(1500);
+            adds.add_crs.Background = color;
+            Courses_Multiple cm = new Courses_Multiple(false);
+            await chooseCourseDemo(cm);
+            await Task.Delay(1500);
+            
+            cm.Close();
+            await Task.Delay(1500);
+            adds.group_size.Text = "15";
+            await Task.Delay(1500);
+            adds.duration.Text = "2";
+            await Task.Delay(1500);
+            adds.num_periods.Text = "2";
+            await Task.Delay(1500);
+            adds.projNo.IsChecked = true;
+            await Task.Delay(1500);
+            adds.boardNo.IsChecked = true;
+            await Task.Delay(1500);
+            adds.smartNo.IsChecked = true;
+            await Task.Delay(1500);
+            adds.linux.IsChecked = true;
+            await Task.Delay(1500);
+            Choose_Software cs = new Choose_Software(Classroom.OpSystem.Linux);
+            await Task.Delay(1500);
+            adds.add_sw_btn.Background = Brushes.Blue;
+            await Task.Delay(1500);
+            adds.add_sw_btn.Background = color;
+            await chooseSoftwareDemo(cs);
+            await Task.Delay(1500);
+            
+            cs.Close();
+            await Task.Delay(1500);
+            adds.button.Background = Brushes.Blue;
+            await Task.Delay(1500);
+        }
 
-            Add_Course addc = new Add_Course();
+        private async Task chooseSoftwareDemo(Choose_Software cs)
+        {
+            cs.Show();
+            cs.allSoftwareDG.SelectedIndex = 0;
 
+            await Task.Delay(1500);
+            cs.add_btn.Background = Brushes.Blue;
+        }
 
+        private async Task chooseCourseDemo(Courses_Multiple cm)
+        {
+            cm.save_crs_btn.Visibility = Visibility.Visible;
+            cm.Show();
+            cm.dataGrid.SelectedIndex = 0;
+
+            await Task.Delay(1500);
+            cm.save_crs_btn.Background = Brushes.Blue;
         }
 
         private static void deleteDemoEntities()
         {
+            Classroom delclass = null;
+            Subject delsubj = null;
+            Course delcourse = null;
+            Software delsoft = null;
             foreach (Classroom c in allClassrooms)
             {
                 if (c.Id == "Example_Id")
                 {
-                    allClassrooms.Remove(c);
+                    delclass = c;
                 }
             }
-            foreach (string id in allClassroomsIds)
-            {
-                if (id == "Example_Id")
-                {
-                    allClassroomsIds.Remove(id);
-                }
-            }
+            allClassrooms.Remove(delclass);
+            allClassroomsIds.Remove("Example_Id");
+
             foreach (Subject s in allSubjects)
             {
                 if (s.Id == "Example_Id")
                 {
-                    allSubjects.Remove(s);
+                    delsubj = s;
                 }
             }
-            foreach (string id in allSubjectsIds)
-            {
-                if (id == "Example_Id")
-                {
-                    allSubjectsIds.Remove(id);
-                }
-            }
+            allSubjects.Remove(delsubj);
+            allSubjectsIds.Remove("Example_Id");
+            
             foreach (Software s in allSoftware)
             {
                 if (s.Id == "Example_Id")
                 {
-                    allSoftware.Remove(s);
+                    delsoft = s;
                 }
             }
-            foreach (string id in allSoftwareIds)
-            {
-                if (id == "Example_Id")
-                {
-                    allSoftwareIds.Remove(id);
-                }
-            }
+            allSoftware.Remove(delsoft);
+            allSoftwareIds.Remove("Example_Id");
+
             foreach (Course c in allCourses)
             {
                 if (c.Id == "Example_Id")
                 {
-                    allCourses.Remove(c);
+                    delcourse = c;
                 }
             }
-            foreach (string id in allCoursesIds)
-            {
-                if (id == "Example_Id")
-                {
-                    allClassroomsIds.Remove(id);
-                }
-            }
+            allCourses.Remove(delcourse);
+            allCoursesIds.Remove("Example_Id");
+
+            
         }
 
         private void exit_demo(object sender, RoutedEventArgs e)

@@ -9,6 +9,7 @@
         Title="Add_Subject" Height="520" Width="400">
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+        <CommandBinding Command="{x:Static l:MainWindow.exitDemoMode}" Executed="exit_demo"/>
     </Window.CommandBindings>
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Subject id: " VerticalAlignment="Top" RenderTransformOrigin="0.089,0.547"/>
