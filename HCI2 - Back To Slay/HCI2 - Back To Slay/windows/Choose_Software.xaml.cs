@@ -22,8 +22,8 @@ namespace HCI2___Back_To_Slay.windows
     public partial class Choose_Software : Window
     {
 
-        private ObservableCollection<Software> all = new ObservableCollection<Software>();
-        private ObservableCollection<Software> added = new ObservableCollection<Software>();
+        public static ObservableCollection<Software> all = new ObservableCollection<Software>();
+        public static ObservableCollection<Software> added = new ObservableCollection<Software>();
         public static List<Software> chosen_software = new List<Software>();
         private DataGrid currentDG = null;
 

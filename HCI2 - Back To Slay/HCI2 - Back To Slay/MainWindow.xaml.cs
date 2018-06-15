@@ -763,9 +763,10 @@ namespace HCI2___Back_To_Slay
 
         private async void start_demo(object sender, RoutedEventArgs e)
         {
+            
             demoModeOn = true;            
             await start();
-
+            
         }
        
 
@@ -773,13 +774,14 @@ namespace HCI2___Back_To_Slay
         {
             while (demoModeOn)
             {
+                this.IsHitTestVisible = false;
                 deleteDemoEntities();
                 fillDemoEntities();
                 await startingDemo();
             }
 
             deleteDemoEntities();
-
+            this.IsHitTestVisible = true;
             
         }
 
@@ -823,6 +825,7 @@ namespace HCI2___Back_To_Slay
         private async Task startingDemo()
         {
             Add_Subject adds = new Add_Subject();
+            adds.IsHitTestVisible = false;
             adds.Show();
 
             await addSubjectDemo(adds);
@@ -843,6 +846,7 @@ namespace HCI2___Back_To_Slay
             await Task.Delay(1500);
             adds.add_crs.Background = color;
             Courses_Multiple cm = new Courses_Multiple(false);
+            cm.IsHitTestVisible = false;
             await chooseCourseDemo(cm);
             await Task.Delay(1500);
             
@@ -863,14 +867,12 @@ namespace HCI2___Back_To_Slay
             adds.linux.IsChecked = true;
             await Task.Delay(1500);
             Choose_Software cs = new Choose_Software(Classroom.OpSystem.Linux);
+            cs.IsHitTestVisible = false;
             await Task.Delay(1500);
             adds.add_sw_btn.Background = Brushes.Blue;
             await Task.Delay(1500);
             adds.add_sw_btn.Background = color;
-            await chooseSoftwareDemo(cs);
-            await Task.Delay(1500);
-            
-            cs.Close();
+            await chooseSoftwareDemo(cs);            
             await Task.Delay(1500);
             adds.button.Background = Brushes.Blue;
             await Task.Delay(1500);
@@ -880,9 +882,16 @@ namespace HCI2___Back_To_Slay
         {
             cs.Show();
             cs.allSoftwareDG.SelectedIndex = 0;
-
+            await Task.Delay(1500);            
+            Software s = (Software)cs.allSoftwareDG.Items[0];
+            Choose_Software.all.RemoveAt(0);
+            Choose_Software.added.Add(s);
             await Task.Delay(1500);
             cs.add_btn.Background = Brushes.Blue;
+            await Task.Delay(1000);
+            cs.Close();
+            Choose_Software.all.Add(s);
+            Choose_Software.added.RemoveAt(0);
         }
 
         private async Task chooseCourseDemo(Courses_Multiple cm)
