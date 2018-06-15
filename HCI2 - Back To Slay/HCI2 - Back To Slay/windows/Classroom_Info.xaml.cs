@@ -40,9 +40,15 @@ namespace HCI2___Back_To_Slay.windows
 
         private void change_classroom(object sender, RoutedEventArgs e)
         {
-            description.BorderBrush = Helper.colors[0];
-            num_of_seats.BorderBrush = Helper.colors[0];
-            change_visibility();
+            if (MainWindow.update_classroom_schedule(current_cr.Id))
+            {
+                description.BorderBrush = Helper.colors[0];
+                num_of_seats.BorderBrush = Helper.colors[0];
+                change_visibility();
+            }else
+            {
+                MessageBox.Show("This classroom is used in current schedule - please remove it before updating it!");
+            }
         }
 
         private void update_classroom(object sender, RoutedEventArgs e)
@@ -73,9 +79,7 @@ namespace HCI2___Back_To_Slay.windows
             {
                 chosen_os = Classroom.OpSystem.WindowsAndLinux;
             }
-
-            if (MainWindow.update_classroom_schedule(current_cr.Id))
-            {
+            
                 current_cr.Description = description.Text;
                 current_cr.Num_of_seats = num;
                 current_cr.Board = (bool)board_yes.IsChecked;
@@ -100,26 +104,28 @@ namespace HCI2___Back_To_Slay.windows
                 MainWindow.allClassroomsIds.Remove(current_cr.Id);
                 MainWindow.allClassrooms.Add(current_cr);
                 MainWindow.allClassroomsIds.Add(current_cr.Id);
-
                 load_data();
-                description.BorderBrush = Helper.colors[1];
-                num_of_seats.BorderBrush = Helper.colors[1];
-                change_visibility();
-            }
+            description.BorderBrush = Helper.colors[1];
+            num_of_seats.BorderBrush = Helper.colors[1];
+            change_visibility();
 
         }
 
         private void delete_classroom(object sender, RoutedEventArgs e)
         {
-            //treba vidjeti sha sa ovim
-            return;
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this classroom from the system?", "sinisa the best", MessageBoxButton.YesNo);
             switch (result)
             {
                 case (MessageBoxResult.Yes):
-                    MainWindow.allClassrooms.Remove(current_cr);
-                    MainWindow.allClassroomsIds.Remove(current_cr.Id);
-                    this.Close();
+                    if (MainWindow.update_classroom_schedule(current_cr.Id))
+                    {
+                        MainWindow.allClassrooms.Remove(current_cr);
+                        MainWindow.allClassroomsIds.Remove(current_cr.Id);
+                        this.Close();
+                    }else
+                    {
+                        MessageBox.Show("This classroom is used in current schedule - please remove it before deleting it!");
+                    }
                     break;
                 case (MessageBoxResult.No):
                     break;

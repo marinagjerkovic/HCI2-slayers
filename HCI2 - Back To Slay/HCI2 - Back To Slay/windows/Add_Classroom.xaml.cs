@@ -104,7 +104,11 @@ namespace HCI2___Back_To_Slay.windows
            // MainWindow.enable;
 
             MessageBox.Show("Successfully added a new classroom!");
-            this.Close();
+            id.Text = "";
+            description.Text = "";
+            num_of_seats.Text = "";
+            current_cr = new Classroom();
+            //this.Close();
         }
 
         private void cancel(object sender, RoutedEventArgs e)

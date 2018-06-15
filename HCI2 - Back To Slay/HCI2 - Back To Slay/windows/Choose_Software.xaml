@@ -26,6 +26,16 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="BorderBrush" Value="Blue" />
+                            <Setter Property="BorderThickness" Value="2" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
         </DataGrid>
         <DataGrid x:Name="addedSoftwareDG" HorizontalAlignment="Left" Margin="350,36,0,0" VerticalAlignment="Top" Height="201" Width="300"
                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
@@ -46,8 +56,8 @@
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="350,10,0,0" TextWrapping="Wrap" Text="Added software(click to remove):" VerticalAlignment="Top" RenderTransformOrigin="-0.037,0.176"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="20,242,0,0" TextWrapping="Wrap" Text="Search(name):" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="350,242,0,0" TextWrapping="Wrap" Text="Search(name):" VerticalAlignment="Top" RenderTransformOrigin="-0.103,0.007"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="17" Margin="20,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" l:HelpProvider.HelpKey="izbor_softvera"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="17" Margin="350,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" l:HelpProvider.HelpKey="izbor_softvera"/>
+        <TextBox x:Name="search_all_tb" HorizontalAlignment="Left" Height="17" Margin="20,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" l:HelpProvider.HelpKey="izbor_softvera" TextChanged="search_all_software"/>
+        <TextBox x:Name="search_added_tb" HorizontalAlignment="Left" Height="17" Margin="350,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" l:HelpProvider.HelpKey="izbor_softvera" TextChanged="search_added_software"/>
         <Button x:Name="add_btn" Content="Save changes" HorizontalAlignment="Left" Margin="470,280,0,0" VerticalAlignment="Top" Width="75" Click="add_close">
             <Button.ToolTip>
                 <StackPanel Orientation="Horizontal">
@@ -66,6 +76,16 @@
                 </StackPanel>
             </Button.ToolTip>
         </Button>
+        <Button x:Name="add_sw_btn" Content="Add new software" HorizontalAlignment="Left" Margin="221,248,0,0" VerticalAlignment="Top" Click="add_new_software">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button lets you create new Software.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+
 
     </Grid>
 </Window>

@@ -6,11 +6,12 @@ CB,WindowsAndLinux,CodeBlocks,CBFactory,www.cb.com,1998,10,c master
 BS,WindowsAndLinux,BS player,BSFactory,www.bs.com,2001,5,movies
 MLAB,Windows,Matlab,MatlabFactory,www.matlab.com,2003,24,functions
 CHRM,WindowsAndLinux,Google Chrome,Google,www.googlechrome.com,2005,0,browser
+1234,Windows,novo,ikija,ikija.com,2017,1E+19,asdasd
 courses
-SW15,Softversko inzenjerstvo,informacione tehnologije,06-May-13 00:00:00
-SW16,Softversko inzenjerstvo,informacione tehnologije,12-Apr-13 00:00:00
-RA15,Racunarstvo i automatika,elektrotehnika,03-Feb-05 00:00:00
-AR16,Arhitektura,arhitektura eksterijera,01-Jan-11 00:00:00
+SW15,Softversko inzenjerstvo,informacione tehnologije,5.6.2013. 0:00:00
+SW16,Softversko inzenjerstvo,informacione tehnologije,4.12.2013. 0:00:00
+RA15,Racunarstvo i automatika,elektrotehnika,2.3.2005. 0:00:00
+AR16,Arhitektura,arhitektura eksterijera,1.1.2011. 0:00:00
 subjects
 ISA15,Internet softverske arhitekture,web,True,False,True,3,1,15,SW15,Windows,ECL|VS|CHRM
 NELIN15,Nelinearno programiranje,evolutivni algoritmi,False,False,False,2,2,25,SW15,Windows,MLAB

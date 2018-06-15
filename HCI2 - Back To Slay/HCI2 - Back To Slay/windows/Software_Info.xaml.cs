@@ -34,13 +34,20 @@ namespace HCI2___Back_To_Slay.windows
 
         private void change_software(object sender, RoutedEventArgs e)
         {
-            change_visibility();
-            description.BorderBrush = Helper.colors[0];
-            name.BorderBrush = Helper.colors[0];
-            price.BorderBrush = Helper.colors[0];
-            year.BorderBrush = Helper.colors[0];
-            maker.BorderBrush = Helper.colors[0];
-            site.BorderBrush = Helper.colors[0];
+            if (MainWindow.update_software_schedule(current_sw.Id))
+            {
+                change_visibility();
+                description.BorderBrush = Helper.colors[0];
+                name.BorderBrush = Helper.colors[0];
+                price.BorderBrush = Helper.colors[0];
+                year.BorderBrush = Helper.colors[0];
+                maker.BorderBrush = Helper.colors[0];
+                site.BorderBrush = Helper.colors[0];
+            }
+            else
+            {
+                MessageBox.Show("This software is used in current schedule - please remove it before updating it!");
+            }
         }
 
         private void update_software(object sender, RoutedEventArgs e)
@@ -111,10 +118,17 @@ namespace HCI2___Back_To_Slay.windows
             switch (result)
             {
                 case (MessageBoxResult.Yes):
-                    MainWindow.allSoftware.Remove(current_sw);
-                    MainWindow.allSoftwareIds.Remove(current_sw.Id);
-                    deleted = current_sw.Id;
-                    this.Close();
+                    if (MainWindow.update_software_schedule(current_sw.Id))
+                    {
+                        MainWindow.allSoftware.Remove(current_sw);
+                        MainWindow.allSoftwareIds.Remove(current_sw.Id);
+                        deleted = current_sw.Id;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("This software is used in current schedule - please remove it before deleting it!");
+                    }
                     break;
                 case (MessageBoxResult.No):
                     break;

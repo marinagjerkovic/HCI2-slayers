@@ -9,6 +9,7 @@
         Title="Add_Subject" Height="520" Width="400">
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+        <CommandBinding Command="{x:Static l:MainWindow.exitDemoMode}" Executed="exit_demo"/>
     </Window.CommandBindings>
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Subject id: " VerticalAlignment="Top" RenderTransformOrigin="0.089,0.547"/>
@@ -31,7 +32,7 @@
         <TextBox x:Name="duration" HorizontalAlignment="Left" Height="16" Margin="153,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
         <TextBox x:Name="num_periods" HorizontalAlignment="Left" Height="16" Margin="153,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
         <RadioButton x:Name="projYes" Content="Yes" HorizontalAlignment="Left" Margin="153,288,0,0" VerticalAlignment="Top" GroupName="projector" IsChecked="true" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
-        <RadioButton x:Name="projNo" Content="No" HorizontalAlignment="Left" Margin="308,288,0,0" VerticalAlignment="Top" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
+        <RadioButton x:Name="projNo" Content="No" HorizontalAlignment="Left" Margin="308,288,0,0" VerticalAlignment="Top" GroupName="projector" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
         <RadioButton x:Name="boardYes" Content="Yes" HorizontalAlignment="Left" Margin="153,321,0,0" VerticalAlignment="Top" GroupName="board" IsChecked="true" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
         <RadioButton x:Name="boardNo" Content="No" HorizontalAlignment="Left" Margin="308,321,0,0" VerticalAlignment="Top" GroupName="board" l:HelpProvider.HelpKey="dodavanje_predmeta"/>
         <RadioButton x:Name="smartYes" Content="Yes" HorizontalAlignment="Left" Margin="153,353,0,0" VerticalAlignment="Top" GroupName="smart_board" IsChecked="true" l:HelpProvider.HelpKey="dodavanje_predmeta"/>

@@ -20,9 +20,13 @@ namespace HCI2___Back_To_Slay.windows
     public partial class Add_Subject : Window
     {
         private Subject current_sub;
+        public static RoutedCommand exitDemoMode = new RoutedCommand();
 
         public Add_Subject()
         {
+            this.DataContext = this;
+            exitDemoMode.InputGestures.Add(new KeyGesture(Key.Escape));
+
             InitializeComponent();
             current_sub = new Subject();
         }
@@ -115,7 +119,19 @@ namespace HCI2___Back_To_Slay.windows
             MainWindow.allSubjects.Add(current_sub);
             MainWindow.allSubjectsIds.Add(id.Text);
             MessageBox.Show("Successfully added a new subject!");
-            this.Close();
+
+            current_sub = new Subject();
+            id.Text = "";
+            name.Text = "";
+            description.Text = "";
+            group_size.Text = "";
+            num_periods.Text = "";
+            duration.Text = "";
+            add_crs.Visibility = System.Windows.Visibility.Visible;
+            sel_crs.Visibility = System.Windows.Visibility.Hidden;
+            change_crs.Visibility = System.Windows.Visibility.Hidden;                        
+            Courses_Multiple.selected_crs = null;
+            //this.Close();
         }
 
         private void cancel(object sender, RoutedEventArgs e)
@@ -189,6 +205,17 @@ namespace HCI2___Back_To_Slay.windows
                 string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
                 HelpProvider.ShowHelp(str, this);
             }
+        }
+
+        private void exit_demo(object sender, RoutedEventArgs e)
+        {
+            if (MainWindow.demoModeOn)
+            {
+                //radi sta se radi kad se iskljuci demo
+                MainWindow.demoModeOn = false;
+                MessageBox.Show("exit demo");
+            }
+
         }
     }
 }

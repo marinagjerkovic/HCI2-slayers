@@ -12,6 +12,7 @@
         Width="{Binding SystemParameters.PrimaryScreenWidth}">
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+        <CommandBinding Command="{x:Static l:MainWindow.exitDemoMode}" Executed="exit_demo"/>
     </Window.CommandBindings>
     <Window.Resources>
         <Style TargetType="schedule:HeaderTitleBarView">
@@ -84,6 +85,10 @@
                 <MenuItem Header="Software">
                     <MenuItem Header="Add new software" Click="add_new_software"/>
                     <MenuItem Header="Show all software" Click="show_all_software"/>
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="Help" Click="show_help"/>
+                    <MenuItem Header="Demo" Click="start_demo"/>
                 </MenuItem>
 
             </Menu>

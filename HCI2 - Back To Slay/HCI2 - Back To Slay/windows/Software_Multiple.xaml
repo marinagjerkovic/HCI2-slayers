@@ -13,8 +13,9 @@
     <Grid>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left"  Margin="64,70,0,0" VerticalAlignment="Top"
                   ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
-                  SelectedItem="Binding Software" MouseDoubleClick="show_software" AutoGenerateColumns="false" l:HelpProvider.HelpKey="izlistavanje_softvera">
+                  SelectedItem="Binding Software" MouseDoubleClick="show_software" AutoGenerateColumns="false" l:HelpProvider.HelpKey="izlistavanje_softvera" Height="150">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="OS" Binding="{Binding Os}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="150"></DataGridTextColumn>
@@ -24,7 +25,28 @@
                 <DataGridTextColumn Header="Price" Binding="{Binding Price}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="ar_sw" Content="Add/remove software" HorizontalAlignment="Left" Margin="64,32,0,0" VerticalAlignment="Top" Visibility="Hidden" Click="choose_software"/>
+        <Button x:Name="ar_sw" Content="Add/remove software" HorizontalAlignment="Left" Margin="64,32,0,0" VerticalAlignment="Top" Visibility="Hidden" Click="choose_software">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button allows you to change list of software.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="64,230,0,0" TextWrapping="Wrap" Text="Search by:" VerticalAlignment="Top"/>
+        <TextBox x:Name="search_tb" HorizontalAlignment="Left" Height="23" Margin="286,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.665,0.088" TextChanged="search_software"/>
+        <ComboBox x:Name="kombo" HorizontalAlignment="Left" Margin="139,230,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="criteria_changed"/>
+        <Button x:Name="add_sw_btn" Content="Add new software" HorizontalAlignment="Left" Margin="422,233,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.193,0.086" Click="add_new_software">
+            <Button.ToolTip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="5" TextWrapping="Wrap" MaxWidth="100">
+                        Left mouse click on this button allows you to create new software.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+        </Button>
+
 
     </Grid>
 </Window>

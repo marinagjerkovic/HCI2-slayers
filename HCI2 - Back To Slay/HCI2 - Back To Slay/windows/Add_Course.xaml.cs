@@ -32,6 +32,12 @@ namespace HCI2___Back_To_Slay.windows
                 return;
             }
 
+            if(id.Text.Equals("") || name.Text.Equals("") || description.Text.Equals("") || datepicker.Text.Equals(""))
+            {
+                MessageBox.Show("Error - fields can't be empty!");
+                return;
+            }
+
             Course course = new Course();
 
             course.Id = id.Text;
@@ -42,7 +48,13 @@ namespace HCI2___Back_To_Slay.windows
             MainWindow.allCourses.Add(course);
             MainWindow.allCoursesIds.Add(id.Text);
             MessageBox.Show("Successfully added a new course!");
-            this.Close();
+
+            id.Text = "";
+            name.Text = "";
+            description.Text = "";
+            datepicker.Text = "";
+
+            //this.Close();
         }
 
         private void cancel(object sender, RoutedEventArgs e)

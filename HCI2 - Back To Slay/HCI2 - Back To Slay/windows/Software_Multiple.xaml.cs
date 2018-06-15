@@ -22,12 +22,14 @@ namespace HCI2___Back_To_Slay.windows
     public partial class Software_Multiple : Window
     {
         private ObservableCollection<Software> Show_Data = new ObservableCollection<Software>();
+        private ObservableCollection<Software> temp = new ObservableCollection<Software>();
         //private Classroom current_cr = null;
 
+        //trenutno predstavljen softver
         private List<Software> current_sws = new List<Software>();
         private Classroom.OpSystem current_os;
 
-        private int index;
+        private int index = -1;
         private bool sub;
 
         //constructor
@@ -36,6 +38,8 @@ namespace HCI2___Back_To_Slay.windows
             Show_Data = MainWindow.allSoftware;
             InitializeComponent();
             dataGrid.ItemsSource = Show_Data;
+            add_sw_btn.Visibility = System.Windows.Visibility.Visible;
+            load_kombo();
         }
 
         public Software_Multiple(Classroom cr)
@@ -52,6 +56,9 @@ namespace HCI2___Back_To_Slay.windows
             InitializeComponent();
             dataGrid.ItemsSource = Show_Data;
             ar_sw.Visibility = Visibility.Visible;
+            add_sw_btn.Visibility = System.Windows.Visibility.Hidden;
+
+            load_kombo();
         }
 
         public Software_Multiple(Subject subj)
@@ -68,6 +75,17 @@ namespace HCI2___Back_To_Slay.windows
             InitializeComponent();
             dataGrid.ItemsSource = Show_Data;
             ar_sw.Visibility = Visibility.Visible;
+            add_sw_btn.Visibility = System.Windows.Visibility.Hidden;
+
+            load_kombo();
+        }
+
+        private void load_kombo()
+        {
+            kombo.Items.Add("id");
+            kombo.Items.Add("description");
+            kombo.Items.Add("name");
+            kombo.Items.Add("maker");
         }
 
         private void choose_software(object sender, RoutedEventArgs e)
@@ -80,20 +98,10 @@ namespace HCI2___Back_To_Slay.windows
 
         private void show_software(object sender, RoutedEventArgs e)
         {
-            DataGridRow row = Helper.detect_selected_row((DependencyObject)e.OriginalSource);
-            dataGrid = ItemsControl.ItemsControlFromItemContainer(row) as DataGrid;
-            int index = dataGrid.ItemContainerGenerator.IndexFromContainer(row);
-            if (index == -1)
-            {
-                return;
-            }
+            Software_Info si = new Software_Info((Software) dataGrid.SelectedItem);
 
-            Software_Info si = new Software_Info(Show_Data.ElementAt(index));
-
-            if (current_sws.Count()==0)
-            {
-                si.Closed += new EventHandler((sender2, e2) => refresh_data(sender2, e2));
-            }
+            si.Closed += new EventHandler((sender2, e2) => check_data(sender2, e2));
+            
             si.ShowDialog();
         }
 
@@ -113,43 +121,129 @@ namespace HCI2___Back_To_Slay.windows
             {
                 MainWindow.allClassrooms.ElementAt(index).Software = current_sws;
             }
+            if (temp != null)
+            {
+                string search_crit = (string)kombo.SelectedItem;
+                string search_text = search_tb.Text;
+                load_temp(search_crit, search_text, false);
+                dataGrid.ItemsSource = temp;
+                return;
+            }
             dataGrid.ItemsSource = Show_Data;
         }
 
-        private void refresh_data(object sender, EventArgs e)
+
+        private void criteria_changed(object sender, RoutedEventArgs e)
         {
-            bool found = false;
-            if (Software_Info.deleted != null)
+            search_tb.Text = "";
+        }
+
+        private void search_software(object sender, RoutedEventArgs e)
+        {
+            string search_text = search_tb.Text.ToLower();
+            string search_crit = (string)kombo.SelectedItem;
+            if (search_text.Equals(""))
             {
-                foreach(Software sw in Show_Data)
-                {
-                    if (sw.Id.Equals(Software_Info.deleted))
+                temp = null;
+                dataGrid.ItemsSource = Show_Data;
+            }
+            else
+            {
+                load_temp(search_crit, search_text, true);
+                dataGrid.ItemsSource = temp;
+            }
+        }
+
+        private void load_temp(string search_crit, string search_text, bool reload)
+        {
+            temp = new ObservableCollection<Software>();
+
+            switch (search_crit)
+            {
+                case ("id"):
+                    foreach (Software sw in Show_Data)
                     {
-                        found = true;
-                        Show_Data.Remove(sw);
-                        break;
+                        if (sw.Id.ToLower().Contains(search_text))
+                        {
+                            temp.Add(sw);
+                        }
                     }
+                    break;
+                case ("description"):
+                    foreach (Software sw in Show_Data)
+                    {
+                        if (sw.Description.ToLower().Contains(search_text))
+                        {
+                            temp.Add(sw);
+                        }
+                    }
+                    break;
+                case ("name"):
+                    foreach (Software sw in Show_Data)
+                    {
+                        if (sw.Name.ToLower().Contains(search_text))
+                        {
+                            temp.Add(sw);
+                        }
+                    }
+                    break;
+                case ("maker"):
+                    foreach(Software sw in Show_Data)
+                    {
+                        if (sw.Maker.ToLower().Contains(search_text))
+                        {
+                            temp.Add(sw);
+                        }
+                    }
+                    break;
+                case (null):
+                    if (reload)
+                    {
+                        MessageBox.Show("No search criterium selected!");
+                    }
+                    if (index != -1)
+                    {
+                        reload_showing();
+                    }else
+                    {
+                        temp = Show_Data;
+                    }
+                    break;
+            }
+            if (temp.Count() == 0)
+            {
+                MessageBox.Show("No software found!");
+                return;
+            }
+        }
+
+        private void reload_showing()
+        {
+            temp = new ObservableCollection<Software>();
+            foreach(Software sw in MainWindow.allSoftware)
+            {
+                if (Show_Data.Contains(sw))
+                {
+                    temp.Add(sw);
                 }
             }
-            if (!found && Software_Info.updated != null)
+        }
+
+        private void check_data(object sender, EventArgs e)
+        {
+            if (temp != null)
             {
-                foreach (Software sw in Show_Data)
-                {
-                    if (sw.Id.Equals(Software_Info.updated))
-                    {
-                        Show_Data.Remove(sw);
-                        foreach(Software s in MainWindow.allSoftware)
-                        {
-                            if (s.Id.Equals(sw.Id))
-                            {
-                                Show_Data.Add(s);
-                                break;
-                            }
-                        }
-                        break;
-                    }
-                }
-            }                        
+                string search_crit = (string)kombo.SelectedItem;
+                string search_text = search_tb.Text;
+                load_temp(search_crit, search_text, false);
+                dataGrid.ItemsSource = temp;
+            }
+        }
+
+        private void add_new_software(object sender, RoutedEventArgs e)
+        {
+            Add_Software asw = new Add_Software();
+            asw.ShowDialog();
         }
 
 
