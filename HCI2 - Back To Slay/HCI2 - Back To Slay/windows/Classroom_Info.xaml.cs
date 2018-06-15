@@ -121,6 +121,10 @@ namespace HCI2___Back_To_Slay.windows
                     {
                         MainWindow.allClassrooms.Remove(current_cr);
                         MainWindow.allClassroomsIds.Remove(current_cr.Id);
+                        if (MainWindow.allClassrooms.Count() == 0)
+                        {
+                            MainWindow.disableSchedule();
+                        }
                         this.Close();
                     }else
                     {
