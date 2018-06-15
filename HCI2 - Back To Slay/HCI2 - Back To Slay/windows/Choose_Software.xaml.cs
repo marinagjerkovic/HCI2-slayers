@@ -30,6 +30,8 @@ namespace HCI2___Back_To_Slay.windows
         public Choose_Software(Classroom.OpSystem a)
         {
             InitializeComponent();
+            all = new ObservableCollection<Software>();
+            added = new ObservableCollection<Software>();
             if (chosen_software.Count() == 0)
             {
                 foreach (Software sw in MainWindow.allSoftware)
