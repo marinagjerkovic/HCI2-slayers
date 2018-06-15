@@ -1021,7 +1021,7 @@ namespace HCI2___Back_To_Slay
             adds.description.Text = "Example_Description";
             await Task.Delay(1500);
             Brush color = adds.add_crs.Background;
-            adds.add_crs.Background = Brushes.Blue;
+            adds.add_crs.Background = SystemColors.HighlightBrush;
             await Task.Delay(1500);
             adds.add_crs.Background = color;
             Courses_Multiple cm = new Courses_Multiple(false);
@@ -1029,7 +1029,12 @@ namespace HCI2___Back_To_Slay
             await chooseCourseDemo(cm);
             await Task.Delay(1500);
             
+            
+            adds.sel_crs.Text = ((Course)(cm.dataGrid.Items[0])).Name;
             cm.Close();
+            adds.sel_crs.Visibility = Visibility.Visible;
+            adds.change_crs.Visibility = Visibility.Visible;
+            adds.add_crs.Visibility = Visibility.Hidden;
             await Task.Delay(1500);
             adds.group_size.Text = "15";
             await Task.Delay(1500);
@@ -1046,27 +1051,27 @@ namespace HCI2___Back_To_Slay
             adds.linux.IsChecked = true;
             await Task.Delay(1500);
             Choose_Software cs = new Choose_Software(Classroom.OpSystem.Linux);
-            cs.IsHitTestVisible = false;
-            await Task.Delay(1500);
-            adds.add_sw_btn.Background = Brushes.Blue;
+            cs.IsHitTestVisible = false;            
+            adds.add_sw_btn.Background = SystemColors.HighlightBrush;
             await Task.Delay(1500);
             adds.add_sw_btn.Background = color;
             await chooseSoftwareDemo(cs);            
             await Task.Delay(1500);
-            adds.button.Background = Brushes.Blue;
+            adds.button.Background = SystemColors.HighlightBrush;
             await Task.Delay(1500);
         }
 
         private async Task chooseSoftwareDemo(Choose_Software cs)
         {
             cs.Show();
+            await Task.Delay(1500);
             cs.allSoftwareDG.SelectedIndex = 0;
             await Task.Delay(1500);            
             Software s = (Software)cs.allSoftwareDG.Items[0];
             Choose_Software.all.RemoveAt(0);
             Choose_Software.added.Add(s);
             await Task.Delay(1500);
-            cs.add_btn.Background = Brushes.Blue;
+            cs.add_btn.Background = SystemColors.HighlightBrush;
             await Task.Delay(1000);
             cs.Close();
             Choose_Software.all.Add(s);
@@ -1077,10 +1082,11 @@ namespace HCI2___Back_To_Slay
         {
             cm.save_crs_btn.Visibility = Visibility.Visible;
             cm.Show();
+            await Task.Delay(1500);
             cm.dataGrid.SelectedIndex = 0;
 
             await Task.Delay(1500);
-            cm.save_crs_btn.Background = Brushes.Blue;
+            cm.save_crs_btn.Background = SystemColors.HighlightBrush;
         }
 
         private static void deleteDemoEntities()
