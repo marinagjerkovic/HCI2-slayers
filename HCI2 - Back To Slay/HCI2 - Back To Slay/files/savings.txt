@@ -13,68 +13,13 @@ RA15,Racunarstvo i automatika,elektrotehnika,03-Feb-05 00:00:00
 AR16,Arhitektura,arhitektura eksterijera,01-Jan-11 00:00:00
 subjects
 ISA15,Internet softverske arhitekture,web,True,False,True,3,1,15,SW15,Windows,ECL|VS|CHRM
-NELIN15,Nelinearno programiranje,evolutivni algoritmi,False,False,False,2,2,15,SW15,Windows,MLAB
-SCN16,Fasadni principi,fasade,True,False,True,3,3,20,AR16,Windows,CHRM|BS
+NELIN15,Nelinearno programiranje,evolutivni algoritmi,False,False,False,2,2,25,SW15,Windows,MLAB
+SCN16,Fasadni principi,fasade,True,True,True,3,3,20,AR16,WindowsAndLinux,CHRM|BS
 classrooms
-id11,desc1,30,False,True,True,WindowsAndLinux,
-id12,desc2,30,False,True,True,WindowsAndLinux,
-id13,desc3,30,False,True,True,WindowsAndLinux,
-id14,desc4,30,False,True,True,WindowsAndLinux,
-id15,desc5,30,False,True,True,WindowsAndLinux,
-id11,desc1,30,False,True,True,WindowsAndLinux,
-id12,desc2,30,False,True,True,WindowsAndLinux,
-id13,desc3,30,False,True,True,WindowsAndLinux,
-id14,desc4,30,False,True,True,WindowsAndLinux,
-id15,desc5,30,False,True,True,WindowsAndLinux,
-id1,desc1,30,False,True,True,WindowsAndLinux,
-id2,desc2,30,False,True,True,WindowsAndLinux,
-id3,desc3,30,False,True,True,WindowsAndLinux,
-id4,desc4,30,False,True,True,WindowsAndLinux,
-id5,desc5,30,False,True,True,WindowsAndLinux,
-id1,desc1,30,False,True,True,WindowsAndLinux,
-id2,desc2,30,False,True,True,WindowsAndLinux,
-id3,desc3,30,False,True,True,WindowsAndLinux,
-id4,desc4,30,False,True,True,WindowsAndLinux,
-id5,desc5,30,False,True,True,WindowsAndLinux,
-id1,desc1,30,False,True,True,WindowsAndLinux,
-id2,desc2,30,False,True,True,WindowsAndLinux,
-id3,desc3,30,False,True,True,WindowsAndLinux,
-id4,desc4,30,False,True,True,WindowsAndLinux,
-id5,desc5,30,False,True,True,WindowsAndLinux,
-id1,desc1,30,False,True,True,WindowsAndLinux,
-id2,desc2,30,False,True,True,WindowsAndLinux,
-id3,desc3,30,False,True,True,WindowsAndLinux,
-id4,desc4,30,False,True,True,WindowsAndLinux,
-id5,desc5,30,False,True,True,WindowsAndLinux,
-id1,desc1,30,False,True,True,WindowsAndLinux,
-id2,desc2,30,False,True,True,WindowsAndLinux,
-id3,desc3,30,False,True,True,WindowsAndLinux,
-id4,desc4,30,False,True,True,WindowsAndLinux,
-id5,desc5,30,False,True,True,WindowsAndLinux,
-id1,desc1,30,False,True,True,WindowsAndLinux,
-id2,desc2,30,False,True,True,WindowsAndLinux,
-id3,desc3,30,False,True,True,WindowsAndLinux,
-id4,desc4,30,False,True,True,WindowsAndLinux,
-id5,desc5,30,False,True,True,WindowsAndLinux,
-id11,desc1,30,False,True,True,WindowsAndLinux,
-id12,desc2,30,False,True,True,WindowsAndLinux,
-id13,desc3,30,False,True,True,WindowsAndLinux,
-id14,desc4,30,False,True,True,WindowsAndLinux,
-id15,desc5,30,False,True,True,WindowsAndLinux,
-id11,desc1,30,False,True,True,WindowsAndLinux,
-id12,desc2,30,False,True,True,WindowsAndLinux,
-id13,desc3,30,False,True,True,WindowsAndLinux,
-id14,desc4,30,False,True,True,WindowsAndLinux,
-id15,desc5,30,False,True,True,WindowsAndLinux,
-id11,desc1,30,False,True,True,WindowsAndLinux,
-id12,desc2,30,False,True,True,WindowsAndLinux,
-id13,desc3,30,False,True,True,WindowsAndLinux,
-id14,desc4,30,False,True,True,WindowsAndLinux,
-id15,desc5,30,False,True,True,WindowsAndLinux,
-id11,desc1,30,False,True,True,WindowsAndLinux,
-id12,desc2,30,False,True,True,WindowsAndLinux,
-id13,desc3,30,False,True,True,WindowsAndLinux,
-id14,desc4,30,False,True,True,WindowsAndLinux,
-id15,desc5,30,False,True,True,WindowsAndLinux,
-RC1,FTN 3. sprat,20,True,False,True,Linux,BS|SP
-RC2,FTN 3. sprat,25,False,True,False,Windows,MLAB
+id1,desc1,30,False,True,True,WindowsAndLinux,VS|ECL|CB|BS|MLAB|CHRM
+id2,desc2,30,True,False,True,Windows,
+id3,desc3,30,True,False,True,Linux,
+id4,desc4,30,True,False,True,WindowsAndLinux,
+id5,desc5,20,True,True,True,WindowsAndLinux,VS|ECL|CB|BS|MLAB|CHRM
+id11,ima sve,50,True,True,True,Windows,VS|ECL|CB|BS|MLAB|CHRM
+id1111,11,1111,True,True,True,Windows,VS|ECL|CB|BS|MLAB|CHRM

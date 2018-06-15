@@ -79,7 +79,7 @@ namespace HCI2___Back_To_Slay
             foreach(Classroom cr in MainWindow.allClassrooms)
             {
                 
-                Console.WriteLine("app location:" + app.Location+"\n app name"+app.Subject);
+                //Console.WriteLine("app location:" + app.Location+"\n app name"+app.Subject);
                 if (cr.Id == app.Location)
                 {
                     
@@ -92,7 +92,8 @@ namespace HCI2___Back_To_Slay
                 if (app.Subject.Contains(sub.Name))
                 {
                     this.subject = sub;
-                    app.Subject += "\n" + subject.Course.Name;
+                    if (sub != null && sub.Course != null && !app.Subject.Contains(sub.Course.Name))
+                        app.Subject += "\n" + subject.Course.Name;
                     break;
                 }
             }
@@ -101,7 +102,7 @@ namespace HCI2___Back_To_Slay
 
         public void printApp()
         {
-            Console.WriteLine("(" + classroom.Id + "," + subject.Name + "," + start.ToShortTimeString() + ","+end.ToShortTimeString()+")");
+            Console.WriteLine("(" + classroom.Id + "," + subject.Name + "," + subject.Size_of_group + "," + subject.Projector + "," + subject.Board + "," + subject.Smart_board + "," + subject.Os + "," + start.DayOfWeek + ")");
         }
     }
 }
