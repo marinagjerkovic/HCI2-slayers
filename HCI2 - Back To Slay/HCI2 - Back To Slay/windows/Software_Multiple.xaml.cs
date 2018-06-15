@@ -244,8 +244,6 @@ namespace HCI2___Back_To_Slay.windows
         {
             Add_Software asw = new Add_Software();
             asw.ShowDialog();
-            //reload,itemssource
-            //vrati disable na false
         }
 
 
