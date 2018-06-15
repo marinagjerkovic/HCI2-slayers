@@ -41,7 +41,7 @@ namespace HCI2___Back_To_Slay.windows
             if (show)
             {
                 save_crs_btn.Visibility = System.Windows.Visibility.Visible;
-                dataGrid.SelectedIndex = 2;
+                
                 
             }
         }
