@@ -41,6 +41,12 @@ namespace HCI2___Back_To_Slay.windows
                 return;
             }
 
+            if (current_sub.Course == null)
+            {
+                MessageBox.Show("No course chosen!");
+                return;
+            }
+
             current_sub.Id = id.Text;
             current_sub.Name = name.Text;
             current_sub.Description = description.Text;
