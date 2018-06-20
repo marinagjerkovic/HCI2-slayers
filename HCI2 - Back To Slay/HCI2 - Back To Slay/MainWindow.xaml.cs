@@ -83,8 +83,9 @@ namespace HCI2___Back_To_Slay
             schedule.MoveToDate(mainDate);
             
             //schedule.PreviewMouseLeftButtonUp += schedule_PreviewMouseLeftButtonUp;
+           // schedule.MouseLeftButtonDown += 
             schedule.AppointmentEndDragging += schedule_AppointmentDropped;
-            
+            schedule.AppointmentStartDragging += sas;
             schedule.AppointmentStartResizing += schedule_start_resize;
             schedule.AppointmentEndResizing += schedule_end_resize;
             schedule.AppointmentResizing += schedule_resize;
@@ -187,24 +188,54 @@ namespace HCI2___Back_To_Slay
             Classroom cr = (Classroom)classroomsDG.SelectedItem;
             string symbol = cr.Id;
             bool found = false;
-            Console.WriteLine("________dodavanje uc RESURSI______");
 
             foreach (Resource r in resourceType.ResourceCollection.ToArray())
             {
-                Console.WriteLine(r.TypeName + " " + r.ResourceName + "\n" + r.DisplayName + "\n");
                 if (r.ResourceName == symbol)
                 {
-                    found = true;
-                    break;
+                    return;
+                    //break;
                 }
             }
-            Console.WriteLine("__________");
             if (!found)
             {
                 resourceType.ResourceCollection.Add(create_resource(cr));
             }
             schedule.Refresh();
-            
+            Console.WriteLine("____DODAT UCionica RESURSI_____");
+            foreach (Resource r in resourceType.ResourceCollection.ToArray())
+            {
+                Console.WriteLine(r.TypeName + " " + r.ResourceName + "\n" + r.DisplayName + "\n");
+            }
+            Console.WriteLine("__________");
+
+        }
+
+        private void add_classroom_on_schedule(Classroom cr)
+        {
+            string symbol = cr.Id;
+            bool found = false;
+
+            foreach (Resource r in resourceType.ResourceCollection.ToArray())
+            {
+                if (r.ResourceName == symbol)
+                {
+                    return;
+                    //break;
+                }
+            }
+            if (!found)
+            {
+                resourceType.ResourceCollection.Add(create_resource(cr));
+            }
+            schedule.Refresh();
+            Console.WriteLine("____DODAT UCionica RESURSI_____");
+            foreach (Resource r in resourceType.ResourceCollection.ToArray())
+            {
+                Console.WriteLine(r.TypeName + " " + r.ResourceName + "\n" + r.DisplayName + "\n");
+            }
+            Console.WriteLine("__________");
+
         }
 
         private Resource create_resource(Classroom cr)
@@ -261,16 +292,21 @@ namespace HCI2___Back_To_Slay
 
         public static bool update_course_schedule(string id)
         {
-            bool retVal = true;
+            foreach(Subject s in allSubjects)
+            {
+                if(s.Course.Id == id)
+                {
+                    return false;
+                }
+            }
             foreach (Appointment app in realApps)
             {
                 if (app.Subject.Course.Id == id)
                 {
-                    retVal = false;
-                    break;
+                    return false;
                 }
             }
-            return retVal;
+            return true;
         }
 
         public static bool update_software_schedule(string id)
@@ -285,6 +321,27 @@ namespace HCI2___Back_To_Slay
 
         private void remove_classroom_from_schedule(Object sender, RoutedEventArgs e)
         {
+            Console.WriteLine("\n*******************REMOVE******************************");
+            Console.WriteLine("\n________RESURSI______");
+
+            foreach (Resource r in resourceType.ResourceCollection.ToArray())
+            {
+                Console.WriteLine(r.TypeName + " " + r.ResourceName + "\n" + r.DisplayName + "\n");
+            }
+            Console.WriteLine("\n______APPOINTMENT____\n");
+            foreach(ScheduleAppointment sa in schedule.Appointments)
+            {
+                Appointment rsa = get_real_appointment(sa);
+                rsa.printApp();
+                Console.WriteLine("\n________RESURSI______");
+                foreach (Resource r in sa.ResourceCollection.ToArray())
+                {
+                    Console.WriteLine(r.TypeName + " " + r.ResourceName + "\n" + r.DisplayName + "\n");
+                }
+                Console.WriteLine("_______________________");
+            }
+            Console.WriteLine("\n************************END REMOVE**************************");
+
             if (resourceType.ResourceCollection.Count <= 1)
             {
                 MessageBox.Show("There must be at least one classroom on schedule!");
@@ -296,9 +353,15 @@ namespace HCI2___Back_To_Slay
                 if (r.ResourceName == symbol)
                 {
                     resourceType.ResourceCollection.Remove(r);
-                    break;
                 }
             }
+            Console.WriteLine("________BRISANJE uc RESURSI______");
+
+            foreach (Resource r in resourceType.ResourceCollection.ToArray())
+            {
+                Console.WriteLine(r.TypeName + " " + r.ResourceName + "\n" + r.DisplayName + "\n");
+            }
+            Console.WriteLine("__________");
         }
 
         private void add_subject_on_schedule(Object sender, RoutedEventArgs e)
@@ -342,6 +405,23 @@ namespace HCI2___Back_To_Slay
             }
             for (int i = 0; i < subject.Num_of_periods; i++)
             {
+                string symbol = cr.Id;
+                bool found = false;
+                foreach (Resource r in resourceType.ResourceCollection.ToArray())
+                {
+                    if (r.ResourceName == symbol)
+                    {
+                        found = true;
+                        //break;
+                    }
+                }
+                Resource res = create_resource(cr);
+                if (!found)
+                {
+                    resourceType.ResourceCollection.Add(res);
+                    //MessageBox.Show("Classroom is not on Schedule!");
+                    //return; 
+                }
                 ScheduleAppointment app = new ScheduleAppointment()
                 {
                     StartTime = mainDate,
@@ -355,27 +435,25 @@ namespace HCI2___Back_To_Slay
                 
                 realApps.Add(realApp);
                 //Console.WriteLine("Dodat 1 sad ima " + realApps.Count() + " appointmenta");
-                string symbol = cr.Id;
-                bool found=false;
-                foreach (Resource r in resourceType.ResourceCollection.ToArray())
-                {
-                    if (r.ResourceName == symbol)
-                    {
-                        found = true;
-                        break;
-                    }
-                }
-                Resource res = create_resource(cr);
-                if (!found)
-                {
-                    resourceType.ResourceCollection.Add(res);
-                }
+                
                 app.ResourceCollection.Add(res);
                 schedule.Appointments.Add(app);
                 appointments[realApp] = app;
                 Console.WriteLine("____dodat predmet_____");
                 realApp.printApp();
+                Console.WriteLine(app.Subject+"\n____resursi app______");
+                foreach(Resource r in app.ResourceCollection)
+                {
+                    Console.WriteLine(r.TypeName + " " + r.ResourceName + "\n" + r.DisplayName + "\n");
+
+                }
             }
+            Console.WriteLine("____DODAT PREDMET RESURSI_____");
+            foreach (Resource r in resourceType.ResourceCollection.ToArray())
+            {
+                Console.WriteLine(r.TypeName + " " + r.ResourceName + "\n" + r.DisplayName + "\n");
+            }
+            Console.WriteLine("__________");
             //Console.WriteLine("__________ZAVRSENO DODAVANJE_______________");
         }
 
@@ -470,6 +548,12 @@ namespace HCI2___Back_To_Slay
             }
             add_resources_open();
             schedule.Refresh();
+            Console.WriteLine("____OPEN RESURSI_____");
+            foreach (Resource r in resourceType.ResourceCollection.ToArray())
+            {
+                Console.WriteLine(r.TypeName + " " + r.ResourceName + "\n" + r.DisplayName + "\n");
+            }
+            Console.WriteLine("__________");
         }
 
         private void menu_file_new(object sender, RoutedEventArgs e) {
@@ -479,11 +563,15 @@ namespace HCI2___Back_To_Slay
                     schedule.ExportICS();
             }
 
+            resourceType = new ResourceType { TypeName = "Classroom" };
             schedule.ScheduleResourceTypeCollection = new ObservableCollection<ResourceType> { resourceType };
             schedule.Resource = "Classroom";
-            schedule.MoveToDate(mainDate);
+            //schedule.Resource = "Classroom";
+            //schedule.MoveToDate(mainDate);
             schedule.Appointments.Clear();
             appointments.Clear();
+            schedule.Refresh();
+            //schedule.Refresh();
 
         }
 
@@ -609,14 +697,25 @@ namespace HCI2___Back_To_Slay
                    sofware_check;
         }
 
+        private void sas(object sender, AppointmentStartDraggingEventArgs args)
+        {
+            Console.WriteLine("____start drag RESURSI pocetal_____");
+            foreach (Resource r in resourceType.ResourceCollection.ToArray())
+            {
+                Console.WriteLine(r.TypeName + " " + r.ResourceName + "\n" + r.DisplayName + "\n");
+            }
+        }
+
         private void schedule_AppointmentDropped(object sender, AppointmentEndDraggingEventArgs args)
         {
+            
+            Console.WriteLine("__________");
             args.Cancel = cancel;
             Console.WriteLine(args.To + "\n" + args.From);
             ScheduleAppointment app = (ScheduleAppointment)args.Appointment;
             if (app != null && !cancel)
             {
-                Console.WriteLine("___________________pomeranje______________________\n" + app.StartTime+" "+app.EndTime.DayOfWeek+" "+app.EndTime);
+                Console.WriteLine("==========================================" + app.StartTime+" "+app.EndTime.DayOfWeek+" "+app.EndTime);
                 string newCr = "";
                 foreach (Resource res in app.ResourceCollection)
                 {
@@ -632,16 +731,15 @@ namespace HCI2___Back_To_Slay
                 //Console.WriteLine(newCr + " get real app: " + realApp.Classroom.Id);
                 if (!drop_check(realApp, newCr, to, end))
                 {
-                    app.ResourceCollection.Clear();
-                    app.ResourceCollection.Add(create_resource(realApp.Classroom));
-                    schedule.Refresh();
+                    
                     args.Cancel = true;
-                    app.ResourceCollection.Clear();
-                    app.ResourceCollection.Add(create_resource(realApp.Classroom));
+                    
                     schedule.Refresh();
+                   
                 }
                 else
                 {
+                    Console.WriteLine("broj resursa:" +app.ResourceCollection.Count);
                     foreach (Resource res in app.ResourceCollection)
                     {
                         //Console.WriteLine("novi resurs: " + res.ResourceName);
@@ -652,9 +750,37 @@ namespace HCI2___Back_To_Slay
                         appointments[newReal] = app;
                         break;
                     }
+                    Appointment napp = get_real_appointment(app);
+                    Console.WriteLine("promenjen app");
+                    napp.printApp();
                 }
             }
             schedule.Refresh();
+            Console.WriteLine("____DROP RESURSI KRAJ_____");
+            foreach (Resource r in resourceType.ResourceCollection.ToArray())
+            {
+                Console.WriteLine(r.TypeName + " " + r.ResourceName + "\n" + r.DisplayName + "\n");
+            }
+            Console.WriteLine("\n*******************DROP******************************");
+            Console.WriteLine("\n________RESURSI______");
+
+            foreach (Resource r in resourceType.ResourceCollection.ToArray())
+            {
+                Console.WriteLine(r.TypeName + " " + r.ResourceName + "\n" + r.DisplayName + "\n");
+            }
+            Console.WriteLine("\n______APPOINTMENT____\n");
+            foreach (ScheduleAppointment sa in schedule.Appointments)
+            {
+                Appointment rsa = get_real_appointment(sa);
+                rsa.printApp();
+                Console.WriteLine("\n________RESURSI______");
+                foreach (Resource r in sa.ResourceCollection.ToArray())
+                {
+                    Console.WriteLine(r.TypeName + " " + r.ResourceName + "\n" + r.DisplayName + "\n");
+                }
+                Console.WriteLine("_______________________");
+            }
+            Console.WriteLine("\n************************END DROP**************************");
         }
 
         private Appointment get_real_appointment(ScheduleAppointment app)

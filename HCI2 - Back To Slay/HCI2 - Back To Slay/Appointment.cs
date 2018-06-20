@@ -121,7 +121,7 @@ namespace HCI2___Back_To_Slay
 
         public void printApp()
         {
-            Console.WriteLine("(" + classroom.Id + start.DayOfWeek + "," + subject.Name + "," +subject.Course.Name+"," + subject.Size_of_group + "\n" + 
+            Console.WriteLine("(" + classroom.Id +" " +classroom.Num_of_seats+ "\n"+start.DayOfWeek + "," + subject.Name + "," +subject.Course.Name+"," + subject.Size_of_group + "\n" + 
                                 subject.Projector + "," + subject.Board + "," + subject.Smart_board + "," + subject.Os + "," +
                                 subject.Num_of_periods + "," + subject.Duration_of_period + ")");
         }
