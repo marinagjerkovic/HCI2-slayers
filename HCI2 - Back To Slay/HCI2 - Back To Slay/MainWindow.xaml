@@ -8,7 +8,7 @@
         
         xmlns:local="clr-namespace:HCI2___Back_To_Slay"
         mc:Ignorable="d"
-        Title="MainWindow"     Height="{Binding SystemParameters.PrimaryScreenHeight}" 
+        Title="Computer center scheduler"     Height="{Binding SystemParameters.PrimaryScreenHeight}" 
         Width="{Binding SystemParameters.PrimaryScreenWidth}">
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
@@ -65,10 +65,10 @@
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
-                <MenuItem Header="File">
-                    <MenuItem Header="Open" Click="menu_file_open"/>
-                    <MenuItem Header="Save" Click="menu_file_save"/>
-                    <MenuItem Header="New" Click="menu_file_new"/>
+                <MenuItem Header="Schedule">
+                    <MenuItem Header="Open Schedule" Click="menu_file_open"/>
+                    <MenuItem Header="Save Schedule" Click="menu_file_save"/>
+                    <MenuItem Header="New Schedule" Click="menu_file_new"/>
                 </MenuItem>
                 <MenuItem Header="Classroom">
                     <MenuItem Header="Add new classroom" Click="add_new_classroom"/>
@@ -94,8 +94,8 @@
             </Menu>
             <Grid x:Name="LayoutRoot">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="8*"></RowDefinition>
-                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="7*"></RowDefinition>
+                    <RowDefinition Height="3*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" x:Name="scheduleGrid">
 
@@ -128,62 +128,77 @@
                         <ColumnDefinition Width="3*"></ColumnDefinition>
                         <ColumnDefinition Width="7*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <DataGrid  AutoGenerateColumns="False"  x:Name="classroomsDG" ItemsSource="{Binding Path=allClassrooms}"
-                           IsReadOnly="True" Grid.Column="0" Margin="0 0 10 0" ScrollViewer.CanContentScroll="True"
+                    <Grid Grid.Column="0" Margin="0 0 5 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"></RowDefinition>
+                            <RowDefinition Height="7*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Background="LightSkyBlue" Grid.Row="0" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="20">Classrooms</TextBlock>
+                        <DataGrid  AutoGenerateColumns="False"  x:Name="classroomsDG" ItemsSource="{Binding Path=allClassrooms}"
+                           IsReadOnly="True" Grid.Row="1"  ScrollViewer.CanContentScroll="True"
                            ScrollViewer.VerticalScrollBarVisibility="Auto" Height="Auto" RowHeight="30" FontSize="16"
                            GridLinesVisibility="None"
                            SelectedItem="Binding Classroom">
-                        <DataGrid.Columns >
-                            <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="1*"/>
-                            <DataGridTextColumn Header="Seats" Binding="{Binding Num_of_seats}"  Width="1*"  />
-                            <DataGridTextColumn Header="OS" Binding="{Binding Os}"  Width="3*"  />
-                            <DataGridTemplateColumn Width="1*">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Content="Show" Tag="{Binding}"  Click="add_classroom_on_schedule"  Background="CornflowerBlue" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Width="2*">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Content="Remove" Tag="{Binding}"  Click="remove_classroom_from_schedule"  Background="OrangeRed" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                            <DataGrid.Columns >
+                                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="1*"/>
+                                <DataGridTextColumn Header="Seats" Binding="{Binding Num_of_seats}"  Width="1*"  />
+                                <DataGridTextColumn Header="OS" Binding="{Binding Os}"  Width="3*"  />
+                                <DataGridTemplateColumn Width="1*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Show" Tag="{Binding}"  Click="add_classroom_on_schedule"  Background="CornflowerBlue" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="2*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Remove" Tag="{Binding}"  Click="remove_classroom_from_schedule"  Background="OrangeRed" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
 
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <DataGrid  AutoGenerateColumns="False"  x:Name="subjectsDG" ItemsSource="{Binding Path=leftSubjects}"
-                           IsReadOnly="True" Grid.Column="1" Margin="0 0 10 0" ScrollViewer.CanContentScroll="True"
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"></RowDefinition>
+                            <RowDefinition Height="7*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Background="LightSkyBlue" Grid.Row="0" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="20">Subjects</TextBlock>
+                        <DataGrid  AutoGenerateColumns="False"  x:Name="subjectsDG" ItemsSource="{Binding Path=leftSubjects}"
+                           IsReadOnly="True" Grid.Row="1" Margin="0 0 10 0" ScrollViewer.CanContentScroll="True"
                            ScrollViewer.VerticalScrollBarVisibility="Auto" Height="Auto" RowHeight="30" FontSize="16"
                            GridLinesVisibility="None"
                            SelectedItem="Binding Subject">
                             <DataGrid.Columns >
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="3*"/>
-                            <DataGridTextColumn Header="Course" Binding="{Binding Path=Course.Name}"   Width="3*"  />
-                            <DataGridTextColumn Header="OS" Binding="{Binding Os}"  Width="3*"  />
-                            <DataGridTextColumn Header="Group&#x0a;size" Binding="{Binding Size_of_group}"  Width="1*"  />
-                            <DataGridTextColumn Header="Class&#x0a;duration" Binding="{Binding Duration_of_period}"  Width="1*"  />
-                            <DataGridTextColumn Header="Class&#x0a;number" Binding="{Binding Num_of_periods}"  Width="1*"  />
-                            <DataGridTemplateColumn Width="1*">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Content="Add" Tag="{Binding}"  Click="add_subject_on_schedule"  Background="CornflowerBlue" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Width="1*">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Content="Remove" Tag="{Binding}"  Click="remove_subject_from_schedule"  Background="OrangeRed" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-  
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="3*"/>
+                                <DataGridTextColumn Header="Course" Binding="{Binding Path=Course.Name}"   Width="3*"  />
+                                <DataGridTextColumn Header="OS" Binding="{Binding Os}"  Width="3*"  />
+                                <DataGridTextColumn Header="Group&#x0a;size" Binding="{Binding Size_of_group}"  Width="1*"  />
+                                <DataGridTextColumn Header="Class&#x0a;duration" Binding="{Binding Duration_of_period}"  Width="1*"  />
+                                <DataGridTextColumn Header="Class&#x0a;number" Binding="{Binding Num_of_periods}"  Width="1*"  />
+                                <DataGridTemplateColumn Width="1*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Add" Tag="{Binding}"  Click="add_subject_on_schedule"  Background="CornflowerBlue" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="1*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Remove" Tag="{Binding}"  Click="remove_subject_from_schedule"  Background="OrangeRed" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
 
-                        </DataGrid.Columns>
-                    </DataGrid>
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </Grid>
                 </Grid>
             </Grid>
         </DockPanel>

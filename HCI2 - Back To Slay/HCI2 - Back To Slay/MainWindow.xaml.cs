@@ -292,13 +292,7 @@ namespace HCI2___Back_To_Slay
 
         public static bool update_course_schedule(string id)
         {
-            foreach(Subject s in allSubjects)
-            {
-                if(s.Course.Id == id)
-                {
-                    return false;
-                }
-            }
+            
             foreach (Appointment app in realApps)
             {
                 if (app.Subject.Course.Id == id)

@@ -41,7 +41,7 @@ namespace HCI2___Back_To_Slay.windows
                 case (MessageBoxResult.Yes):
                     if (MainWindow.update_course_schedule(current_crs.Id))
                     {
-                        foreach(Subject sub in MainWindow.allSubjects){
+                        foreach(Subject sub in MainWindow.allSubjects.ToList()){
                             if (sub.Course.Equals(current_crs))
                             {
                                 MainWindow.allSubjects.Remove(sub);
