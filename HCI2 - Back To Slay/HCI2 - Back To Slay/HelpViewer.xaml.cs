@@ -24,11 +24,10 @@ namespace HCI2___Back_To_Slay
         public HelpViewer(string key, Window originator)
         {
             InitializeComponent();
-                       
-
-            Uri u = new Uri(String.Format("C:\\Users\\Marina\\Source\\Repos\\HCI2-slayers\\HCI2 - Back To Slay\\HCI2 - Back To Slay\\Help\\index.html#{0}", key));
             
+            string curDir = Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory().ToString()).ToString()).ToString();
             
+            Uri u = new Uri(String.Format("{0}/Help/index.html#{1}", curDir, key));
             ch = new JavaScriptControlHelper(originator);
             wbHelp.ObjectForScripting = ch;
             wbHelp.Navigate(u);

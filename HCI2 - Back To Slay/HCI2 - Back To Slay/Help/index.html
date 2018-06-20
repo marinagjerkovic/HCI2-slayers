@@ -5,7 +5,7 @@
     <title>Help</title>
 </head>
 <body>
-    <h1>
+    <h1 id="index">
         Welcome to Schedule maker application
     </h1>
     On this page you can find everything you need to know
@@ -77,13 +77,21 @@
         </ul>
     </p>
     </br>
+    <p>
+        <b>Help and demo:</b>
+        <ul>
+            <li><a href="#help"> Help details</a></li>
+            <li><a href="#demo"> Demo details</a></li>            
+        </ul>
+    </p>
     </br>
-    <h2 id="dodavanje_softvera">Creating software</h2>
-    There are two ways a user can create new software. The first
-    way is via action from main menu, the second one is action
-    from the window which lists all software.
+    <p>
+        <h2 id="dodavanje_softvera">Creating software</h2>
+        There are two ways a user can create new software. The first
+        way is via action from main menu, the second one is action
+        from the window which lists all software.
 
-    </br>
+        </br>
     <p>
         <b>The first way</b>: Left mouse click on the 'Classroom' option in main menu. Two options are available and
         the relevant one is 'Add new software'. Left mouse click opens new window which offers new software data input.
@@ -97,8 +105,20 @@
         The data fiels must be filled properly. If you want to save new created software left mouse click button 'Add software'. This way all the fields are reset so that many software can be created one after another. You can close creating new software by left mouse clicking the 'X' button or alternatively the 'Cancel' button.
     </p>
     </br>
+    <div align="left">
+        <img src="../images/new_software.jpg" />
+        <div>
+            This image shows how Creating new software window looks. No field can be left blank and 
+            fields 'Year of publication' and 'Price' must be numbers. You can choose one of operating systems by
+            left mouse clicking on the circle next to OS name.
+            </br>
+            Left mouse click 'Add software' to create software or left mouse click 'Cancel' to cancel creating new software.
+        </div>
+    </div>
+    </p>
+    
     </br>
-
+    <p>
     <h2 id="dodavanje_kursa">Creating course</h2>
     There are two ways a user can create new course. The first
     way is via action from main menu, the second one is action
@@ -119,7 +139,18 @@
     </p>
     </br>
     </br>
-
+    <div align="left">
+        <img src="../images/new_course.jpg" />
+        <div>
+            This image shows how Creating new course window looks. No field can be left blank.
+            </br>
+            Left mouse click 'Add course' to create software or left mouse click 'Cancel' to cancel creating new course.
+        </div>
+    </div>
+    </p>
+    </br>
+    
+    <p>
     <h2 id="dodavanje_predmeta">Creating subject</h2>
     There are two ways a user can create new subject. The first
     way is via action from main menu, the second one is action
@@ -147,7 +178,47 @@
     </p>
     </br>
     </br>
-
+    <div align="left">
+        <img src="../images/new_subject.jpg" />
+        <div>
+            This image shows how Creating new subject window looks. No field can be left blank and
+            fields 'Size of groups' and 'Duration of period' and 'Number of periods' must be numbers. You can set fields
+            'yes' or 'no' by left mouse clicking on circle next to them. You can choose one of operating systems by
+            left mouse clicking on the circle next to OS name.
+            </br>
+            Since creating subject demands setting course, you can choose course by left mouse clicking button
+            'Click here to add course'. A new window opens with list of all existing courses. To select one course
+            left mouse click on its row and then left mouse click button 'Save selected course'. If you wish to
+            create new course to add to the subject, you can do that by left mouse clicking button 'Add new course'.
+            That way, window for creating new course opens. (see the following image) 
+            </br>
+            <img src="../images/course_for_subject.jpg" />
+            </br>
+            </br>
+            (See more: <a href="#dodavanje_kursa">'creating course'</a>).
+            </br>
+            Since creating subject demands setting list of software that subject has, you can choose software by left mouse
+            clicking button 'Click here to choose software'. New window for selecting software opens (see the following image). 
+            </br>
+            <img src="../images/choose_soft_for_subject.jpg" />
+            </br>
+            Left table contains list of all software that exists in database and the left table contains
+            all the software you've chose for that course. 
+            If you want to choose software from the left table, left mouse click on the row of that software.
+            If you want to remove software from the list, left mouse click on the row in right table.
+            If you wish to see details of a software and potentialy change it, click button 'Click here for more'.
+            If certain software can't be found on the list, you can create new one by left mouse clicking
+            button 'Add new software'. (see more: <a href="#dodavanje_softvera">'creating software'</a>)
+            </br>
+            To finish creating subject, left mouse click on button 'Add subject', or 'Cancel' if you wish to cancel
+            creating new subject.
+            </br>
+            
+        </div>
+    </div>
+    </p>
+    </br>
+    <p>
     <h2 id="dodavanje_ucionice">Creating classroom</h2>
     There are two ways a user can create new classroom. The first
     way is via action from main menu, the second one is action
@@ -163,18 +234,39 @@
         To add new classroom, left mouse click button 'Add new classroom'. This opens new window which offers new classroom data input.
     </p>
     <p>
-        <b>Note</b>:
-        The data fiels must be filled properly. If you want to save new created classroom, left mouse click button 'Add classroom'. This way all the fields are reset so that many classrooms can be created one after another. You can close creating new classroom by left mouse clicking the 'X' button or alternatively the 'Cancel' button.
-        </br>
-        Since creating new classroom needs adding software, there is
-        option to update existing software while creating a classroom by mouse left clicking on button 'Click here for more'.
-        Left mouse click on button 'Shoose software' opens a window in which the left table contains not added software and the right one containg list of added software. To add software in classroom list, point the mouse on the row in table and left mouse click on it.
-        </br>
-        If you want to remove software from a list, left mouse click on a row in the right table which contains data of software you want to remove.
-        </br>
-        If you want to update software data of specific software in one of the tables, left mouse clik button 'Click here for more'. The window which allows software update is open. More details on updating a software can be seen in <a href="izmena_softvera">updating software</a> paragraph.
+        <div align="left">
+            <img src="../images/new_class.jpg" />
+            <div>
+                This image shows how Creating new classroom window looks. No field can be left blank and
+                field 'Number of seats' must be number. You can set fields
+                'yes' or 'no' by left mouse clicking on circle next to them. You can choose one of operating systems by
+                left mouse clicking on the circle next to OS name.
+                </br>
+                
+                Since creating classroom demands setting list of software that classroom has, you can choose software by left mouse
+                clicking button 'Choose software'. New window for selecting software opens (see the following image).
+                </br>
+                <img src="../images/choose_soft_for_subject.jpg" />
+                </br>
+                Left table contains list of all software that exists in database and the left table contains
+                all the software you've chose for that course.
+                If you want to choose software from the left table, left mouse click on the row of that software.
+                If you want to remove software from the list, left mouse click on the row in right table.
+                If you wish to see details of a software and potentialy change it, click button 'Click here for more'.
+                If certain software can't be found on the list, you can create new one by left mouse clicking
+                button 'Add new software'. (see more: <a href="#dodavanje_softvera">'creating software'</a>)
+                </br>
+                To finish creating classroom, left mouse click on button 'Add classroom', or 'Cancel' if you wish to cancel
+                creating new classroom.
+                </br>
+
+            </div>
+        </div>
+    
+    </p>
     </p>
 
+    <p>
     <p id="izbor_softvera">
         <b>Choosing software</b> is enabled while (<a href="#dodavanje_predmeta">creating subject</a> or while
         (<a href="#dodavanje_ucionice">creating classroom</a>). 
@@ -184,10 +276,16 @@
         and mouse left click on the row with that software. If you want to remove software from the list, find it in
         the right table and mouse left click on row with that software.
     </p>
+    </p>
 
+    <p>
     <h2 id="izlistavanje_softvera">Listing all software</h2>
     To list all software, left mouse click option 'Software' in main menu and then left mouse click option 'List all software'. Double clicking on a row in table opens a window with all the software details.
     <p>
+        <img src="../images/list_software.jpg" />
+        </br>
+        By double clicking a row in table, you are able to see details of a software and potentialy change them.
+        If you wish to add new software, you can do it by left mouse clicking button 'Add new software'.
         <b>See more:</b>
         <ul>
             <li><a href="#dodavanje_softvera">Creating software</a></li>
@@ -195,10 +293,16 @@
             <li><a href="#izmena_softvera">Updating software</a></li>
         </ul>
     </p>
+    </p>
 
+    <p>
     <h2 id="izlistavanje_kurseva">Listing all courses</h2>
     To list all courses, left mouse click option 'Course'  in main menu and then left mouse click option 'List all courses'. Double clicking on a row in table opens a window with all the course details.
     <p>
+        <img src="../images/list_courses.jpg" />
+        </br>
+        By double clicking a row in table, you are able to see details of a course and potentialy change them.
+        If you wish to add new course, you can do it by left mouse clicking button 'Add new course'.
         <b>See more:</b>
         <ul>
             <li><a href="#dodavanje_kursa">Creating course</a></li>
@@ -206,10 +310,16 @@
             <li><a href="#izmena_kursa">Updating course</a></li>
         </ul>
     </p>
+    </p>
 
+    <p>
     <h2 id="izlistavanje_predmeta">Listing all subjects</h2>
     To list all subjects, left mouse click option 'Subject' in main menu and then left mouse click option 'List all subjects'. Double clicking on a row in table opens a window with all the subject details.
     <p>
+        <img src="../images/list_subjects.jpg" />
+        </br>
+        By double clicking a row in table, you are able to see details of a subject and potentialy change them.
+        If you wish to add new subject, you can do it by left mouse clicking button 'Add new subject'.
         <b>See more:</b>
         <ul>
             <li><a href="#dodavanje_predmeta">Creating subject</a></li>
@@ -217,10 +327,17 @@
             <li><a href="#izmena_predmeta">Updting subject</a></li>
         </ul>
     </p>
+    </p>
 
+    <p>
     <h2 id="izlistavanje_ucionica">Listing all classrooms</h2>
     To list all classrooms, left mouse click option 'Classroom' in main menu and then left mouse click option 'List all classrooms'. Double clicking on a row in table opens a window with all the classroom details.
     <p>
+        <img src="../images/list_classrooms.jpg" />
+        </br>
+        By double clicking a row in table, you are able to see details of a classroom and potentaly change them.
+        To view list of software in certain classroom, left mouse click button 'View'.
+        If you wish to add new classroom, you can do it by left mouse clicking button 'Add new classroom'.
         <b>See more:</b>
         <ul>
             <li><a href="#dodavanje_ucionice">Creating classroom</a></li>
@@ -228,12 +345,15 @@
             <li><a href="#izmena_ucionice">Updating classroom</a></li>
         </ul>
     </p>
+    </p>
 
+    <p>
     <h2 id="izmena_softvera">Updating software</h2>
     There are several ways to get to updating software.
     </br>
     <b>First way:</b>
-    This way implies you've opened listing all software. If not, paragraph 'Listing all software' describes how to do it. Double clicking left mouse button on a row in table opens window with details of software.
+    This way implies you've opened listing all software. If not, paragraph <a href="#izlistavanje_softvera">
+    'Listing all software'</a> describes how to do it. Double clicking left mouse button on a row in table opens window with details of software.
     </br>
     <b>Second way:</b>
     This way implies you've opened creating classroom and choosing software for that classroom.
@@ -243,120 +363,129 @@
     This way implies you're trying to create new subject.
     (See more: <a href="#dodavanje_predmeta">creating subject</a>)
     </br></br>
-    Left mouse click on 'Change data' button allows user to change data in fields bordered with red color. Left mouse click on 'Save changes' button saves all made changes. Data must be filled properly. If you want to discard changes, left mouse click on button 'Back'.
+    Left mouse click on 'Change data' button allows user to change data in fields bordered with red color. 
+    </br>
+    <img src="../images/software_info.jpg" />
+    </br>
+    The red bordered fields can be changed. Left mouse click on 'Save changes' button saves all made changes. Data must be filled properly. 
+    If you want to discard changes, left mouse click on button 'Back'.
+    </br>
     </br>
     Left mouse click on button 'Delete' opens dialogue for accepting deletion. To approve deletion left mouse click button 'Yes' and in contrary click 'No'.
+    </p>
 
+    <p>
+        <h2 id="izmena_kursa">Updating course</h2> This way implies you've opened listing all courses. If not, paragraph <a href="#izlistavanje_kurseva">
+            'Listing all courses'
+        </a> describes how to do it. Double clicking left mouse button on a row in table opens window with details of course.
+        Left mouse click on 'Change data' button allows user to change data in fields bordered with red color.
+        </br>
+        <img src="../images/course_info.jpg" />
+        </br>
+        The red bordered fields can be changed. Left mouse click on 'Save changes' button saves all made changes. Data must be filled properly.
+        If you want to discard changes, left mouse click on button 'Back'.
+        </br>
+        Left mouse click on 'Save changes' button saves all made changes. Data must be filled properly. If you want to discard changes, left mouse click on button 'Back'.
+    </p>
 
-
-    <h2 id="izmena_kursa">Updating course</h2> This way implies you've opened listing all courses. If not, paragraph 'Listing all courses' describes how to do it. Double clicking left mouse button on a row in table opens window with details of course.
-    Left mouse click on 'Change data' button allows user to change data in fields bordered with red color. Left mouse click on 'Save changes' button saves all made changes. Data must be filled properly. If you want to discard changes, left mouse click on button 'Back'.
-
+    <p>
     <h2 id="izmena_predmeta">Updating subject</h2>
-    This way implies you've opened listing all subjects. If not, paragraph 'Listing all subjects' describes how to do it. Double clicking left mouse button on a row in table opens window with details of subject.
-    Left mouse click on 'Change data' button allows user to change data in fields bordered with red color. Left mouse click on 'Save changes' button saves all made changes. Data must be filled properly. If you want to discard changes, left mouse click on button 'Back'.
+    This way implies you've opened listing all subjects. If not, paragraph <a href="#izlistavanje_predmeta">
+        'Listing all subjects'
+    </a> describes how to do it. Double clicking left mouse button on a row in table opens window with details of subject.
+    Left mouse click on 'Change data' button allows user to change data in fields bordered with red color. 
+    </br>
+    <img src="../images/classroom_info.jpg" />
+    </br>
+    The red bordered fields can be changed. Left mouse click on 'Save changes' button saves all made changes. Data must be filled properly.
+    If you want to discard changes, left mouse click on button 'Back'.
+    </br>
+    Left mouse click on 'Save changes' button saves all made changes. Data must be filled properly. If you want to discard changes, left mouse click on button 'Back'.
+    </p>
 
+    <p>
     <h2 id="izmena_ucionice">Updating classroom</h2>
-    This way implies you've opened listing all classrooms. If not, paragraph 'Listing all classrooms' describes how to do it. Double clicking left mouse button on a row in table opens window with details of classroom.
-    Left mouse click on 'Change data' button allows user to change data in fields bordered with red color. Left mouse click on 'Save changes' button saves all made changes. Data must be filled properly. If you want to discard changes, left mouse click on button 'Back'.
+    This way implies you've opened listing all classrooms. If not, paragraph <a href="#izlistavanje_ucionica">
+        'Listing all classrooms'
+    </a> describes how to do it. Double clicking left mouse button on a row in table opens window with details of classroom.
+    Left mouse click on 'Change data' button allows user to change data in fields bordered with red color. 
+    </br>
+    <img src="../images/classroom_info.jpg" />
+    </br>
+    The red bordered fields can be changed. Left mouse click on 'Save changes' button saves all made changes. Data must be filled properly.
+    If you want to discard changes, left mouse click on button 'Back'.
+    </br>
+    Left mouse click on 'Save changes' button saves all made changes. Data must be filled properly. If you want to discard changes, left mouse click on button 'Back'.
+    </p>
 
+    <p>
+        <h2 id="brisanje_softvera">Removing software</h2>
+        This way implies you've opened updating software window. If you haven't you can get description how to do it in <a href="#izmena_softvera">
+            'Updating software'
+        </a> paragraph.
+        Left mouse click on button 'Delete' opens dialogue to approve deletion.
+        Deletion can be accepted by left mouse clicking option 'Yes', and in contrary clicking button 'No' discards deletion.
+    </p>
 
-    <h2 id="brisanje_softvera">Removing software</h2>
-    This way implies you've opened updating software window. If you haven't you can get description how to do it in 'Updating software' paragraph.
+    <p>
+    <h2 id="brisanje_kursa">Removing course</h2>
+    This way implies you've opened updating course window. If you haven't you can get description how to do it in <a href="#izmena_kursa">'Updating course'</a>  paragraph.
     Left mouse click on button 'Delete' opens dialogue to approve deletion.
     Deletion can be accepted by left mouse clicking option 'Yes', and in contrary clicking button 'No' discards deletion.
+    </p>
 
-
-    <h2 id="brisanje_kursa">Brisanje kursa</h2>
-    This way implies you've opened updating course window. If you haven't you can get description how to do it in 'Updating course' paragraph.
+    <p>
+    <h2 id="brisanje_predmeta">Removing subject</h2>
+    This way implies you've opened updating subject window. If you haven't you can get description how to do it in <a href="#izmena_predmeta">
+        'Updating subject'
+    </a> paragraph.
     Left mouse click on button 'Delete' opens dialogue to approve deletion.
     Deletion can be accepted by left mouse clicking option 'Yes', and in contrary clicking button 'No' discards deletion.
+    </p>
 
-
-    <h2 id="brisanje_predmeta">Brisanje predmeta</h2>
-    This way implies you've opened updating subject window. If you haven't you can get description how to do it in 'Updating subject' paragraph.
-    Left mouse click on button 'Delete' opens dialogue to approve deletion.
-    Deletion can be accepted by left mouse clicking option 'Yes', and in contrary clicking button 'No' discards deletion.
-
-
-    <h2 id="brisanje_ucionice">Brisanje učionice</h2>
-    This way implies you've opened updating classroom window. If you haven't you can get description how to do it in 'Updating classroom' paragraph.
-    Left mouse click on button 'Delete' opens dialogue to approve deletion.
-    Deletion can be accepted by left mouse clicking option 'Yes', and in contrary clicking button 'No' discards deletion.
-
+    <p>
+        <h2 id="brisanje_ucionice">Removing classroom</h2>
+        This way implies you've opened updating classroom window. If you haven't you can get description how to do it in <a href="#izmena_ucionice">
+            'Updating classroom'
+        </a> paragraph.
+        Left mouse click on button 'Delete' opens dialogue to approve deletion.
+        Deletion can be accepted by left mouse clicking option 'Yes', and in contrary clicking button 'No' discards deletion.
+    </p>
     </p>
     </br>
     <p>
-        <h2 id="kreiranje_rasporeda">Kreiranje novog rasporeda</h2>
-        Da biste kreirali nov raspored potrebno je da izaberete opciju 'Schedule' u
-        glavnom meniju. To ćete postići klikom levog tastera miša na nju. Otvoriće se
-        padajući meni sa opcijama od kojih je relevantna 'New schedule'. Klikom levim
-        tasterom miša na nju, otvoriće se prozor koji traži da unesete naziv novog
-        rasporeda. Naziv mora biti u skladu sa ograničenjima. Da biste kreirali i
-        učitali nov raspored, to možete postići klikom levog tastera miša na dugme
-        'Create'. Ukoliko želite da odustanete od kreiranja novog rasporeda, to
-        možete učiniti klikom levog tastera miša na dugme 'Cancel'. Primer kreiranja
-        novog rasporeda dat je na slici 14.
+        <h2 id="kreiranje_rasporeda">Creating new schedule</h2>
+        In order to create new schedule, left mouse click on option 'Schedule' in menu and the left mouse click
+        on suboption New schedule. Before new schedule loads, you are prompt if you want to save existing schedule.
         </br>
-        <b>Napomena</b>: Kreiranjem i otvaranjem novog rasporeda sačuvaće se sve izmene
-        načinjene na prethodnom rasporedu.
     <p>
-        <b>Pogledati još:</b>
+        <b>See more:</b>
         <ul>
-            <li><a href="#cuvanje_rasporeda">Čuvanje rasporeda</a></li>
+            <li><a href="#cuvanje_rasporeda">Saving schedule</a></li>
         </ul>
     </p>
     </p>
     <p>
-        <h2 id="odabir_rasporeda">Odabir postojećeg rasporeda</h2>
-        Ukoliko nijedan raspored nije kreiran u aplikaciji, automatski će biti kreiran
-        nov raspored. Ukoliko neki raspored već postoji, prilikom pokretanja aplikacije
-        učitava se poslednji sačuvani raspored. Ukoliko želite da manipulišete nekim
-        drugim rasporedom koji ste prethodno kreirali, to možete postići na sledeći
-        način: klikom levog tastera miša na opciju menija 'Schedule' otvoriće se
-        padajući meni sa opcijom od kojih je relevantna 'Choose schedule'. Ova
-        opcija biće onemogućena
-        ako do sada nije kreiran nijedan raspored i ne važi ono što je dalje navedeno u
-        ovom pasusu. Klikom levog tastera miša na tu
-        opciju otvara se prozor koji nudi imena svih do sada kreiranih rasporeda.
-        Da biste izabrali željeni raspored, potrebno je da levim tasterom miša kliknete
-        na kvadratić pored imena rasporeda koji želite da učitate. Da biste potvrdili
-        izmenu rasporeda kliknite levim tasterom miša na dugme 'Choose schedule'.
-        Da biste odustali od izmene rasporeda, kliknite levim tasterom miša na dugme
-        'Cancel'. Primer odabira rasporeda dat je na slici 15.
+        <h2 id="odabir_rasporeda">Open existing schedule</h2>
+        In order to open existing schedule, left mouse click on option 'Schedule' and then left mouse
+        click on suboption 'Open schedule'. A new window opens which offers you to find
+        and choose existing schedule.
         </br>
+    </p>
+
     <p>
-        <b>Pogledati još</b>:
-        <ul>
-            <li><a href="#kreiranje_rasporeda"> Kreiranje novog rasporeda</a></li>
-        </ul>
+        <h2 id="cuvanje_rasporeda">Saving schedule</h2>
+        The current schedule can be saved by let mouse clicking on option 'Schedule' in menu and then
+        left mouse clicking on suboption 'Save schedule'. You are then asked to input schedule name.
     </p>
-    </p>
-    <p>
-        <h2 id="cuvanje_rasporeda">Čuvanje rasporeda</h2>
-        Ukoliko do sada niste sačuvali nijedan raspored, prilikom gašenja aplikacije
-        (klikom levog tastera na dugme 'X' na glavnom prozoru) otvoriće se dijalog
-        u kojem je potrebno da unesete naziv rasporeda u skladu sa ograničenjima.
-        Klikom levog tastera miša na dugme 'Save' potvrđujete načinjene izmene i
-        raspored se čuva sa zadatim imenom.
-        </br>
-        </br>
-        Ukoliko ste manipulsali rasporedom koji ste vi kreirali, promenom
-        rasporeda ili gašenjem aplikacije automatski će biti sačuvane izmene.
-    <p>
-        <b>Pogledati još</b>:
-        <ul>
-            <li><a href="#odabir_rasporeda"> Odabir postojećeg rasporeda</a></li>
-        </ul>
-    </p>
-    </p>
+
     <p>
         <h2 id="izbor_ucionice_za_raspored">Adding classroom to schedule</h2>
-        Table on the down left side of main window contains all classrooms. Each row represents one classroom. To add classroom to the schedule left mouse click button 'Show' in certain row.
+        Table on the down left side of main window contains all classrooms. Each row represents one classroom. To add classroom to the schedule left mouse click button 'Show' in certain row.        
     </p>
     <p>
         <h2 id="uklanjanje_ucionice_iz_rasporeda">Removing classroom from schedule</h2>
-        Table on the down left side of main window contains all classrooms. Each row represents one classroom. To remove classroom from the schedule left mouse click button 'Remove' in certain row.
+        Table on the down left side of main window contains all classrooms. Each row represents one classroom. To remove classroom from the schedule left mouse click button 'Remove' in certain row.       
     </p>
     <p>
         <h2 id="izbor_predmeta_za_raspored">Adding subject to schedule</h2>
@@ -366,22 +495,49 @@
         <h2 id="uklanjanje_predmeta_iz_rasporeda">Removing subject from schedule</h2>
         Table on the down right side of main window contains all subjects. Each row represents one subject. To remove subject from the schedule left mouse click button 'Remove' in certain row. This way, cards which represent appointments for chosen subject are removed from schedule and from appointment container on the right side of main window.
     </p>
-    </p>
+    </br>
+    <img src="../images/schedule.jpg" />
+    </br>
+    This image shows the position of table with classrooms, subjects and relevant buttons mentioned in four previous paragraphs.
+    
     <p>
         <h2 id="dodavanje_termina_u_raspored">Adding appointments to schedule</h2>
         To add appointment card from appointment container to the schedule, left mouse click on certaint appointment card in the container and while still pressing the mouse, drag the card in the schedule area on a preferred position. When the card is in the right place, release the mouse button.
         </br>
-        See more: <a href="izmena_pozicije_termina">changing appointment position</a>
+        See more: <a href="#izmena_pozicije_termina">changing appointment position</a>
     </p>
     <p>
         <h2 id="uklanjanje_termina_iz_rasporeda">Removing appointment from schedule</h2>
         To remove appointment card from schedule to the appointment container, left mouse click on certaint appointment card in the schedule and while still pressing the mouse, drag the card to the appointment container. When the card is in the right place, release the mouse button.
         </br>
-        See more: <a href="izmena_pozicije_termina">changing appointment position</a>
+        See more: <a href="#izmena_pozicije_termina">changing appointment position</a>
     </p>
     <p>
         <h2 id="izmena_pozicije_termina">Changing appointment position</h2>
         To change position of appointment card in the schedule, left mouse click on certaint appointment card in the schedule and while still pressing the mouse, drag the card to the suited position in schedule. When the card is in the right place, release the mouse button.
+        </br>
+    </p>
+
+    </br>
+    <img src="../images/placeholder.jpg" />
+    </br>
+    This image shows the position of placeholder for appointments, it has red boder on the image, but not 
+    actually in the application.
+
+
+    <p>
+        <h2 id="help">Help details</h2>
+        This page represents help page. It is possible to access it via main menu, left mouse clicking
+        option 'Help' and left mouse clicking suboption 'Help'. Also, this page can be accessed if some
+        part of application is focused and the key 'F1' is pressed. That way, the help will be set on
+        certain paragraph which explains the current state of application.
+        </br>
+    </p>
+    <p>
+        <h2 id="demo">Demo details</h2>
+        This application offers demonstration mode in which user is not able to do anything except
+        see how <b>creating new subject</b> is supposed to work. To start demo mode left mouse click option
+        'Help' in main menu and then left mouse click suboption 'Demo'.
         </br>
     </p>
 </body>

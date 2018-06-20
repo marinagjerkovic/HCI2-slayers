@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI2___Back_To_Slay"
         mc:Ignorable="d"
-        Title="HelpViewer" Height="500" Width="1000">
+        Title="Help" Height="500" Width="1000">
     <DockPanel>
         <WebBrowser Name="wbHelp" Navigating="wbHelp_Navigating"></WebBrowser>
     </DockPanel>

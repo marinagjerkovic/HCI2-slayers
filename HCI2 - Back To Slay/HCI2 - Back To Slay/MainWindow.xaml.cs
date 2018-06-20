@@ -88,7 +88,7 @@ namespace HCI2___Back_To_Slay
             schedule.AppointmentStartResizing += schedule_start_resize;
             schedule.AppointmentEndResizing += schedule_end_resize;
             schedule.AppointmentResizing += schedule_resize;
-            //schedule.AppointmentEditorOpening += schedule_editor_open;
+            schedule.AppointmentEditorOpening += schedule_editor_open;
             //schedule.AppointmentEditorClosed += schedule_editor_closed;
             
             schedule.IsEnabled = enable;
@@ -111,16 +111,8 @@ namespace HCI2___Back_To_Slay
             classroomsDG.ItemsSource = allClassrooms;
             subjectsDG.ItemsSource = allSubjects;
 
-            if (allClassrooms.Count() == 0)
-            {
-                schedule.IsEnabled = false;
-                MessageBox.Show("You can't add anything on schedule before you create classroom!");
-
-            }
-            else
-            {
-                resourceType.ResourceCollection.Add(create_resource(allClassrooms.First()));
-            }
+            
+            
             //schedule.appo
         }
 
@@ -506,7 +498,7 @@ namespace HCI2___Back_To_Slay
                 {
                     if (r.ResourceName == sapp.Location)
                     {
-                        app.printApp();
+                        //app.printApp();
                         found = true;
                         break;
                     }

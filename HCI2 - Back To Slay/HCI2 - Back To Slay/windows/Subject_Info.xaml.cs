@@ -107,7 +107,7 @@ namespace HCI2___Back_To_Slay.windows
             switch (result)
             {
                 case (MessageBoxResult.Yes):
-                    if (MainWindow.update_classroom_schedule(current_sub.Id))
+                    if (MainWindow.update_subject_schedule(current_sub.Id))
                     {
                         MainWindow.allSubjects.Remove(current_sub);
                         MainWindow.allSubjectsIds.Remove(current_sub.Id);
