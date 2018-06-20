@@ -245,6 +245,28 @@
   <ItemGroup>
     <Content Include="Help\error.html" />
     <Content Include="Help\index.html" />
+    <Resource Include="images\placeholder.jpg" />
+    <Resource Include="images\schedule.jpg" />
+    <Resource Include="images\choose_soft_for_subject.jpg" />
+    <Resource Include="images\course_for_subject.jpg" />
+    <Resource Include="images\classroom_info.jpg" />
+    <Resource Include="images\course_info.jpg" />
+    <Resource Include="images\software_info.jpg" />
+    <Resource Include="images\subject_info.jpg" />
+    <Resource Include="images\choose_soft_bez.jpg" />
+    <Resource Include="images\classroom.jpg" />
+    <Resource Include="images\course.jpg" />
+    <Resource Include="images\help.jpg" />
+    <Resource Include="images\list_classrooms.jpg" />
+    <Resource Include="images\list_courses.jpg" />
+    <Resource Include="images\list_software.jpg" />
+    <Resource Include="images\list_subjects.jpg" />
+    <Resource Include="images\new_class.jpg" />
+    <Resource Include="images\new_course.jpg" />
+    <Resource Include="images\new_software.jpg" />
+    <Resource Include="images\new_subject.jpg" />
+    <Resource Include="images\software.jpg" />
+    <Resource Include="images\subject.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
