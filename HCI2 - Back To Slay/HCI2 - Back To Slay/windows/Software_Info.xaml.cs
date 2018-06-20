@@ -28,7 +28,6 @@ namespace HCI2___Back_To_Slay.windows
         {
             current_sw = sw;
             InitializeComponent();
-            this.Title = current_sw.Name;
             load_data();
         }
 
